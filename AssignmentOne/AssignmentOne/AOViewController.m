@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Chad Marmon. All rights reserved.
 //
 
+// good job, 100%
+
 #import "AOViewController.h"
 
 @interface AOViewController ()
@@ -43,9 +45,9 @@
 {
     if (flipped)
     {
-        label.text = @"Press the Button";
+        label.text = @"Check yourself";
     } else {
-        label.text = @"Release the Button";
+        label.text = @"Too late, wrecked yourself";
     }
 }
 
