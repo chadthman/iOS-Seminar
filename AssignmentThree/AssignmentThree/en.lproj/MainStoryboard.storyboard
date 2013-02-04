@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="14">
+            <objects>
+                <navigationController id="3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Xjp-yV-K37" kind="relationship" relationship="rootViewController" id="5Vs-i5-dEh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="13" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="494" y="-630"/>
+        </scene>
+        <!--Detail View Controller - Detail-->
+        <scene sceneID="16">
+            <objects>
+                <viewController storyboardIdentifier="" title="Detail" id="4" customClass="ATDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="26">
+                        <rect key="frame" x="0.0" y="64" width="703" height="655"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.18650082748816932" blue="0.082084936586461099" alpha="1" colorSpace="calibratedRGB"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="0ac-3n-dbV"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Detail" id="53"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1826" y="1333"/>
+        </scene>
+        <!--View Controller - Item 1-->
+        <scene sceneID="rDz-oC-2A0">
+            <objects>
+                <viewController id="H8T-Cf-hqb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EaI-AG-9vJ">
+                        <rect key="frame" x="0.0" y="64" width="703" height="655"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="vkM-v3-i1y"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="byh-lk-cAw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1826" y="372"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="GxY-pb-FPI">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="K2h-3x-7rz" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Vaa-4g-HCW"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="T5d-5D-ZI8">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="H8T-Cf-hqb" kind="relationship" relationship="viewControllers" id="NT9-nd-CZT"/>
+                        <segue destination="4" kind="relationship" relationship="viewControllers" id="2Iy-Bf-1JU"/>
+                        <segue destination="VfZ-Id-eS6" kind="relationship" relationship="viewControllers" id="jRQ-9F-Phd"/>
+                        <segue destination="Tlx-7N-5UZ" kind="relationship" relationship="viewControllers" id="6Vi-HG-nhY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bki-zn-OzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="636" y="364"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="18">
+            <objects>
+                <splitViewController id="5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <segue destination="3" kind="relationship" relationship="masterViewController" id="9"/>
+                        <segue destination="42" kind="relationship" relationship="detailViewController" id="Jdt-gc-UzW"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-687" y="-630"/>
+        </scene>
+        <!--Master View Controller-->
+        <scene sceneID="fbW-Dj-6VU">
+            <objects>
+                <viewController id="Xjp-yV-K37" customClass="ATMasterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="841-Cd-t0A">
+                        <rect key="frame" x="0.0" y="64" width="320" height="704"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50L-9s-ci9">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Red">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="42" kind="replace" splitViewControllerTargetIndex="1" id="mSW-jo-EG7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aE-SA-Ght">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Green">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toGreenButton" destination="Xjp-yV-K37" eventType="touchDown" id="dta-It-JqS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zml-3F-EDI">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Blue">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toBlueButton" destination="Xjp-yV-K37" eventType="touchDown" id="56j-TH-PI9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="50L-9s-ci9" firstAttribute="centerX" secondItem="841-Cd-t0A" secondAttribute="centerX" type="default" id="6X0-Bk-yIr"/>
+                            <constraint firstItem="3aE-SA-Ght" firstAttribute="leading" secondItem="zml-3F-EDI" secondAttribute="leading" type="default" id="JdR-o5-9r6"/>
+                            <constraint firstItem="zml-3F-EDI" firstAttribute="trailing" secondItem="3aE-SA-Ght" secondAttribute="trailing" type="default" id="K6J-3M-RBO"/>
+                            <constraint firstAttribute="bottom" secondItem="zml-3F-EDI" secondAttribute="bottom" constant="229" id="Rl4-a5-duE"/>
+                            <constraint firstItem="3aE-SA-Ght" firstAttribute="centerY" secondItem="841-Cd-t0A" secondAttribute="centerY" type="default" id="aUd-xO-H41"/>
+                            <constraint firstItem="50L-9s-ci9" firstAttribute="trailing" secondItem="3aE-SA-Ght" secondAttribute="trailing" type="default" id="m0W-cJ-SWU"/>
+                            <constraint firstItem="50L-9s-ci9" firstAttribute="leading" secondItem="3aE-SA-Ght" secondAttribute="leading" type="default" id="oyw-du-FDZ"/>
+                            <constraint firstItem="50L-9s-ci9" firstAttribute="top" secondItem="841-Cd-t0A" secondAttribute="top" constant="219" id="zhP-Gm-1wG"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TVc-oG-OEY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EpP-ft-Yiw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1010" y="-630"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="50">
+            <objects>
+                <navigationController id="42" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="LtT-3Z-wS3"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="43">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="K2h-3x-7rz" kind="relationship" relationship="rootViewController" id="sjg-L9-1lN"/>
+                        <segue destination="gUd-6n-Qc9" kind="push" identifier="toBlue" id="2AG-XP-KuW"/>
+                        <segue destination="Tlx-7N-5UZ" kind="push" identifier="toGreen" id="C03-pH-dQp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-558" y="332"/>
+        </scene>
+        <!--Blue View Controller - Detail-->
+        <scene sceneID="Gj4-aF-sHe">
+            <objects>
+                <viewController storyboardIdentifier="" title="Detail" id="gUd-6n-Qc9" customClass="ATBlueViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8De-ds-8fm">
+                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.077877588374442253" green="0.25154533002930124" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="1hi-f3-2XO"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Detail" id="cIh-fQ-2wn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="54P-3m-lc1" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-546" y="1242"/>
+        </scene>
+        <!--Green View Controller - Detail-->
+        <scene sceneID="CIW-kf-MWY">
+            <objects>
+                <viewController storyboardIdentifier="" title="Detail" id="Tlx-7N-5UZ" customClass="ATGreenViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wld-vi-RmB">
+                        <rect key="frame" x="0.0" y="64" width="703" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.072513144725392054" green="1" blue="0.15898780677449587" alpha="1" colorSpace="calibratedRGB"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="AXg-4T-9Zy"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Detail" id="UCt-J5-s2z"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGo-PU-Cjm" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="627" y="1242"/>
+        </scene>
+        <!--View Controller - Item 1-->
+        <scene sceneID="f1i-PD-chX">
+            <objects>
+                <viewController id="VfZ-Id-eS6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="50M-eT-pCo">
+                        <rect key="frame" x="0.0" y="64" width="703" height="655"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="dMe-XZ-SER"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CVm-HV-Pei" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1826" y="-540"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="ATBlueViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ATBlueViewController.h"/>
+        </class>
+        <class className="ATDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ATDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="detailDescriptionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ATGreenViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ATGreenViewController.h"/>
+        </class>
+        <class className="ATMasterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ATMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="toBlueButton"/>
+                <relationship kind="action" name="toGreenButton"/>
+                <relationship kind="action" name="toRedButton"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="mSW-jo-EG7"/>
+        <segue reference="C03-pH-dQp"/>
+    </inferredMetricsTieBreakers>
+</document>
