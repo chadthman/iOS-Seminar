@@ -9,14 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class ATDetailViewController;
-@class ATBlueViewController;
-@class ATGreenViewController;
-
 @interface ATMasterViewController : UIViewController
 
 @property (strong, nonatomic) ATDetailViewController *redViewController;
-@property (strong, nonatomic) ATBlueViewController *blueViewController;
-@property (strong, nonatomic) ATGreenViewController *greenViewController;
 
 -(IBAction)toRedButton;
 -(IBAction)toBlueButton;

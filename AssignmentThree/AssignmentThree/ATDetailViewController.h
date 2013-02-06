@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface ATDetailViewController : UIViewController <UISplitViewControllerDelegate>
-
+{
+    int count;
+}
 @property (strong, nonatomic) id detailItem;
+@property UIStoryboard *story;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+-(IBAction)onAdvance;
+//-(void) incrementByOne;
 @end

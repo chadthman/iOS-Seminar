@@ -24,8 +24,8 @@
 		2848649D16BDDB0C00F21F62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2848647516BDDB0C00F21F62 /* Foundation.framework */; };
 		284864A516BDDB0C00F21F62 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 284864A316BDDB0C00F21F62 /* InfoPlist.strings */; };
 		284864A816BDDB0C00F21F62 /* AssignmentThreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 284864A716BDDB0C00F21F62 /* AssignmentThreeTests.m */; };
-		28C6CFAE16BF36F40033EED1 /* ATBlueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C6CFAD16BF36F40033EED1 /* ATBlueViewController.m */; };
-		28C6CFB116BF37020033EED1 /* ATGreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C6CFB016BF37020033EED1 /* ATGreenViewController.m */; };
+		63A7E5E116C0A5F700292224 /* ATTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7E5E016C0A5F700292224 /* ATTabBar.m */; };
+		63A7E5E416C0D78300292224 /* ATNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7E5E316C0D78300292224 /* ATNavigationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,10 +63,10 @@
 		284864A416BDDB0C00F21F62 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		284864A616BDDB0C00F21F62 /* AssignmentThreeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssignmentThreeTests.h; sourceTree = "<group>"; };
 		284864A716BDDB0C00F21F62 /* AssignmentThreeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssignmentThreeTests.m; sourceTree = "<group>"; };
-		28C6CFAC16BF36F40033EED1 /* ATBlueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATBlueViewController.h; sourceTree = "<group>"; };
-		28C6CFAD16BF36F40033EED1 /* ATBlueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATBlueViewController.m; sourceTree = "<group>"; };
-		28C6CFAF16BF37020033EED1 /* ATGreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATGreenViewController.h; sourceTree = "<group>"; };
-		28C6CFB016BF37020033EED1 /* ATGreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATGreenViewController.m; sourceTree = "<group>"; };
+		63A7E5DF16C0A5F700292224 /* ATTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTabBar.h; sourceTree = "<group>"; };
+		63A7E5E016C0A5F700292224 /* ATTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTabBar.m; sourceTree = "<group>"; };
+		63A7E5E216C0D78200292224 /* ATNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATNavigationViewController.h; sourceTree = "<group>"; };
+		63A7E5E316C0D78300292224 /* ATNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATNavigationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,12 +131,12 @@
 				2848648B16BDDB0C00F21F62 /* MainStoryboard.storyboard */,
 				2848648E16BDDB0C00F21F62 /* ATMasterViewController.h */,
 				2848648F16BDDB0C00F21F62 /* ATMasterViewController.m */,
+				63A7E5DF16C0A5F700292224 /* ATTabBar.h */,
+				63A7E5E016C0A5F700292224 /* ATTabBar.m */,
+				63A7E5E216C0D78200292224 /* ATNavigationViewController.h */,
+				63A7E5E316C0D78300292224 /* ATNavigationViewController.m */,
 				2848649116BDDB0C00F21F62 /* ATDetailViewController.h */,
 				2848649216BDDB0C00F21F62 /* ATDetailViewController.m */,
-				28C6CFAC16BF36F40033EED1 /* ATBlueViewController.h */,
-				28C6CFAD16BF36F40033EED1 /* ATBlueViewController.m */,
-				28C6CFAF16BF37020033EED1 /* ATGreenViewController.h */,
-				28C6CFB016BF37020033EED1 /* ATGreenViewController.m */,
 				2848647A16BDDB0C00F21F62 /* Supporting Files */,
 			);
 			path = AssignmentThree;
@@ -290,8 +290,8 @@
 				2848648416BDDB0C00F21F62 /* ATAppDelegate.m in Sources */,
 				2848649016BDDB0C00F21F62 /* ATMasterViewController.m in Sources */,
 				2848649316BDDB0C00F21F62 /* ATDetailViewController.m in Sources */,
-				28C6CFAE16BF36F40033EED1 /* ATBlueViewController.m in Sources */,
-				28C6CFB116BF37020033EED1 /* ATGreenViewController.m in Sources */,
+				63A7E5E116C0A5F700292224 /* ATTabBar.m in Sources */,
+				63A7E5E416C0D78300292224 /* ATNavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
