@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="5">
+            <objects>
+                <viewController id="2" customClass="AFViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECn-e2-52c">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="1EC-lE-pDk"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="CXg-2F-Pj2"/>
+                                    <outlet property="delegate" destination="2" id="5tp-k3-cbB"/>
+                                    <outletCollection property="gestureRecognizers" destination="1Fg-KM-7Qb" appends="YES" id="g8S-lj-9kQ"/>
+                                </connections>
+                            </pickerView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5Wz-h4-5iG">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="jmv-5X-rIu"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="383605479.57657599">
+                                    <!--2013-02-26 21:04:39 +0000-->
+                                </date>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <mutableData key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</mutableData>
+                                </timeZone>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="AjZ-K0-lpx" appends="YES" id="eGg-dd-q2b"/>
+                                </connections>
+                            </datePicker>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0X7-RE-KFY">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="117" id="8Xi-4X-cYt"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0X7-RE-KFY" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="4mK-YM-h6J"/>
+                            <constraint firstItem="5Wz-h4-5iG" firstAttribute="top" secondItem="3" secondAttribute="top" constant="118" id="I5E-xH-l0H"/>
+                            <constraint firstItem="0X7-RE-KFY" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="LPg-LO-XNc"/>
+                            <constraint firstItem="5Wz-h4-5iG" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="Oc6-wP-sFS"/>
+                            <constraint firstItem="ECn-e2-52c" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="X41-YB-sd0"/>
+                            <constraint firstItem="ECn-e2-52c" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="feF-rp-UZg"/>
+                            <constraint firstItem="0X7-RE-KFY" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="lOJ-Dj-ZJ5"/>
+                            <constraint firstItem="5Wz-h4-5iG" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="rnK-DZ-IMw"/>
+                            <constraint firstItem="ECn-e2-52c" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="ulP-Ld-4Bk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="5Wz-h4-5iG" id="tDX-qi-3kh"/>
+                        <outlet property="picker" destination="ECn-e2-52c" id="k6T-xl-0OB"/>
+                        <outlet property="textBox" destination="0X7-RE-KFY" id="rKv-od-HKe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="AjZ-K0-lpx">
+                    <connections>
+                        <action selector="getInfoButton" destination="2" id="D5K-Fw-Rvc"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="1Fg-KM-7Qb">
+                    <connections>
+                        <action selector="getInfoButton" destination="2" id="izp-qO-Nwh"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="AFViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AFViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="getInfoButton"/>
+                <relationship kind="action" name="tappedDatePicker"/>
+                <relationship kind="action" name="tappedPicker"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="textBox" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
