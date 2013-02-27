@@ -10,6 +10,9 @@
 
 @interface AFViewController : UIViewController
 
+
 //-(NSArray*) newWeatherPredictionsFromDictionary:(NSData*) variable;
 
 @end
+
+id collections;

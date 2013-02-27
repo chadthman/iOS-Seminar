@@ -8,9 +8,6 @@
 
 #import "AFViewController.h"
 
-static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
-id collections;
-
 @interface AFViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 {
     __weak IBOutlet UIDatePicker *datePicker;
@@ -40,11 +37,11 @@ id collections;
     for (NSDictionary *date in values)
     {
         checkingDate = [date[@"date"] substringWithRange:NSMakeRange(0,10)];
-        NSLog(@"The Checked Date is : %@\n", checkingDate);
+        NSLog(@"The Checked Date is: %@\n", checkingDate);
         if ([checkingDate isEqualToString:currentDate])
         {
             //NSArray *predictions = date[@"predictions"];
-            textBox.text = [textBox.text stringByAppendingString:[NSString stringWithFormat:@"\nAt time %@ the weather for %@ is:\n", date[@"date"], variableText]];
+            textBox.text = [textBox.text stringByAppendingFormat:@"\nAt time %@ the weather for %@ is:\n", date[@"date"], variableText];
             for (NSArray *prediction in date[@"predictions"])
             {
                 textBox.text = [textBox.text stringByAppendingFormat:@"%@ ", prediction];
@@ -68,59 +65,16 @@ id collections;
     return destinationDate;
 }
 
-//-(IBAction) tappedDatePicker
-//{
-//    textBox.text = [textBox.text stringByAppendingString:[NSString stringWithFormat:@"\ndate picker picked %@", datePicker.date]];
-//    //[textBox setText:[NSString stringWithFormat:@"date picker picked %@", datePicker.date]];
-//    NSLog( @"date picker picked %@", datePicker.date );
-//}
-//
-//-(IBAction) tappedPicker
-//{
-//    NSLog( @"picked row %d", [picker selectedRowInComponent:0] );
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [textBox setText:@"Information:"];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weatherRefreshed:) name:@"weatherRefreshed" object:nil];
-    
-    //[self performSelectorInBackground:@selector(refreshWeather) withObject:nil];
-    [self refreshWeather];
-    //[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void) refreshWeather
-{
-    NSData *json = [NSData dataWithContentsOfURL:[NSURL URLWithString:kServerAddress]];
-    if( [json length] == 0 ) {
-#if DEBUG
-        NSLog( @"using fake data..." );
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"fake-data" ofType:@"json"];
-        json = [NSData dataWithContentsOfFile:filePath];
-#else
-        NSLog( @"server returned nothing" );
-        return;
-#endif
-    }
-    
-    NSError* error = nil;
-    collections = [NSJSONSerialization JSONObjectWithData:json options:kNilOptions error:&error];
-    
-    if (error)
-    {
-        NSLog(@"Error parsing JSON %@: %@", [[NSString alloc] initWithData:json encoding:NSASCIIStringEncoding], [error localizedDescription]);
-        return;
-    }
-    
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"weatherRefreshed" object:json];
 }
 
 -(NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView

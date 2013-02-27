@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="nKj-TJ-qcf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--Loading Screen-->
+        <scene sceneID="nwJ-W4-pR4">
+            <objects>
+                <viewController id="nKj-TJ-qcf" customClass="AFLoadingScreen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QZw-nw-seX">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="e8T-cI-spx"/>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="e8T-cI-spx" firstAttribute="centerX" secondItem="QZw-nw-seX" secondAttribute="centerX" type="default" id="Vk7-xx-tVk"/>
+                            <constraint firstItem="e8T-cI-spx" firstAttribute="centerY" secondItem="QZw-nw-seX" secondAttribute="centerY" type="default" id="ywv-2U-heE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="spinner" destination="e8T-cI-spx" id="Oqm-XA-Uxd"/>
+                        <segue destination="2" kind="modal" identifier="Next" id="DaQ-IL-KHW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1S3-u4-rq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95" y="258"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="AFViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="afview" id="2" customClass="AFViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -77,6 +102,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="ECn-e2-52c" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="ulP-Ld-4Bk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="HzK-nf-LWj"/>
                     <connections>
                         <outlet property="datePicker" destination="5Wz-h4-5iG" id="tDX-qi-3kh"/>
                         <outlet property="picker" destination="ECn-e2-52c" id="k6T-xl-0OB"/>
@@ -95,15 +121,20 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="576" y="258"/>
         </scene>
     </scenes>
     <classes>
+        <class className="AFLoadingScreen" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AFLoadingScreen.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
         <class className="AFViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AFViewController.h"/>
             <relationships>
                 <relationship kind="action" name="getInfoButton"/>
-                <relationship kind="action" name="tappedDatePicker"/>
-                <relationship kind="action" name="tappedPicker"/>
                 <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
                 <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="textBox" candidateClass="UITextView"/>

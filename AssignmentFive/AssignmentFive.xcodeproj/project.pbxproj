@@ -23,6 +23,7 @@
 		63A0463816DD4C7300A62B35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0461316DD4C7300A62B35 /* Foundation.framework */; };
 		63A0464016DD4C7300A62B35 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63A0463E16DD4C7300A62B35 /* InfoPlist.strings */; };
 		63A0464316DD4C7300A62B35 /* AssignmentFiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0464216DD4C7300A62B35 /* AssignmentFiveTests.m */; };
+		63A0464E16DDC64000A62B35 /* AFLoadingScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A0464D16DDC64000A62B35 /* AFLoadingScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		63A0463F16DD4C7300A62B35 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		63A0464116DD4C7300A62B35 /* AssignmentFiveTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssignmentFiveTests.h; sourceTree = "<group>"; };
 		63A0464216DD4C7300A62B35 /* AssignmentFiveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssignmentFiveTests.m; sourceTree = "<group>"; };
+		63A0464C16DDC64000A62B35 /* AFLoadingScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFLoadingScreen.h; sourceTree = "<group>"; };
+		63A0464D16DDC64000A62B35 /* AFLoadingScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFLoadingScreen.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,8 @@
 				63A0462916DD4C7300A62B35 /* MainStoryboard.storyboard */,
 				63A0462C16DD4C7300A62B35 /* AFViewController.h */,
 				63A0462D16DD4C7300A62B35 /* AFViewController.m */,
+				63A0464C16DDC64000A62B35 /* AFLoadingScreen.h */,
+				63A0464D16DDC64000A62B35 /* AFLoadingScreen.m */,
 				63A0461816DD4C7300A62B35 /* Supporting Files */,
 			);
 			path = AssignmentFive;
@@ -274,6 +279,7 @@
 				63A0461E16DD4C7300A62B35 /* main.m in Sources */,
 				63A0462216DD4C7300A62B35 /* AFAppDelegate.m in Sources */,
 				63A0462E16DD4C7300A62B35 /* AFViewController.m in Sources */,
+				63A0464E16DDC64000A62B35 /* AFLoadingScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
