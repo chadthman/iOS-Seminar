@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Chad Marmon. All rights reserved.
 //
 
+// Good job, 100%.
+
 #import "AFCollectionViewController.h"
 
 @interface AFCollectionViewController ()
