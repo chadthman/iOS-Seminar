@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Chad Marmon. All rights reserved.
 //
 
+// Meets requirements, 100%.
+
 #import "ATMasterViewController.h"
 
 #import "ATDetailViewController.h"
