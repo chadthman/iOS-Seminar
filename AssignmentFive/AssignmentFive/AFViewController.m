@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Chad Marmon. All rights reserved.
 //
 
+// You should really limit the date range displayed in the picker. Also, you need
+// to make the text view non-editable. But all the functionality is there, 95%.
+
 #import "AFViewController.h"
 
 @interface AFViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
