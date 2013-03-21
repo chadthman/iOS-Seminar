@@ -58,36 +58,15 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 //    tmin2mInfo   = [collections objectAtIndex:tmin2m];
 //}
 
--(NSDictionary*)getInfo:(int)type onDay:(NSString*)day
-{
-    NSString *currentDate;
-    currentDate = [NSString stringWithFormat: @"%@",day];
-    NSLog(@"The Asked Date is : %@\n", currentDate);
-    
-    NSDictionary *variable = [collections objectAtIndex:type];
-    NSDictionary *values = [variable objectForKey:@"values"];
-    NSString *checkingDate;
-    for (NSDictionary *date in values)
-    {
-        checkingDate = [date[@"date"] substringWithRange:NSMakeRange(0,10)];
-        NSLog(@"The Checked Date is: %@\n", checkingDate);
-        if ([checkingDate isEqualToString:currentDate])
-        {
-            return date;
-        }
-    }
-    return NULL;
-}
-
--(void)csnowsfcDayStats:(NSString*)day
+-(double)getDayInfo:(int)type onDay:(NSString*)day
 {
     NSMutableArray *numbers = [[NSMutableArray alloc] init];;
     int total = 0;
-    int dayAverage = 0;
+    double dayAverage = 0;
     
     NSString *currentDate;
     currentDate = [NSString stringWithFormat: @"%@",day];
-    NSDictionary *variable = [collections objectAtIndex:csnowsfc];
+    NSDictionary *variable = [collections objectAtIndex:type];
     NSDictionary *values = [variable objectForKey:@"values"];
     NSString *checkingDate;
     for (NSDictionary *date in values)
@@ -106,11 +85,64 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     {
         total = total + [[NSString stringWithFormat:@"%@", printTest] integerValue];
     }
-    dayAverage = total/64; //64 is the number of elements in the array
-    NSLog(@"%d", dayAverage);
+    dayAverage = (double)total/64.0; //64.0 is the number of elements in the array
+    //NSLog(@"%d", dayAverage);
+    return dayAverage;
 }
 
--(void)crainsfcStats
+-(NSString*)getHourSetInfo:(int)type onDay:(NSString*)day atTime:(int)time
+{
+    NSString *currentDate;
+    currentDate = [NSString stringWithFormat: @"%@T%02d", day, time];
+    //NSLog(@"The Asked Date is : %@\n", currentDate);
+    
+    NSDictionary *variable = [collections objectAtIndex:type];
+    NSDictionary *values = [variable objectForKey:@"values"];
+    NSString *checkingDate;
+    for (NSDictionary *date in values)
+    {
+        checkingDate = [date[@"date"] substringWithRange:NSMakeRange(0,13)];
+        //NSLog(@"The Checked Date is: %@\n", checkingDate);
+        if ([checkingDate isEqualToString:currentDate])
+        {
+            return date[@"predictions"];
+        }
+    }
+    return NULL;
+}
+
+-(void)csnowsfcDayStats:(NSString*)day
+{
+//    NSMutableArray *numbers = [[NSMutableArray alloc] init];;
+//    int total = 0;
+//    int dayAverage = 0;
+//    
+//    NSString *currentDate;
+//    currentDate = [NSString stringWithFormat: @"%@",day];
+//    NSDictionary *variable = [collections objectAtIndex:csnowsfc];
+//    NSDictionary *values = [variable objectForKey:@"values"];
+//    NSString *checkingDate;
+//    for (NSDictionary *date in values)
+//    {
+//        checkingDate = [date[@"date"] substringWithRange:NSMakeRange(0,10)];
+//        if ([checkingDate isEqualToString:currentDate])
+//        {
+//            for (NSArray *prediction in date[@"predictions"])
+//            {
+//                //NSLog(@"%@ ", prediction);
+//                [numbers addObject:prediction];
+//            }
+//        }
+//    }
+//    for (NSArray *printTest in numbers)
+//    {
+//        total = total + [[NSString stringWithFormat:@"%@", printTest] integerValue];
+//    }
+//    dayAverage = total/64; //64 is the number of elements in the array
+//    NSLog(@"%d", dayAverage);
+}
+
+-(void)crainsfcDayStats:(NSString*)day
 {
     
 }
@@ -254,7 +286,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         [self performSegueWithIdentifier:@"Next" sender:self];
         [self presentViewController:myVC animated:YES completion:nil];
     });
-    [self csnowsfcDayStats:[self generateDate:[self getCurrentYear] month:[self getCurrentMonth] day:[self getTommorow]]];
+    NSLog(@"%f",[self getDayInfo:csnowsfc onDay:[self generateDate:[self getCurrentYear] month:[self getCurrentMonth] day:[self getTommorow]]]);
     //NSLog(@"%@\n", self.getTodaysDate);
     //NSLog(@"%@", [self getInfo:csnowsfc onDay:[self generateDate:[self getCurrentYear] month:[self getCurrentMonth] day:[self getTommorow]] atTime:0]);
     //[self getDay];
