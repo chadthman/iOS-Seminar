@@ -58,7 +58,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 //    tmin2mInfo   = [collections objectAtIndex:tmin2m];
 //}
 
--(double)getDayInfo:(int)type onDay:(NSString*)day
+-(double)getDayInfo:(int)type onDay:(NSString*)day //doubt this is needed anymore but it might be useful
 {
     NSMutableArray *numbers = [[NSMutableArray alloc] init];;
     int total = 0;
@@ -90,7 +90,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     return dayAverage;
 }
 
--(NSString*)getHourSetInfo:(int)type onDay:(NSString*)day atTime:(int)time
+-(NSString*)getHourSetInfo:(int)type onDay:(NSString*)day atTime:(int)time //doubt this is needed anymore but it might be useful
 {
     NSString *currentDate;
     currentDate = [NSString stringWithFormat: @"%@T%02d", day, time];
@@ -111,65 +111,115 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     return NULL;
 }
 
--(void)csnowsfcDayStats:(NSString*)day
+-(void)csnowsfcStats
 {
-//    NSMutableArray *numbers = [[NSMutableArray alloc] init];;
-//    int total = 0;
-//    int dayAverage = 0;
-//    
-//    NSString *currentDate;
-//    currentDate = [NSString stringWithFormat: @"%@",day];
-//    NSDictionary *variable = [collections objectAtIndex:csnowsfc];
-//    NSDictionary *values = [variable objectForKey:@"values"];
-//    NSString *checkingDate;
-//    for (NSDictionary *date in values)
-//    {
-//        checkingDate = [date[@"date"] substringWithRange:NSMakeRange(0,10)];
-//        if ([checkingDate isEqualToString:currentDate])
-//        {
-//            for (NSArray *prediction in date[@"predictions"])
-//            {
-//                //NSLog(@"%@ ", prediction);
-//                [numbers addObject:prediction];
-//            }
-//        }
-//    }
-//    for (NSArray *printTest in numbers)
-//    {
-//        total = total + [[NSString stringWithFormat:@"%@", printTest] integerValue];
-//    }
-//    dayAverage = total/64; //64 is the number of elements in the array
-//    NSLog(@"%d", dayAverage);
+    int total = 0;
+    double dayAverage = 0;
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSDictionary *variable = [collections objectAtIndex:csnowsfc];
+    NSDictionary *values = [variable objectForKey:@"values"];
+    for (NSDictionary *date in values)
+    {
+        for (NSArray *prediction in date[@"predictions"])
+        {
+            total = total + [[NSString stringWithFormat:@"%@", prediction] integerValue];
+        }
+        dayAverage = (double)total/64.0; //64.0 is the number of elements in the array
+        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+    }
+    csnowsfcInfo = [[NSDictionary alloc] initWithDictionary:dict];
 }
 
--(void)crainsfcDayStats:(NSString*)day
+-(void)crainsfcStats
 {
+    int total = 0;
+    double dayAverage = 0;
     
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSDictionary *variable = [collections objectAtIndex:crainsfc];
+    NSDictionary *values = [variable objectForKey:@"values"];
+    for (NSDictionary *date in values)
+    {
+        for (NSArray *prediction in date[@"predictions"])
+        {
+            total = total + [[NSString stringWithFormat:@"%@", prediction] integerValue];
+        }
+        dayAverage = (double)total/64.0; //64.0 is the number of elements in the array
+        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+    }
+    crainsfcInfo = [[NSDictionary alloc] initWithDictionary:dict];
 }
 
 -(void)tmax2mStats
 {
+    int total = 0;
+    double dayAverage = 0;
     
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSDictionary *variable = [collections objectAtIndex:tmax2m];
+    NSDictionary *values = [variable objectForKey:@"values"];
+    for (NSDictionary *date in values)
+    {
+        for (NSArray *prediction in date[@"predictions"])
+        {
+            total = total + [[NSString stringWithFormat:@"%@", prediction] integerValue];
+        }
+        dayAverage = (double)total/64.0; //64.0 is the number of elements in the array
+        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+    }
+    tmax2mInfo = [[NSDictionary alloc] initWithDictionary:dict];
 }
 
 -(void)apcosfcStats
 {
+    int total = 0;
+    double dayAverage = 0;
     
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSDictionary *variable = [collections objectAtIndex:apcpsfc];
+    NSDictionary *values = [variable objectForKey:@"values"];
+    for (NSDictionary *date in values)
+    {
+        for (NSArray *prediction in date[@"predictions"])
+        {
+            total = total + [[NSString stringWithFormat:@"%@", prediction] integerValue];
+        }
+        dayAverage = (double)total/64.0; //64.0 is the number of elements in the array
+        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+    }
+    apcpsfcInfo = [[NSDictionary alloc] initWithDictionary:dict];
+
 }
 
 -(void)tmin2mStats
 {
+    int total = 0;
+    double dayAverage = 0;
     
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSDictionary *variable = [collections objectAtIndex:tmin2m];
+    NSDictionary *values = [variable objectForKey:@"values"];
+    for (NSDictionary *date in values)
+    {
+        for (NSArray *prediction in date[@"predictions"])
+        {
+            total = total + [[NSString stringWithFormat:@"%@", prediction] integerValue];
+        }
+        dayAverage = (double)total/64.0; //64.0 is the number of elements in the array
+        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+    }
+    tmin2mInfo = [[NSDictionary alloc] initWithDictionary:dict];
 }
 
-//-(void)generateStats
-//{
-//    [self csnowsfcStats];
-//    [self crainsfcStats];
-//    [self tmax2mStats];
-//    [self apcosfcStats];
-//    [self tmin2mStats];
-//}
+-(void)generateStats
+{
+    [self csnowsfcStats];
+    [self crainsfcStats];
+    [self tmax2mStats];
+    [self apcosfcStats];
+    [self tmin2mStats];
+}
 
 #pragma mark - Time
 
