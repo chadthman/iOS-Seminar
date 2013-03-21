@@ -1,0 +1,707 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		284D1DBA16F9FDAF00FCCB15 /* fake-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 284D1DB916F9FDAF00FCCB15 /* fake-data.json */; };
+		6327629716F5603100E3B78F /* CPDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4316F3EFDB00BE30DB /* CPDConstants.m */; };
+		6327629816F5603F00E3B78F /* CPDStockPriceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4516F3EFDB00BE30DB /* CPDStockPriceStore.m */; };
+		639A4CAF16F3C7A800BE30DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CAE16F3C7A800BE30DB /* UIKit.framework */; };
+		639A4CB116F3C7A800BE30DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB016F3C7A800BE30DB /* Foundation.framework */; };
+		639A4CB316F3C7A800BE30DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB216F3C7A800BE30DB /* CoreGraphics.framework */; };
+		639A4CB916F3C7A800BE30DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CB716F3C7A800BE30DB /* InfoPlist.strings */; };
+		639A4CBB16F3C7A800BE30DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4CBA16F3C7A800BE30DB /* main.m */; };
+		639A4CBF16F3C7A800BE30DB /* WWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4CBE16F3C7A800BE30DB /* WWAppDelegate.m */; };
+		639A4CC116F3C7A800BE30DB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CC016F3C7A800BE30DB /* Default.png */; };
+		639A4CC316F3C7A800BE30DB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CC216F3C7A800BE30DB /* Default@2x.png */; };
+		639A4CC516F3C7A800BE30DB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CC416F3C7A800BE30DB /* Default-568h@2x.png */; };
+		639A4CC816F3C7A800BE30DB /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CC616F3C7A800BE30DB /* MainStoryboard_iPhone.storyboard */; };
+		639A4CCB16F3C7A800BE30DB /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CC916F3C7A800BE30DB /* MainStoryboard_iPad.storyboard */; };
+		639A4CCE16F3C7A800BE30DB /* WWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4CCD16F3C7A800BE30DB /* WWViewController.m */; };
+		639A4CD616F3C7A800BE30DB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CD516F3C7A800BE30DB /* SenTestingKit.framework */; };
+		639A4CD716F3C7A800BE30DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CAE16F3C7A800BE30DB /* UIKit.framework */; };
+		639A4CD816F3C7A800BE30DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB016F3C7A800BE30DB /* Foundation.framework */; };
+		639A4CE016F3C7A800BE30DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CDE16F3C7A800BE30DB /* InfoPlist.strings */; };
+		639A4CE316F3C7A800BE30DB /* Weather_WonderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4CE216F3C7A800BE30DB /* Weather_WonderTests.m */; };
+		639A4CEE16F3CCA500BE30DB /* WWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4CED16F3CCA500BE30DB /* WWTabBarController.m */; };
+		639A4D3F16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4D3E16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a */; };
+		639A4D4116F3EF8C00BE30DB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4D4016F3EF8C00BE30DB /* QuartzCore.framework */; };
+		639A4D4616F3EFDB00BE30DB /* CPDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4316F3EFDB00BE30DB /* CPDConstants.m */; };
+		639A4D4716F3EFDB00BE30DB /* CPDStockPriceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4516F3EFDB00BE30DB /* CPDStockPriceStore.m */; };
+		639A4D4A16F3F36600BE30DB /* WWGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4916F3F36600BE30DB /* WWGraphViewController.m */; };
+		639A4D4D16F3FF9B00BE30DB /* WWPieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4C16F3FF9B00BE30DB /* WWPieViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		639A4CD916F3C7A800BE30DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 639A4CA316F3C7A800BE30DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 639A4CAA16F3C7A800BE30DB;
+			remoteInfo = "Weather Wonder";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		284D1DB916F9FDAF00FCCB15 /* fake-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "fake-data.json"; sourceTree = "<group>"; };
+		639A4CAB16F3C7A800BE30DB /* Weather Wonder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Wonder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		639A4CAE16F3C7A800BE30DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		639A4CB016F3C7A800BE30DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		639A4CB216F3C7A800BE30DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		639A4CB616F3C7A800BE30DB /* Weather Wonder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Weather Wonder-Info.plist"; sourceTree = "<group>"; };
+		639A4CB816F3C7A800BE30DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		639A4CBA16F3C7A800BE30DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		639A4CBC16F3C7A800BE30DB /* Weather Wonder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weather Wonder-Prefix.pch"; sourceTree = "<group>"; };
+		639A4CBD16F3C7A800BE30DB /* WWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWAppDelegate.h; sourceTree = "<group>"; };
+		639A4CBE16F3C7A800BE30DB /* WWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWAppDelegate.m; sourceTree = "<group>"; };
+		639A4CC016F3C7A800BE30DB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		639A4CC216F3C7A800BE30DB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		639A4CC416F3C7A800BE30DB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		639A4CC716F3C7A800BE30DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		639A4CCA16F3C7A800BE30DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		639A4CCC16F3C7A800BE30DB /* WWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWViewController.h; sourceTree = "<group>"; };
+		639A4CCD16F3C7A800BE30DB /* WWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWViewController.m; sourceTree = "<group>"; };
+		639A4CD416F3C7A800BE30DB /* Weather WonderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather WonderTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		639A4CD516F3C7A800BE30DB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		639A4CDD16F3C7A800BE30DB /* Weather WonderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Weather WonderTests-Info.plist"; sourceTree = "<group>"; };
+		639A4CDF16F3C7A800BE30DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		639A4CE116F3C7A800BE30DB /* Weather_WonderTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Weather_WonderTests.h; sourceTree = "<group>"; };
+		639A4CE216F3C7A800BE30DB /* Weather_WonderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Weather_WonderTests.m; sourceTree = "<group>"; };
+		639A4CEC16F3CCA500BE30DB /* WWTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWTabBarController.h; sourceTree = "<group>"; };
+		639A4CED16F3CCA500BE30DB /* WWTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWTabBarController.m; sourceTree = "<group>"; };
+		639A4CF416F3ED5300BE30DB /* CorePlot-CocoaTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CorePlot-CocoaTouch.h"; sourceTree = "<group>"; };
+		639A4CF516F3ED5300BE30DB /* CPTAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnnotation.h; sourceTree = "<group>"; };
+		639A4CF616F3ED5300BE30DB /* CPTAnnotationHostLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnnotationHostLayer.h; sourceTree = "<group>"; };
+		639A4CF716F3ED5300BE30DB /* CPTAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAxis.h; sourceTree = "<group>"; };
+		639A4CF816F3ED5300BE30DB /* CPTAxisLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAxisLabel.h; sourceTree = "<group>"; };
+		639A4CF916F3ED5300BE30DB /* CPTAxisLabelGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAxisLabelGroup.h; sourceTree = "<group>"; };
+		639A4CFA16F3ED5300BE30DB /* CPTAxisSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAxisSet.h; sourceTree = "<group>"; };
+		639A4CFB16F3ED5300BE30DB /* CPTAxisTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAxisTitle.h; sourceTree = "<group>"; };
+		639A4CFC16F3ED5300BE30DB /* CPTBarPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTBarPlot.h; sourceTree = "<group>"; };
+		639A4CFD16F3ED5300BE30DB /* CPTBorderedLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTBorderedLayer.h; sourceTree = "<group>"; };
+		639A4CFE16F3ED5300BE30DB /* CPTCalendarFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTCalendarFormatter.h; sourceTree = "<group>"; };
+		639A4CFF16F3ED5300BE30DB /* CPTColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTColor.h; sourceTree = "<group>"; };
+		639A4D0016F3ED5300BE30DB /* CPTColorSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTColorSpace.h; sourceTree = "<group>"; };
+		639A4D0116F3ED5300BE30DB /* CPTConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTConstraints.h; sourceTree = "<group>"; };
+		639A4D0216F3ED5300BE30DB /* CPTDataSourceTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTDataSourceTestCase.h; sourceTree = "<group>"; };
+		639A4D0316F3ED5300BE30DB /* CPTDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTDefinitions.h; sourceTree = "<group>"; };
+		639A4D0416F3ED5300BE30DB /* CPTDerivedXYGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTDerivedXYGraph.h; sourceTree = "<group>"; };
+		639A4D0516F3ED5300BE30DB /* CPTExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTExceptions.h; sourceTree = "<group>"; };
+		639A4D0616F3ED5300BE30DB /* CPTFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTFill.h; sourceTree = "<group>"; };
+		639A4D0716F3ED5300BE30DB /* CPTGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTGradient.h; sourceTree = "<group>"; };
+		639A4D0816F3ED5300BE30DB /* CPTGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTGraph.h; sourceTree = "<group>"; };
+		639A4D0916F3ED5300BE30DB /* CPTGraphHostingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTGraphHostingView.h; sourceTree = "<group>"; };
+		639A4D0A16F3ED5300BE30DB /* CPTGridLineGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTGridLineGroup.h; sourceTree = "<group>"; };
+		639A4D0B16F3ED5300BE30DB /* CPTGridLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTGridLines.h; sourceTree = "<group>"; };
+		639A4D0C16F3ED5300BE30DB /* CPTImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTImage.h; sourceTree = "<group>"; };
+		639A4D0D16F3ED5300BE30DB /* CPTLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTLayer.h; sourceTree = "<group>"; };
+		639A4D0E16F3ED5300BE30DB /* CPTLayerAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTLayerAnnotation.h; sourceTree = "<group>"; };
+		639A4D0F16F3ED5300BE30DB /* CPTLegend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTLegend.h; sourceTree = "<group>"; };
+		639A4D1016F3ED5300BE30DB /* CPTLegendEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTLegendEntry.h; sourceTree = "<group>"; };
+		639A4D1116F3ED5300BE30DB /* CPTLimitBand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTLimitBand.h; sourceTree = "<group>"; };
+		639A4D1216F3ED5300BE30DB /* CPTLineCap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTLineCap.h; sourceTree = "<group>"; };
+		639A4D1316F3ED5300BE30DB /* CPTLineStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTLineStyle.h; sourceTree = "<group>"; };
+		639A4D1416F3ED5300BE30DB /* CPTMutableLineStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTMutableLineStyle.h; sourceTree = "<group>"; };
+		639A4D1516F3ED5300BE30DB /* CPTMutableNumericData+TypeConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPTMutableNumericData+TypeConversion.h"; sourceTree = "<group>"; };
+		639A4D1616F3ED5300BE30DB /* CPTMutableNumericData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTMutableNumericData.h; sourceTree = "<group>"; };
+		639A4D1716F3ED5300BE30DB /* CPTMutablePlotRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTMutablePlotRange.h; sourceTree = "<group>"; };
+		639A4D1816F3ED5300BE30DB /* CPTMutableShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTMutableShadow.h; sourceTree = "<group>"; };
+		639A4D1916F3ED5300BE30DB /* CPTMutableTextStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTMutableTextStyle.h; sourceTree = "<group>"; };
+		639A4D1A16F3ED5300BE30DB /* CPTNumericData+TypeConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CPTNumericData+TypeConversion.h"; sourceTree = "<group>"; };
+		639A4D1B16F3ED5300BE30DB /* CPTNumericData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTNumericData.h; sourceTree = "<group>"; };
+		639A4D1C16F3ED5300BE30DB /* CPTNumericDataType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTNumericDataType.h; sourceTree = "<group>"; };
+		639A4D1D16F3ED5300BE30DB /* CPTPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPathExtensions.h; sourceTree = "<group>"; };
+		639A4D1E16F3ED5300BE30DB /* CPTPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPieChart.h; sourceTree = "<group>"; };
+		639A4D1F16F3ED5300BE30DB /* CPTPlatformSpecificCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlatformSpecificCategories.h; sourceTree = "<group>"; };
+		639A4D2016F3ED5300BE30DB /* CPTPlatformSpecificDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlatformSpecificDefines.h; sourceTree = "<group>"; };
+		639A4D2116F3ED5300BE30DB /* CPTPlatformSpecificFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlatformSpecificFunctions.h; sourceTree = "<group>"; };
+		639A4D2216F3ED5300BE30DB /* CPTPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlot.h; sourceTree = "<group>"; };
+		639A4D2316F3ED5300BE30DB /* CPTPlotArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlotArea.h; sourceTree = "<group>"; };
+		639A4D2416F3ED5300BE30DB /* CPTPlotAreaFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlotAreaFrame.h; sourceTree = "<group>"; };
+		639A4D2516F3ED5300BE30DB /* CPTPlotGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlotGroup.h; sourceTree = "<group>"; };
+		639A4D2616F3ED5300BE30DB /* CPTPlotRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlotRange.h; sourceTree = "<group>"; };
+		639A4D2716F3ED5300BE30DB /* CPTPlotSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlotSpace.h; sourceTree = "<group>"; };
+		639A4D2816F3ED5300BE30DB /* CPTPlotSpaceAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlotSpaceAnnotation.h; sourceTree = "<group>"; };
+		639A4D2916F3ED5300BE30DB /* CPTPlotSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTPlotSymbol.h; sourceTree = "<group>"; };
+		639A4D2A16F3ED5300BE30DB /* CPTRangePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTRangePlot.h; sourceTree = "<group>"; };
+		639A4D2B16F3ED5300BE30DB /* CPTResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTResponder.h; sourceTree = "<group>"; };
+		639A4D2C16F3ED5300BE30DB /* CPTScatterPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTScatterPlot.h; sourceTree = "<group>"; };
+		639A4D2D16F3ED5300BE30DB /* CPTShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTShadow.h; sourceTree = "<group>"; };
+		639A4D2E16F3ED5300BE30DB /* CPTTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTTestCase.h; sourceTree = "<group>"; };
+		639A4D2F16F3ED5300BE30DB /* CPTTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTTextLayer.h; sourceTree = "<group>"; };
+		639A4D3016F3ED5300BE30DB /* CPTTextStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTTextStyle.h; sourceTree = "<group>"; };
+		639A4D3116F3ED5300BE30DB /* CPTTextStylePlatformSpecific.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTTextStylePlatformSpecific.h; sourceTree = "<group>"; };
+		639A4D3216F3ED5300BE30DB /* CPTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTTheme.h; sourceTree = "<group>"; };
+		639A4D3316F3ED5300BE30DB /* CPTTimeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTTimeFormatter.h; sourceTree = "<group>"; };
+		639A4D3416F3ED5300BE30DB /* CPTTradingRangePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTTradingRangePlot.h; sourceTree = "<group>"; };
+		639A4D3516F3ED5300BE30DB /* CPTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTUtilities.h; sourceTree = "<group>"; };
+		639A4D3616F3ED5300BE30DB /* CPTXYAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTXYAxis.h; sourceTree = "<group>"; };
+		639A4D3716F3ED5300BE30DB /* CPTXYAxisSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTXYAxisSet.h; sourceTree = "<group>"; };
+		639A4D3816F3ED5300BE30DB /* CPTXYGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTXYGraph.h; sourceTree = "<group>"; };
+		639A4D3916F3ED5300BE30DB /* CPTXYPlotSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTXYPlotSpace.h; sourceTree = "<group>"; };
+		639A4D3A16F3ED5300BE30DB /* mainpage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainpage.h; sourceTree = "<group>"; };
+		639A4D3B16F3ED5300BE30DB /* NSCoderExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCoderExtensions.h; sourceTree = "<group>"; };
+		639A4D3C16F3ED5300BE30DB /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
+		639A4D3D16F3ED5300BE30DB /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
+		639A4D3E16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
+		639A4D4016F3EF8C00BE30DB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		639A4D4216F3EFDB00BE30DB /* CPDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDConstants.h; sourceTree = "<group>"; };
+		639A4D4316F3EFDB00BE30DB /* CPDConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDConstants.m; sourceTree = "<group>"; };
+		639A4D4416F3EFDB00BE30DB /* CPDStockPriceStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDStockPriceStore.h; sourceTree = "<group>"; };
+		639A4D4516F3EFDB00BE30DB /* CPDStockPriceStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDStockPriceStore.m; sourceTree = "<group>"; };
+		639A4D4816F3F36600BE30DB /* WWGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWGraphViewController.h; sourceTree = "<group>"; };
+		639A4D4916F3F36600BE30DB /* WWGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWGraphViewController.m; sourceTree = "<group>"; };
+		639A4D4B16F3FF9B00BE30DB /* WWPieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWPieViewController.h; sourceTree = "<group>"; };
+		639A4D4C16F3FF9B00BE30DB /* WWPieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWPieViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		639A4CA816F3C7A800BE30DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639A4D4116F3EF8C00BE30DB /* QuartzCore.framework in Frameworks */,
+				639A4CAF16F3C7A800BE30DB /* UIKit.framework in Frameworks */,
+				639A4CB116F3C7A800BE30DB /* Foundation.framework in Frameworks */,
+				639A4CB316F3C7A800BE30DB /* CoreGraphics.framework in Frameworks */,
+				639A4D3F16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		639A4CD016F3C7A800BE30DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639A4CD616F3C7A800BE30DB /* SenTestingKit.framework in Frameworks */,
+				639A4CD716F3C7A800BE30DB /* UIKit.framework in Frameworks */,
+				639A4CD816F3C7A800BE30DB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		639A4CA216F3C7A800BE30DB = {
+			isa = PBXGroup;
+			children = (
+				639A4D4016F3EF8C00BE30DB /* QuartzCore.framework */,
+				639A4CF216F3EAC100BE30DB /* Core Plot */,
+				639A4CB416F3C7A800BE30DB /* Weather Wonder */,
+				639A4CDB16F3C7A800BE30DB /* Weather WonderTests */,
+				639A4CAD16F3C7A800BE30DB /* Frameworks */,
+				639A4CAC16F3C7A800BE30DB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		639A4CAC16F3C7A800BE30DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				639A4CAB16F3C7A800BE30DB /* Weather Wonder.app */,
+				639A4CD416F3C7A800BE30DB /* Weather WonderTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		639A4CAD16F3C7A800BE30DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				639A4CAE16F3C7A800BE30DB /* UIKit.framework */,
+				639A4CB016F3C7A800BE30DB /* Foundation.framework */,
+				639A4CB216F3C7A800BE30DB /* CoreGraphics.framework */,
+				639A4CD516F3C7A800BE30DB /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		639A4CB416F3C7A800BE30DB /* Weather Wonder */ = {
+			isa = PBXGroup;
+			children = (
+				639A4CBD16F3C7A800BE30DB /* WWAppDelegate.h */,
+				639A4CBE16F3C7A800BE30DB /* WWAppDelegate.m */,
+				639A4CC616F3C7A800BE30DB /* MainStoryboard_iPhone.storyboard */,
+				639A4CC916F3C7A800BE30DB /* MainStoryboard_iPad.storyboard */,
+				639A4CCC16F3C7A800BE30DB /* WWViewController.h */,
+				639A4CCD16F3C7A800BE30DB /* WWViewController.m */,
+				639A4CEC16F3CCA500BE30DB /* WWTabBarController.h */,
+				639A4CED16F3CCA500BE30DB /* WWTabBarController.m */,
+				639A4D4816F3F36600BE30DB /* WWGraphViewController.h */,
+				639A4D4916F3F36600BE30DB /* WWGraphViewController.m */,
+				639A4D4B16F3FF9B00BE30DB /* WWPieViewController.h */,
+				639A4D4C16F3FF9B00BE30DB /* WWPieViewController.m */,
+				639A4D4216F3EFDB00BE30DB /* CPDConstants.h */,
+				639A4D4316F3EFDB00BE30DB /* CPDConstants.m */,
+				639A4D4416F3EFDB00BE30DB /* CPDStockPriceStore.h */,
+				639A4D4516F3EFDB00BE30DB /* CPDStockPriceStore.m */,
+				639A4CB516F3C7A800BE30DB /* Supporting Files */,
+			);
+			path = "Weather Wonder";
+			sourceTree = "<group>";
+		};
+		639A4CB516F3C7A800BE30DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				284D1DB916F9FDAF00FCCB15 /* fake-data.json */,
+				639A4CB616F3C7A800BE30DB /* Weather Wonder-Info.plist */,
+				639A4CB716F3C7A800BE30DB /* InfoPlist.strings */,
+				639A4CBA16F3C7A800BE30DB /* main.m */,
+				639A4CBC16F3C7A800BE30DB /* Weather Wonder-Prefix.pch */,
+				639A4CC016F3C7A800BE30DB /* Default.png */,
+				639A4CC216F3C7A800BE30DB /* Default@2x.png */,
+				639A4CC416F3C7A800BE30DB /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		639A4CDB16F3C7A800BE30DB /* Weather WonderTests */ = {
+			isa = PBXGroup;
+			children = (
+				639A4CE116F3C7A800BE30DB /* Weather_WonderTests.h */,
+				639A4CE216F3C7A800BE30DB /* Weather_WonderTests.m */,
+				639A4CDC16F3C7A800BE30DB /* Supporting Files */,
+			);
+			path = "Weather WonderTests";
+			sourceTree = "<group>";
+		};
+		639A4CDC16F3C7A800BE30DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				639A4CDD16F3C7A800BE30DB /* Weather WonderTests-Info.plist */,
+				639A4CDE16F3C7A800BE30DB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		639A4CF216F3EAC100BE30DB /* Core Plot */ = {
+			isa = PBXGroup;
+			children = (
+				639A4CF316F3ED5300BE30DB /* CorePlotHeaders */,
+				639A4D3E16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a */,
+			);
+			name = "Core Plot";
+			sourceTree = "<group>";
+		};
+		639A4CF316F3ED5300BE30DB /* CorePlotHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				639A4CF416F3ED5300BE30DB /* CorePlot-CocoaTouch.h */,
+				639A4CF516F3ED5300BE30DB /* CPTAnnotation.h */,
+				639A4CF616F3ED5300BE30DB /* CPTAnnotationHostLayer.h */,
+				639A4CF716F3ED5300BE30DB /* CPTAxis.h */,
+				639A4CF816F3ED5300BE30DB /* CPTAxisLabel.h */,
+				639A4CF916F3ED5300BE30DB /* CPTAxisLabelGroup.h */,
+				639A4CFA16F3ED5300BE30DB /* CPTAxisSet.h */,
+				639A4CFB16F3ED5300BE30DB /* CPTAxisTitle.h */,
+				639A4CFC16F3ED5300BE30DB /* CPTBarPlot.h */,
+				639A4CFD16F3ED5300BE30DB /* CPTBorderedLayer.h */,
+				639A4CFE16F3ED5300BE30DB /* CPTCalendarFormatter.h */,
+				639A4CFF16F3ED5300BE30DB /* CPTColor.h */,
+				639A4D0016F3ED5300BE30DB /* CPTColorSpace.h */,
+				639A4D0116F3ED5300BE30DB /* CPTConstraints.h */,
+				639A4D0216F3ED5300BE30DB /* CPTDataSourceTestCase.h */,
+				639A4D0316F3ED5300BE30DB /* CPTDefinitions.h */,
+				639A4D0416F3ED5300BE30DB /* CPTDerivedXYGraph.h */,
+				639A4D0516F3ED5300BE30DB /* CPTExceptions.h */,
+				639A4D0616F3ED5300BE30DB /* CPTFill.h */,
+				639A4D0716F3ED5300BE30DB /* CPTGradient.h */,
+				639A4D0816F3ED5300BE30DB /* CPTGraph.h */,
+				639A4D0916F3ED5300BE30DB /* CPTGraphHostingView.h */,
+				639A4D0A16F3ED5300BE30DB /* CPTGridLineGroup.h */,
+				639A4D0B16F3ED5300BE30DB /* CPTGridLines.h */,
+				639A4D0C16F3ED5300BE30DB /* CPTImage.h */,
+				639A4D0D16F3ED5300BE30DB /* CPTLayer.h */,
+				639A4D0E16F3ED5300BE30DB /* CPTLayerAnnotation.h */,
+				639A4D0F16F3ED5300BE30DB /* CPTLegend.h */,
+				639A4D1016F3ED5300BE30DB /* CPTLegendEntry.h */,
+				639A4D1116F3ED5300BE30DB /* CPTLimitBand.h */,
+				639A4D1216F3ED5300BE30DB /* CPTLineCap.h */,
+				639A4D1316F3ED5300BE30DB /* CPTLineStyle.h */,
+				639A4D1416F3ED5300BE30DB /* CPTMutableLineStyle.h */,
+				639A4D1516F3ED5300BE30DB /* CPTMutableNumericData+TypeConversion.h */,
+				639A4D1616F3ED5300BE30DB /* CPTMutableNumericData.h */,
+				639A4D1716F3ED5300BE30DB /* CPTMutablePlotRange.h */,
+				639A4D1816F3ED5300BE30DB /* CPTMutableShadow.h */,
+				639A4D1916F3ED5300BE30DB /* CPTMutableTextStyle.h */,
+				639A4D1A16F3ED5300BE30DB /* CPTNumericData+TypeConversion.h */,
+				639A4D1B16F3ED5300BE30DB /* CPTNumericData.h */,
+				639A4D1C16F3ED5300BE30DB /* CPTNumericDataType.h */,
+				639A4D1D16F3ED5300BE30DB /* CPTPathExtensions.h */,
+				639A4D1E16F3ED5300BE30DB /* CPTPieChart.h */,
+				639A4D1F16F3ED5300BE30DB /* CPTPlatformSpecificCategories.h */,
+				639A4D2016F3ED5300BE30DB /* CPTPlatformSpecificDefines.h */,
+				639A4D2116F3ED5300BE30DB /* CPTPlatformSpecificFunctions.h */,
+				639A4D2216F3ED5300BE30DB /* CPTPlot.h */,
+				639A4D2316F3ED5300BE30DB /* CPTPlotArea.h */,
+				639A4D2416F3ED5300BE30DB /* CPTPlotAreaFrame.h */,
+				639A4D2516F3ED5300BE30DB /* CPTPlotGroup.h */,
+				639A4D2616F3ED5300BE30DB /* CPTPlotRange.h */,
+				639A4D2716F3ED5300BE30DB /* CPTPlotSpace.h */,
+				639A4D2816F3ED5300BE30DB /* CPTPlotSpaceAnnotation.h */,
+				639A4D2916F3ED5300BE30DB /* CPTPlotSymbol.h */,
+				639A4D2A16F3ED5300BE30DB /* CPTRangePlot.h */,
+				639A4D2B16F3ED5300BE30DB /* CPTResponder.h */,
+				639A4D2C16F3ED5300BE30DB /* CPTScatterPlot.h */,
+				639A4D2D16F3ED5300BE30DB /* CPTShadow.h */,
+				639A4D2E16F3ED5300BE30DB /* CPTTestCase.h */,
+				639A4D2F16F3ED5300BE30DB /* CPTTextLayer.h */,
+				639A4D3016F3ED5300BE30DB /* CPTTextStyle.h */,
+				639A4D3116F3ED5300BE30DB /* CPTTextStylePlatformSpecific.h */,
+				639A4D3216F3ED5300BE30DB /* CPTTheme.h */,
+				639A4D3316F3ED5300BE30DB /* CPTTimeFormatter.h */,
+				639A4D3416F3ED5300BE30DB /* CPTTradingRangePlot.h */,
+				639A4D3516F3ED5300BE30DB /* CPTUtilities.h */,
+				639A4D3616F3ED5300BE30DB /* CPTXYAxis.h */,
+				639A4D3716F3ED5300BE30DB /* CPTXYAxisSet.h */,
+				639A4D3816F3ED5300BE30DB /* CPTXYGraph.h */,
+				639A4D3916F3ED5300BE30DB /* CPTXYPlotSpace.h */,
+				639A4D3A16F3ED5300BE30DB /* mainpage.h */,
+				639A4D3B16F3ED5300BE30DB /* NSCoderExtensions.h */,
+				639A4D3C16F3ED5300BE30DB /* NSDecimalNumberExtensions.h */,
+				639A4D3D16F3ED5300BE30DB /* NSNumberExtensions.h */,
+			);
+			path = CorePlotHeaders;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		639A4CAA16F3C7A800BE30DB /* Weather Wonder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 639A4CE616F3C7A800BE30DB /* Build configuration list for PBXNativeTarget "Weather Wonder" */;
+			buildPhases = (
+				639A4CA716F3C7A800BE30DB /* Sources */,
+				639A4CA816F3C7A800BE30DB /* Frameworks */,
+				639A4CA916F3C7A800BE30DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Weather Wonder";
+			productName = "Weather Wonder";
+			productReference = 639A4CAB16F3C7A800BE30DB /* Weather Wonder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		639A4CD316F3C7A800BE30DB /* Weather WonderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 639A4CE916F3C7A800BE30DB /* Build configuration list for PBXNativeTarget "Weather WonderTests" */;
+			buildPhases = (
+				639A4CCF16F3C7A800BE30DB /* Sources */,
+				639A4CD016F3C7A800BE30DB /* Frameworks */,
+				639A4CD116F3C7A800BE30DB /* Resources */,
+				639A4CD216F3C7A800BE30DB /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				639A4CDA16F3C7A800BE30DB /* PBXTargetDependency */,
+			);
+			name = "Weather WonderTests";
+			productName = "Weather WonderTests";
+			productReference = 639A4CD416F3C7A800BE30DB /* Weather WonderTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		639A4CA316F3C7A800BE30DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = WW;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Chad Marmon";
+			};
+			buildConfigurationList = 639A4CA616F3C7A800BE30DB /* Build configuration list for PBXProject "Weather Wonder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 639A4CA216F3C7A800BE30DB;
+			productRefGroup = 639A4CAC16F3C7A800BE30DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				639A4CAA16F3C7A800BE30DB /* Weather Wonder */,
+				639A4CD316F3C7A800BE30DB /* Weather WonderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		639A4CA916F3C7A800BE30DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639A4CB916F3C7A800BE30DB /* InfoPlist.strings in Resources */,
+				639A4CC116F3C7A800BE30DB /* Default.png in Resources */,
+				639A4CC316F3C7A800BE30DB /* Default@2x.png in Resources */,
+				639A4CC516F3C7A800BE30DB /* Default-568h@2x.png in Resources */,
+				639A4CC816F3C7A800BE30DB /* MainStoryboard_iPhone.storyboard in Resources */,
+				639A4CCB16F3C7A800BE30DB /* MainStoryboard_iPad.storyboard in Resources */,
+				284D1DBA16F9FDAF00FCCB15 /* fake-data.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		639A4CD116F3C7A800BE30DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639A4CE016F3C7A800BE30DB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		639A4CD216F3C7A800BE30DB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		639A4CA716F3C7A800BE30DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6327629816F5603F00E3B78F /* CPDStockPriceStore.m in Sources */,
+				6327629716F5603100E3B78F /* CPDConstants.m in Sources */,
+				639A4CBB16F3C7A800BE30DB /* main.m in Sources */,
+				639A4CBF16F3C7A800BE30DB /* WWAppDelegate.m in Sources */,
+				639A4CCE16F3C7A800BE30DB /* WWViewController.m in Sources */,
+				639A4CEE16F3CCA500BE30DB /* WWTabBarController.m in Sources */,
+				639A4D4A16F3F36600BE30DB /* WWGraphViewController.m in Sources */,
+				639A4D4D16F3FF9B00BE30DB /* WWPieViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		639A4CCF16F3C7A800BE30DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639A4CE316F3C7A800BE30DB /* Weather_WonderTests.m in Sources */,
+				639A4D4616F3EFDB00BE30DB /* CPDConstants.m in Sources */,
+				639A4D4716F3EFDB00BE30DB /* CPDStockPriceStore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		639A4CDA16F3C7A800BE30DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 639A4CAA16F3C7A800BE30DB /* Weather Wonder */;
+			targetProxy = 639A4CD916F3C7A800BE30DB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		639A4CB716F3C7A800BE30DB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				639A4CB816F3C7A800BE30DB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		639A4CC616F3C7A800BE30DB /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				639A4CC716F3C7A800BE30DB /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		639A4CC916F3C7A800BE30DB /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				639A4CCA16F3C7A800BE30DB /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		639A4CDE16F3C7A800BE30DB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				639A4CDF16F3C7A800BE30DB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		639A4CE416F3C7A800BE30DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		639A4CE516F3C7A800BE30DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		639A4CE716F3C7A800BE30DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
+				INFOPLIST_FILE = "Weather Wonder/Weather Wonder-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				New_Setting = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		639A4CE816F3C7A800BE30DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
+				INFOPLIST_FILE = "Weather Wonder/Weather Wonder-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				New_Setting = "";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		639A4CEA16F3C7A800BE30DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Weather Wonder.app/Weather Wonder";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
+				INFOPLIST_FILE = "Weather WonderTests/Weather WonderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		639A4CEB16F3C7A800BE30DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Weather Wonder.app/Weather Wonder";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
+				INFOPLIST_FILE = "Weather WonderTests/Weather WonderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		639A4CA616F3C7A800BE30DB /* Build configuration list for PBXProject "Weather Wonder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				639A4CE416F3C7A800BE30DB /* Debug */,
+				639A4CE516F3C7A800BE30DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		639A4CE616F3C7A800BE30DB /* Build configuration list for PBXNativeTarget "Weather Wonder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				639A4CE716F3C7A800BE30DB /* Debug */,
+				639A4CE816F3C7A800BE30DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		639A4CE916F3C7A800BE30DB /* Build configuration list for PBXNativeTarget "Weather WonderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				639A4CEA16F3C7A800BE30DB /* Debug */,
+				639A4CEB16F3C7A800BE30DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 639A4CA316F3C7A800BE30DB /* Project object */;
+}
