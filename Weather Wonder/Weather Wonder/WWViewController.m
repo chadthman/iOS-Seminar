@@ -81,7 +81,9 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 
 -(void)csnowsfcDayStats:(NSString*)day
 {
-    NSMutableArray *numbers;
+    NSMutableArray *numbers = [[NSMutableArray alloc] init];;
+    int total = 0;
+    int dayAverage = 0;
     
     NSString *currentDate;
     currentDate = [NSString stringWithFormat: @"%@",day];
@@ -95,15 +97,17 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         {
             for (NSArray *prediction in date[@"predictions"])
             {
-                NSLog(@"%@ ", prediction);
+                //NSLog(@"%@ ", prediction);
                 [numbers addObject:prediction];
             }
         }
     }
     for (NSArray *printTest in numbers)
     {
-        NSLog(@"%@ ", printTest);
+        total = total + [[NSString stringWithFormat:@"%@", printTest] integerValue];
     }
+    dayAverage = total/64; //64 is the number of elements in the array
+    NSLog(@"%d", dayAverage);
 }
 
 -(void)crainsfcStats
