@@ -111,7 +111,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     return NULL;
 }
 
--(void)csnowsfcStats
+-(void)csnowsfcStats //average snowfall over 6 hours
 {
     int total = 0;
     double dayAverage = 0;
@@ -132,7 +132,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     csnowsfcInfo = [[NSDictionary alloc] initWithDictionary:dict];
 }
 
--(void)crainsfcStats
+-(void)crainsfcStats //average rain fall over 6 hours
 {
     int total = 0;
     double dayAverage = 0;
@@ -153,7 +153,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     crainsfcInfo = [[NSDictionary alloc] initWithDictionary:dict];
 }
 
--(void)tmax2mStats
+-(void)tmax2mStats //max average temp
 {
     double total = 0.0;
     double dayAverage = 0.0;
@@ -170,11 +170,12 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         }
         dayAverage = total/21.0; //21.0 is the number of elements in the array
         [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+        //add min and max possiblitys over the 6 hours?
     }
     tmax2mInfo = [[NSDictionary alloc] initWithDictionary:dict];
 }
 
--(void)tmin2mStats
+-(void)tmin2mStats //min average temp
 {
     double total = 0.0;
     double dayAverage = 0.0;
@@ -195,7 +196,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     tmin2mInfo = [[NSDictionary alloc] initWithDictionary:dict];
 }
 
--(void)apcosfcStats
+-(void)apcosfcStats //accumulated rain over 6 hours
 {
     double total = 0;
     double dayAverage = 0;
@@ -210,8 +211,8 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         {
             total = total + [[NSString stringWithFormat:@"%@", prediction] doubleValue];
         }
-        dayAverage = total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+        //dayAverage = total/21.0; //21.0 is the number of elements in the array
+        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:total]];
     }
     apcpsfcInfo = [[NSDictionary alloc] initWithDictionary:dict];
 }
