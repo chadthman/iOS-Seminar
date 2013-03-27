@@ -23,8 +23,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    sunnyImage = [UIImage imageNamed:@"WeatherIconSun.png"];
-    rainImage = [UIImage imageNamed:@"WeatherIconRain.png"];
+    sunnyImage = [UIImage imageNamed:@"WeatherIconSun"];
+    rainImage = [UIImage imageNamed:@"WeatherIconRain"];
     snowImage = [UIImage imageNamed:@"WeatherIconSnow"];
 }
 
