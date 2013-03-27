@@ -23,12 +23,6 @@
 #define tmin2m   3
 #define apcpsfc  4
 
-NSDictionary *csnowsfcInfo;
-NSDictionary *crainsfcInfo;
-NSDictionary *tmax2mInfo;
-NSDictionary *apcpsfcInfo;
-NSDictionary *tmin2mInfo;
-
 static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 
 @implementation WWViewController
@@ -114,107 +108,132 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 -(void)csnowsfcStats //average snowfall over 6 hours
 {
     int total = 0;
+    int i = 0;
     double dayAverage = 0;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSMutableArray *newValues = [[NSMutableArray alloc]init];
     NSDictionary *variable = [collections objectAtIndex:csnowsfc];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
+        dict = [[NSMutableDictionary alloc] init];
         total = 0;
         for (NSArray *prediction in date[@"predictions"])
         {
             total = total + [[NSString stringWithFormat:@"%@", prediction] integerValue];
         }
         dayAverage = (double)total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+        [dict setObject:date[@"date"] forKey:@"date"];
+        [dict setObject:[NSNumber numberWithDouble:dayAverage] forKey:@"average"];
+        [newValues setObject:dict atIndexedSubscript:i++];
     }
-    csnowsfcInfo = [[NSDictionary alloc] initWithDictionary:dict];
+    csnowsfcInfo = [[NSArray alloc] initWithArray:newValues];
 }
 
 -(void)crainsfcStats //average rain fall over 6 hours
 {
+    int i = 0;
     int total = 0;
     double dayAverage = 0;
     
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dict;
+    NSMutableArray *newValues = [[NSMutableArray alloc]init];
     NSDictionary *variable = [collections objectAtIndex:crainsfc];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
+        dict = [[NSMutableDictionary alloc] init];
         total = 0;
         for (NSArray *prediction in date[@"predictions"])
         {
             total = total + [[NSString stringWithFormat:@"%@", prediction] integerValue];
         }
         dayAverage = (double)total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+        [dict setObject:date[@"date"] forKey:@"date"];
+        [dict setObject:[NSNumber numberWithDouble:dayAverage] forKey:@"average"];
+        [newValues setObject:dict atIndexedSubscript:i++];
     }
-    crainsfcInfo = [[NSDictionary alloc] initWithDictionary:dict];
+    crainsfcInfo = [[NSArray alloc] initWithArray:newValues];
 }
 
 -(void)tmax2mStats //max average temp
 {
+    int i = 0;
     double total = 0.0;
     double dayAverage = 0.0;
     
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dict;
+    NSMutableArray *newValues = [[NSMutableArray alloc]init];
     NSDictionary *variable = [collections objectAtIndex:tmax2m];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
+        dict = [[NSMutableDictionary alloc] init];
         total = 0;
         for (NSArray *prediction in date[@"predictions"])
         {
             total = total + [[NSString stringWithFormat:@"%@", prediction] doubleValue];
         }
         dayAverage = total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+        [dict setObject:date[@"date"] forKey:@"date"];
+        [dict setObject:[NSNumber numberWithDouble:dayAverage] forKey:@"average"];
+        [newValues setObject:dict atIndexedSubscript:i++];
         //add min and max possiblitys over the 6 hours?
     }
-    tmax2mInfo = [[NSDictionary alloc] initWithDictionary:dict];
+    tmax2mInfo = [[NSArray alloc] initWithArray:newValues];
 }
 
 -(void)tmin2mStats //min average temp
 {
+    int i = 0;
     double total = 0.0;
     double dayAverage = 0.0;
     
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dict;
+    NSMutableArray *newValues = [[NSMutableArray alloc]init];
     NSDictionary *variable = [collections objectAtIndex:tmin2m];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
+        dict = [[NSMutableDictionary alloc] init];
         total = 0;
         for (NSArray *prediction in date[@"predictions"])
         {
             total = total + [[NSString stringWithFormat:@"%@", prediction] doubleValue];
         }
         dayAverage = total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:dayAverage]];
+        [dict setObject:date[@"date"] forKey:@"date"];
+        [dict setObject:[NSNumber numberWithDouble:dayAverage] forKey:@"average"];
+        [newValues setObject:dict atIndexedSubscript:i++];
     }
-    tmin2mInfo = [[NSDictionary alloc] initWithDictionary:dict];
+    tmin2mInfo = [[NSArray alloc] initWithArray:newValues];
 }
 
 -(void)apcosfcStats //accumulated rain over 6 hours
 {
+    int i = 0;
     double total = 0;
-    double dayAverage = 0;
+    //double dayAverage = 0;
     
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dict;
+    NSMutableArray *newValues = [[NSMutableArray alloc]init];
     NSDictionary *variable = [collections objectAtIndex:apcpsfc];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
+        dict = [[NSMutableDictionary alloc] init];
         total = 0;
         for (NSArray *prediction in date[@"predictions"])
         {
             total = total + [[NSString stringWithFormat:@"%@", prediction] doubleValue];
         }
         //dayAverage = total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:[NSNumber numberWithDouble:total]];
+        [dict setObject:date[@"date"] forKey:@"date"];
+        [dict setObject:[NSNumber numberWithDouble:total] forKey:@"total"];
+        [newValues setObject:dict atIndexedSubscript:i++];
     }
-    apcpsfcInfo = [[NSDictionary alloc] initWithDictionary:dict];
+    apcpsfcInfo = [[NSArray alloc] initWithArray:newValues];
 }
 
 -(void)generateStats
@@ -327,7 +346,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 -(void) nextView
 {
     dispatch_async( dispatch_get_main_queue(), ^{ //I hope this magic will keep it on the main thread and work. no guarantees.
-        
+        [self generateStats];
         UIStoryboard *storyboard;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -341,7 +360,6 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         [self performSegueWithIdentifier:@"Next" sender:self];
         [self presentViewController:myVC animated:YES completion:nil];
     });
-    [self generateStats];
     //NSLog(@"%f",[self getDayInfo:csnowsfc onDay:[self generateDate:[self getCurrentYear] month:[self getCurrentMonth] day:[self getTommorow]]]);
     //NSLog(@"%@\n", self.getTodaysDate);
     //NSLog(@"%@", [self getInfo:csnowsfc onDay:[self generateDate:[self getCurrentYear] month:[self getCurrentMonth] day:[self getTommorow]] atTime:0]);

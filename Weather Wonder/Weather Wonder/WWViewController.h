@@ -10,6 +10,14 @@
 
 @interface WWViewController : UIViewController
 
+-(void)generateStats;
+
 @end
 
 id collections;
+
+NSArray *csnowsfcInfo;
+NSArray *crainsfcInfo;
+NSArray *tmax2mInfo;
+NSArray *apcpsfcInfo;
+NSArray *tmin2mInfo;

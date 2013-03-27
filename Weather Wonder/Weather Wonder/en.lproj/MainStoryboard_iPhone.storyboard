@@ -28,133 +28,21 @@
             </objects>
             <point key="canvasLocation" x="111" y="114"/>
         </scene>
-        <!--Collection View Controller - tmin2m-->
-        <scene sceneID="ULS-7Z-VFd">
-            <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="iRM-Sg-FHD" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="GLB-Ar-dTB">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JNU-4J-OuT">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Q4k-Hd-Tq8">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="iRM-Sg-FHD" id="tbS-Bs-wBF"/>
-                            <outlet property="delegate" destination="iRM-Sg-FHD" id="zOF-1g-Mqj"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="tmin2m" id="Htf-02-QUU"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h1L-dI-vIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1007" y="436"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UaW-vu-tJN">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" definesPresentationContext="YES" id="2nJ-26-ASc" customClass="WWTabBarController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="X3c-QK-Fqn"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="xbs-md-4O7">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="iRM-Sg-FHD" kind="relationship" relationship="viewControllers" id="cL7-p6-Rck"/>
-                        <segue destination="UdI-hj-5r8" kind="relationship" relationship="viewControllers" id="W4p-dg-juT"/>
-                        <segue destination="TzU-Ne-CXT" kind="relationship" relationship="viewControllers" id="hqE-pQ-Pdy"/>
-                        <segue destination="Ljk-Kh-29g" kind="relationship" relationship="viewControllers" id="Vun-y9-RoK"/>
-                        <segue destination="ERA-qf-Ksu" kind="relationship" relationship="viewControllers" id="1BJ-4q-uZ9"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tpd-V2-3f9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="566" y="114"/>
-        </scene>
-        <!--Collection View Controller - csnowsfc-->
-        <scene sceneID="xRT-72-vmH">
-            <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" title="csnowsfc" id="UdI-hj-5r8" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="nJp-4L-otw">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rPH-gx-1U2">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Y5x-Ea-guM">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="UdI-hj-5r8" id="csD-0Z-TNB"/>
-                            <outlet property="delegate" destination="UdI-hj-5r8" id="1pk-Fl-Fhh"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="csnowsfc" id="fhY-0z-IAa"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QEg-w5-map" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1035" y="-246"/>
-        </scene>
-        <!--Collection View Controller - apcpsfc-->
-        <scene sceneID="R9o-PF-JXs">
-            <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Ljk-Kh-29g" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="lju-MI-PJ3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yY2-Xx-4gu">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sb9-2z-3AP">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="Ljk-Kh-29g" id="Qq2-Gw-bqJ"/>
-                            <outlet property="delegate" destination="Ljk-Kh-29g" id="e42-pr-68y"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="apcpsfc" id="iEb-va-eBU"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3hG-Av-PXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1437" y="444"/>
         </scene>
         <!--View Controller - Item 2-->
         <scene sceneID="cEe-ep-Ohw">
@@ -190,7 +78,7 @@
         <scene sceneID="Si7-xM-yYR">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="DDQ-c6-uLf" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="IvT-MI-koa">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -205,106 +93,7 @@
             </objects>
             <point key="canvasLocation" x="1413" y="1821"/>
         </scene>
-        <!--Collection View Controller - crainsfc-->
-        <scene sceneID="u8U-dV-aJV">
-            <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="TzU-Ne-CXT" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Kri-oa-EDT">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jnM-Y8-Y1e">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ftL-vg-9s0">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="TzU-Ne-CXT" id="pgN-Eq-Ylt"/>
-                            <outlet property="delegate" destination="TzU-Ne-CXT" id="N4Q-WR-bLw"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="crainsfc" id="bef-Gn-6n5"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f5h-RM-4Ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1421" y="-280"/>
-        </scene>
-        <!--Collection View Controller - tmax2m-->
-        <scene sceneID="ZoP-bG-XDt">
-            <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="ERA-qf-Ksu" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="PNX-XU-yN1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DUq-Mc-HSK">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lRY-nj-Jn9">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="ERA-qf-Ksu" id="ZLa-h7-oLz"/>
-                            <outlet property="delegate" destination="ERA-qf-Ksu" id="o4d-XJ-hxr"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="tmax2m" id="DT2-io-fl0"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QyM-Rm-dec" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1855" y="90"/>
-        </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
-        <class className="WWTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWTabBarController.h"/>
-        </class>
-        <class className="WWViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
