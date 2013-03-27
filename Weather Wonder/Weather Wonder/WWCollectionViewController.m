@@ -15,6 +15,7 @@
     UIImage *sunnyImage;
     UIImage *rainImage;
     UIImage *snowImage;
+    WWViewController *controller;
 }
 @end
 
@@ -23,6 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    controller = [[WWViewController alloc] init];
     sunnyImage = [UIImage imageNamed:@"WeatherIconSun"];
     rainImage = [UIImage imageNamed:@"WeatherIconRain"];
     snowImage = [UIImage imageNamed:@"WeatherIconSnow"];
@@ -52,21 +54,32 @@
 
 -(UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    //UIImage *sunnyImage =[UIImage imageNamed:@"WeatherIconSun.png"];
     WWCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     
-    NSLog(@"%d",indexPath.section);
+    //NSLog(@"%d",indexPath.section);
     
     NSDictionary *variableRain = [crainsfcInfo objectAtIndex:indexPath.section];
     NSDictionary *variableSnow = [csnowsfcInfo objectAtIndex:indexPath.section];
     
     NSNumber *averageRain = variableRain[@"average"];
     NSNumber *averageSnow = variableSnow[@"average"];
+    NSString *dateString  = variableRain[@"date"];
+    NSLog(@"Raw Date: %@\n", dateString);
+    NSLog(@"New Date: %@", [controller getTodaysDate]);
+    NSDate   *date        = [controller dateFromString:dateString];
+    NSString *newDate     = [NSString stringWithFormat:@"%@", [controller getCalendarDay:date]];
+    
+    cell.textView.text = newDate;
     
     if(averageRain.doubleValue >= 0.5)
     {
-        cell.imageView.image = rainImage;
+        if(averageRain.doubleValue >= averageSnow.doubleValue)
+        {
+            cell.imageView.image = rainImage;
+        } else {
+            cell.imageView.image = snowImage;
+        }
     } else if (averageSnow.doubleValue >= 0.5)
     {
         cell.imageView.image = snowImage;

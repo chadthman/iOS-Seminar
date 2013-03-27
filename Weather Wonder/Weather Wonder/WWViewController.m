@@ -23,6 +23,14 @@
 #define tmin2m   3
 #define apcpsfc  4
 
+#define Sunday 1
+#define Monday 2
+#define Tuesday 3
+#define Wedensday 4
+#define Thursday 5
+#define Friday 6
+#define Saturday 7
+
 static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 
 @implementation WWViewController
@@ -260,6 +268,51 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     
     NSDate* destinationDate = [[NSDate alloc] initWithTimeInterval:interval sinceDate:sourceDate];
     return destinationDate;
+}
+
+-(NSString*)getCalendarDay:(NSDate*)date
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *weekdayComponents =[gregorian components:NSWeekdayCalendarUnit fromDate:date];
+    NSInteger weekday = [weekdayComponents weekday];
+    // weekday 1 = Sunday for Gregorian calendar
+    switch (weekday) {
+        case Sunday:
+            return [NSString stringWithFormat:@"Sunday"];
+            break;
+        case Monday:
+            return [NSString stringWithFormat:@"Monday"];
+            break;
+        case Tuesday:
+            return [NSString stringWithFormat:@"Tuesday"];
+            break;
+        case Wedensday:
+            return [NSString stringWithFormat:@"Wedensday"];
+            break;
+        case Thursday:
+            return [NSString stringWithFormat:@"Thursday"];
+            break;
+        case Friday:
+            return [NSString stringWithFormat:@"Friday"];
+            break;
+        case Saturday:
+            return [NSString stringWithFormat:@"Saturday"];
+            break;
+        default:
+            return [NSString stringWithFormat:@"Not A Date"]; //should not reach
+            break;
+    }
+}
+
+-(NSDate*) dateFromString:(NSString*)date
+{
+    NSString *newDate = [date substringWithRange:NSMakeRange(0, 10)];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *myDate = [dateFormatter dateFromString: newDate];
+    return myDate;
 }
 
 -(NSString*) getTodaysDate

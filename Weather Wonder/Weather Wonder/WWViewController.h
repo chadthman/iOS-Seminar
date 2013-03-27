@@ -11,6 +11,11 @@
 @interface WWViewController : UIViewController
 
 -(void)generateStats;
+-(NSDate*) dateFromString:(NSString*)date;
+-(NSString*)getCalendarDay:(NSDate*)date;
+-(NSString*) getTodaysDate;
+-(NSString*) generateDate:(int) year month:(int) month day:(int) day;
+
 
 @end
 
