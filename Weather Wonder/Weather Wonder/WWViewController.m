@@ -19,9 +19,10 @@
 
 #define csnowsfc 0
 #define crainsfc 1
-#define tmax2m   2
-#define tmin2m   3
-#define apcpsfc  4
+#define apcpsfc  2
+#define sunsdsfc 3
+#define tmax2m   4
+#define tmin2m   5
 
 #define Sunday 1
 #define Monday 2
@@ -244,6 +245,32 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     apcpsfcInfo = [[NSArray alloc] initWithArray:newValues];
 }
 
+-(void)sunsdsfcStats
+{
+    int i = 0;
+    int total = 0;
+    double dayAverage = 0;
+    
+    NSMutableDictionary *dict;
+    NSMutableArray *newValues = [[NSMutableArray alloc]init];
+    NSDictionary *variable = [collections objectAtIndex:sunsdsfc];
+    NSDictionary *values = [variable objectForKey:@"values"];
+    for (NSDictionary *date in values)
+    {
+        dict = [[NSMutableDictionary alloc] init];
+        total = 0;
+        for (NSArray *prediction in date[@"predictions"])
+        {
+            total = total + [[NSString stringWithFormat:@"%@", prediction] intValue];
+        }
+        dayAverage = (double)total/21.0; //21.0 is the number of elements in the array
+        [dict setObject:date[@"date"] forKey:@"date"];
+        [dict setObject:[NSNumber numberWithDouble:dayAverage] forKey:@"total"];
+        [newValues setObject:dict atIndexedSubscript:i++];
+    }
+    sunsdsfcInfo = [[NSArray alloc] initWithArray:newValues];
+}
+
 -(void)generateStats
 {
     [self csnowsfcStats];
@@ -251,6 +278,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     [self tmax2mStats];
     [self apcosfcStats];
     [self tmin2mStats];
+    [self sunsdsfcStats];
 }
 
 #pragma mark - Time

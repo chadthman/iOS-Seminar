@@ -11,6 +11,9 @@
 @interface WWViewController : UIViewController
 
 -(void)generateStats;
+-(int) getCurrentDay;
+-(int) getCurrentMonth;
+-(int) getCurrentYear;
 -(NSDate*) dateFromString:(NSString*)date;
 -(NSString*)getCalendarDay:(NSDate*)date;
 -(NSString*) getTodaysDate;
@@ -26,3 +29,4 @@ NSArray *crainsfcInfo;
 NSArray *tmax2mInfo;
 NSArray *apcpsfcInfo;
 NSArray *tmin2mInfo;
+NSArray *sunsdsfcInfo;

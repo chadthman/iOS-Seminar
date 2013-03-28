@@ -65,8 +65,8 @@
     NSNumber *averageRain = variableRain[@"average"];
     NSNumber *averageSnow = variableSnow[@"average"];
     NSString *dateString  = variableRain[@"date"];
-    NSLog(@"Raw Date: %@\n", dateString);
-    NSLog(@"New Date: %@", [controller getTodaysDate]);
+    NSLog(@"Raw Date: %@", dateString);
+    NSLog(@"New Date: %@", [controller generateDate:[controller getCurrentYear] month:[controller getCurrentMonth] day:[controller getCurrentDay]]);
     NSDate   *date        = [controller dateFromString:dateString];
     NSString *newDate     = [NSString stringWithFormat:@"%@", [controller getCalendarDay:date]];
     
