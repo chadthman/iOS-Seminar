@@ -19,10 +19,10 @@
 
 #define csnowsfc 0
 #define crainsfc 1
-#define apcpsfc  2
-#define sunsdsfc 3
-#define tmax2m   4
-#define tmin2m   5
+#define sunsdsfc 2
+#define tmax2m   3
+#define tmin2m   4
+#define apcpsfc  5
 
 #define Sunday 1
 #define Monday 2
