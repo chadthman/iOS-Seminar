@@ -13,6 +13,7 @@
 @interface WWCollectionViewController ()
 {
     UIImage *sunnyImage;
+    UIImage *cloudyImage;
     UIImage *rainImage;
     UIImage *snowImage;
     WWViewController *controller;
@@ -24,10 +25,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    controller = [[WWViewController alloc] init];
-    sunnyImage = [UIImage imageNamed:@"WeatherIconSun"];
-    rainImage = [UIImage imageNamed:@"WeatherIconRain"];
-    snowImage = [UIImage imageNamed:@"WeatherIconSnow"];
+    controller  = [[WWViewController alloc] init];
+    sunnyImage  = [UIImage imageNamed:@"WeatherIconSun"];
+    cloudyImage = [UIImage imageNamed:@"WeatherIconCloudy"];
+    rainImage   = [UIImage imageNamed:@"WeatherIconRain"];
+    snowImage   = [UIImage imageNamed:@"WeatherIconSnow"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,16 +61,18 @@
     
     //NSLog(@"%d",indexPath.section);
     
-    NSDictionary *variableRain = [crainsfcInfo objectAtIndex:indexPath.section];
-    NSDictionary *variableSnow = [csnowsfcInfo objectAtIndex:indexPath.section];
+    NSDictionary *variableRain   = [crainsfcInfo objectAtIndex:indexPath.section];
+    NSDictionary *variableSnow   = [csnowsfcInfo objectAtIndex:indexPath.section];
+    NSDictionary *variableCloudy = [sunsdsfcInfo objectAtIndex:indexPath.section];
     
-    NSNumber *averageRain = variableRain[@"average"];
-    NSNumber *averageSnow = variableSnow[@"average"];
-    NSString *dateString  = variableRain[@"date"];
-    NSLog(@"Raw Date: %@", dateString);
-    NSLog(@"New Date: %@", [controller generateDate:[controller getCurrentYear] month:[controller getCurrentMonth] day:[controller getCurrentDay]]);
-    NSDate   *date        = [controller dateFromString:dateString];
-    NSString *newDate     = [NSString stringWithFormat:@"%@", [controller getCalendarDay:date]];
+    NSNumber *averageRain   = variableRain[@"average"];
+    NSNumber *averageSnow   = variableSnow[@"average"];
+    NSNumber *averageCloudy = variableCloudy[@"average"];
+    NSString *dateString    = variableRain[@"date"];
+    
+    NSDate   *date = [controller dateFromString:dateString];
+    NSDate   *correctedDate = [controller correctTimeZone:date];
+    NSString *newDate = [NSString stringWithFormat:@"%@ %@", [controller getCalendarDay:correctedDate],[[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
     
     cell.textView.text = newDate;
     
@@ -84,7 +88,12 @@
     {
         cell.imageView.image = snowImage;
     } else {
-        cell.imageView.image = sunnyImage;
+        if (averageCloudy.doubleValue >= 10800)
+        {
+            cell.imageView.image = cloudyImage;
+        } else {
+            cell.imageView.image = sunnyImage;
+        }
     }
     return cell;
 }

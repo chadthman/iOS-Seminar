@@ -14,6 +14,7 @@
 -(int) getCurrentDay;
 -(int) getCurrentMonth;
 -(int) getCurrentYear;
+-(NSDate*) correctTimeZone:(NSDate*) imputdate;
 -(NSDate*) dateFromString:(NSString*)date;
 -(NSString*)getCalendarDay:(NSDate*)date;
 -(NSString*) getTodaysDate;

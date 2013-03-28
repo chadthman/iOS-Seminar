@@ -52,15 +52,6 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 
 #pragma mark - Parse Data Functions
 
-//-(void) populateInfo
-//{
-//    csnowsfcInfo = [collections objectAtIndex:csnowsfc];
-//    crainsfcInfo = [collections objectAtIndex:crainsfc];
-//    tmax2mInfo   = [collections objectAtIndex:tmax2m];
-//    apcpsfcInfo  = [collections objectAtIndex:apcpsfc];
-//    tmin2mInfo   = [collections objectAtIndex:tmin2m];
-//}
-
 -(double)getDayInfo:(int)type onDay:(NSString*)day //doubt this is needed anymore but it might be useful
 {
     NSMutableArray *numbers = [[NSMutableArray alloc] init];;
@@ -265,7 +256,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         }
         dayAverage = (double)total/21.0; //21.0 is the number of elements in the array
         [dict setObject:date[@"date"] forKey:@"date"];
-        [dict setObject:[NSNumber numberWithDouble:dayAverage] forKey:@"total"];
+        [dict setObject:[NSNumber numberWithDouble:dayAverage] forKey:@"average"];
         [newValues setObject:dict atIndexedSubscript:i++];
     }
     sunsdsfcInfo = [[NSArray alloc] initWithArray:newValues];
