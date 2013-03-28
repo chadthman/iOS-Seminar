@@ -44,8 +44,8 @@
 
 -(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    NSLog(@"%lu", (unsigned long)[csnowsfcInfo count]);
-    return [csnowsfcInfo count];
+    NSLog(@"%lu", (unsigned long)[csnowsfcHourly count]);
+    return [csnowsfcDaily count];
 }
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -57,13 +57,15 @@
 -(UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     WWCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor clearColor];
+
+//    NSDictionary *variableRain   = [crainsfcHourly objectAtIndex:indexPath.section];
+//    NSDictionary *variableSnow   = [csnowsfcHourly objectAtIndex:indexPath.section];
+//    NSDictionary *variableCloudy = [sunsdsfcHourly objectAtIndex:indexPath.section];
     
-    //NSLog(@"%d",indexPath.section);
-    
-    NSDictionary *variableRain   = [crainsfcInfo objectAtIndex:indexPath.section];
-    NSDictionary *variableSnow   = [csnowsfcInfo objectAtIndex:indexPath.section];
-    NSDictionary *variableCloudy = [sunsdsfcInfo objectAtIndex:indexPath.section];
+    NSDictionary *variableRain   = [crainsfcDaily objectAtIndex:indexPath.section];
+    NSDictionary *variableSnow   = [csnowsfcDaily objectAtIndex:indexPath.section];
+    NSDictionary *variableCloudy = [sunsdsfcDaily objectAtIndex:indexPath.section];
+
     
     NSNumber *averageRain   = variableRain[@"average"];
     NSNumber *averageSnow   = variableSnow[@"average"];
@@ -74,6 +76,7 @@
     NSDate   *correctedDate = [controller correctTimeZone:date];
     NSString *newDate = [NSString stringWithFormat:@"%@ %@", [controller getCalendarDay:correctedDate],[[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
     
+    cell.backgroundColor = [UIColor clearColor];
     cell.textView.text = newDate;
     
     if(averageRain.doubleValue >= 0.5)

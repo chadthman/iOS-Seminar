@@ -25,9 +25,16 @@
 
 id collections;
 
-NSArray *csnowsfcInfo;
-NSArray *crainsfcInfo;
-NSArray *tmax2mInfo;
-NSArray *apcpsfcInfo;
-NSArray *tmin2mInfo;
-NSArray *sunsdsfcInfo;
+NSArray *csnowsfcHourly;
+NSArray *crainsfcHourly;
+NSArray *tmax2mHourly;
+NSArray *apcpsfcHourly;
+NSArray *tmin2mHourly;
+NSArray *sunsdsfcHourly;
+
+NSArray *csnowsfcDaily;
+NSArray *crainsfcDaily;
+NSArray *tmax2mDaily;
+NSArray *apcpsfcDaily;
+NSArray *tmin2mDaily;
+NSArray *sunsdsfcDaily;
