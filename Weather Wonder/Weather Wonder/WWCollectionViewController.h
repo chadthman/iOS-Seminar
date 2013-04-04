@@ -10,4 +10,9 @@
 
 @interface WWCollectionViewController : UICollectionViewController
 
+-(void)refresh;
+
 @end
+
+Boolean weatherDisplay;
+

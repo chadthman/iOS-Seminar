@@ -25,6 +25,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults addObserver:self
+               forKeyPath:@"weatherDisplay"
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
+    
     controller  = [[WWViewController alloc] init];
     sunnyImage  = [UIImage imageNamed:@"WeatherIconSun"];
     cloudyImage = [UIImage imageNamed:@"WeatherIconCloudy"];
@@ -38,6 +44,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath
+                     ofObject:(id)object
+                       change:(NSDictionary *)change
+                      context:(void *)context
+{
+    NSLog(@"KVO: %@ changed property %@ to value %@", object, keyPath, change);
+    [self.collectionView reloadData];
+}
+
+
 - (void)collectionView:(UICollectionView *)colView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //change the view of my statistics here to the day that is selected
 }
@@ -45,7 +61,13 @@
 -(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     NSLog(@"%lu", (unsigned long)[csnowsfcHourly count]);
-    return [csnowsfcDaily count];
+    if (weatherDisplay)
+    {
+        return [csnowsfcHourly count];
+    } else {
+        return [csnowsfcDaily count];
+    }
+    
 }
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -58,14 +80,21 @@
 {
     WWCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 
-//    NSDictionary *variableRain   = [crainsfcHourly objectAtIndex:indexPath.section];
-//    NSDictionary *variableSnow   = [csnowsfcHourly objectAtIndex:indexPath.section];
-//    NSDictionary *variableCloudy = [sunsdsfcHourly objectAtIndex:indexPath.section];
     
-    NSDictionary *variableRain   = [crainsfcDaily objectAtIndex:indexPath.section];
-    NSDictionary *variableSnow   = [csnowsfcDaily objectAtIndex:indexPath.section];
-    NSDictionary *variableCloudy = [sunsdsfcDaily objectAtIndex:indexPath.section];
-
+    NSDictionary *variableRain;
+    NSDictionary *variableSnow;
+    NSDictionary *variableCloudy;
+    
+    if (weatherDisplay)
+    {
+        variableRain   = [crainsfcHourly objectAtIndex:indexPath.section];
+        variableSnow   = [csnowsfcHourly objectAtIndex:indexPath.section];
+        variableCloudy = [sunsdsfcHourly objectAtIndex:indexPath.section];
+    } else {
+        variableRain   = [crainsfcDaily objectAtIndex:indexPath.section];
+        variableSnow   = [csnowsfcDaily objectAtIndex:indexPath.section];
+        variableCloudy = [sunsdsfcDaily objectAtIndex:indexPath.section];
+    }
     
     NSNumber *averageRain   = variableRain[@"average"];
     NSNumber *averageSnow   = variableSnow[@"average"];
@@ -99,6 +128,12 @@
         }
     }
     return cell;
+}
+
+-(void)refresh
+{
+    //[self.collectionView setNeedsDisplay];
+    //[self.collectionView reloadData];
 }
 
 @end

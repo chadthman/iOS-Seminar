@@ -12,13 +12,12 @@
 @interface WWViewController ()
 {
     __weak IBOutlet UIActivityIndicatorView *spinner;
-    
 }
 
 @end
 
-#define csnowsfc 0
-#define crainsfc 1
+#define crainsfc 0
+#define csnowsfc 1
 #define sunsdsfc 2
 #define tmax2m   3
 #define tmin2m   4
