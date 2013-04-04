@@ -368,6 +368,24 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     }
 }
 
+-(NSString*)getTimeOfDay:(NSString*)date
+{
+    NSString *newDate = [date substringWithRange:NSMakeRange(11, 2)];
+    
+    if ([newDate integerValue] < 6)
+    {
+        return @"Night";
+    } else if ([newDate integerValue] < 12)
+    {
+        return @"Morning";
+    } else if ([newDate integerValue] < 18)
+    {
+        return @"Afternoon";
+    } else {
+        return @"Evening";
+    }
+}
+
 -(NSDate*) dateFromString:(NSString*)date
 {
     NSString *newDate = [date substringWithRange:NSMakeRange(0, 10)];

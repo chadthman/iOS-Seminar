@@ -25,9 +25,9 @@
     weatherDisplay = [[NSUserDefaults standardUserDefaults] boolForKey:@"weatherDisplay"];
     if (weatherDisplay)
     {
-        [weatherButton setTitle:@"Show by Hours" forState:UIControlStateNormal];
+        [weatherButton setTitle:@"Switch to Day View" forState:UIControlStateNormal];
     } else {
-        [weatherButton setTitle:@"Show by Days" forState:UIControlStateNormal];
+        [weatherButton setTitle:@"Switch to Hour View" forState:UIControlStateNormal];
     }
     
 }
@@ -41,12 +41,12 @@
 -(IBAction)weatherDisplayButton:(id)sender
 {
     WWCollectionViewController *newController = [[WWCollectionViewController alloc] init];
-    if (weatherDisplay == true)
+    if (weatherDisplay)
     {
-        [weatherButton setTitle:@"Show by Days" forState:UIControlStateNormal];
+        [weatherButton setTitle:@"Switch to Day View" forState:UIControlStateNormal];
         weatherDisplay = false;
     } else {
-        [weatherButton setTitle:@"Show by Hours" forState:UIControlStateNormal];
+        [weatherButton setTitle:@"Switch to Hour View" forState:UIControlStateNormal];
         weatherDisplay = true;
     }
     [newController refresh];

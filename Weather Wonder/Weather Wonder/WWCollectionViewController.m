@@ -44,12 +44,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath
-                     ofObject:(id)object
-                       change:(NSDictionary *)change
-                      context:(void *)context
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"KVO: %@ changed property %@ to value %@", object, keyPath, change);
+    //NSLog(@"KVO: %@ changed property %@ to value %@", object, keyPath, change);
     [self.collectionView reloadData];
 }
 
@@ -101,9 +98,20 @@
     NSNumber *averageCloudy = variableCloudy[@"average"];
     NSString *dateString    = variableRain[@"date"];
     
+    NSLog(@"dateString: %@", dateString);
+    
+    NSString *newDate;
     NSDate   *date = [controller dateFromString:dateString];
     NSDate   *correctedDate = [controller correctTimeZone:date];
-    NSString *newDate = [NSString stringWithFormat:@"%@ %@", [controller getCalendarDay:correctedDate],[[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
+
+    if (weatherDisplay)
+    {
+        NSLog(@"correctedDate: %@", correctedDate);
+        newDate = [NSString stringWithFormat:@"%@ %@",[controller getTimeOfDay:dateString], [[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
+    } else {
+        newDate = [NSString stringWithFormat:@"%@ %@", [controller getCalendarDay:correctedDate],[[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
+    }
+    
     
     cell.backgroundColor = [UIColor clearColor];
     cell.textView.text = newDate;

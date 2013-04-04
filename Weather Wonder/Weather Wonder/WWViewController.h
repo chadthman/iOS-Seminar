@@ -17,6 +17,7 @@
 -(NSDate*) correctTimeZone:(NSDate*) imputdate;
 -(NSDate*) dateFromString:(NSString*)date;
 -(NSString*)getCalendarDay:(NSDate*)date;
+-(NSString*)getTimeOfDay:(NSString*)date;
 -(NSString*) getTodaysDate;
 -(NSString*) generateDate:(int) year month:(int) month day:(int) day;
 
