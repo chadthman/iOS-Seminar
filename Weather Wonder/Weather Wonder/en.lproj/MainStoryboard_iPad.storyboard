@@ -102,20 +102,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuH-8R-3yi">
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="2bj-Gx-jgU">
+                                        <connections>
+                                            <action selector="pageChanged" destination="hld-Qb-CIe" eventType="touchDown" id="jG3-lQ-VAf"/>
+                                        </connections>
+                                    </pageControl>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2bj-Gx-jgU" secondAttribute="trailing" constant="365" id="AdI-3O-LTn"/>
+                                    <constraint firstItem="2bj-Gx-jgU" firstAttribute="centerX" secondItem="WuH-8R-3yi" secondAttribute="centerX" type="default" id="JdR-Fp-Onz"/>
+                                    <constraint firstItem="2bj-Gx-jgU" firstAttribute="top" secondItem="WuH-8R-3yi" secondAttribute="top" constant="613" id="VNx-9M-VoA"/>
+                                    <constraint firstAttribute="bottom" secondItem="2bj-Gx-jgU" secondAttribute="bottom" constant="14" id="c3s-tj-gLD"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cOc-ji-kqp" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" constant="192" id="2mo-tZ-t7C"/>
-                            <constraint firstItem="2rl-gq-NNd" firstAttribute="top" secondItem="cOc-ji-kqp" secondAttribute="top" type="default" id="3J0-wa-bwX"/>
+                            <constraint firstItem="WuH-8R-3yi" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="31P-Cr-whf"/>
                             <constraint firstItem="wrQ-ga-D7q" firstAttribute="top" secondItem="cOc-ji-kqp" secondAttribute="top" type="default" id="4Cc-Fa-y7w"/>
                             <constraint firstItem="dvG-Ov-ruZ" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="default" id="7FZ-4d-PT9"/>
+                            <constraint firstAttribute="bottom" secondItem="WuH-8R-3yi" secondAttribute="bottom" constant="136" id="8GW-xP-L0r"/>
                             <constraint firstItem="F2B-qp-mWy" firstAttribute="centerX" secondItem="KFI-qM-7Cf" secondAttribute="centerX" type="default" id="8wl-9w-4rv"/>
+                            <constraint firstItem="2rl-gq-NNd" firstAttribute="top" secondItem="cOc-ji-kqp" secondAttribute="top" type="default" id="ATF-im-R81"/>
                             <constraint firstItem="cOc-ji-kqp" firstAttribute="bottom" secondItem="2rl-gq-NNd" secondAttribute="bottom" type="default" id="EkF-uM-ljo"/>
                             <constraint firstItem="Cxn-eq-hjk" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="default" id="GDy-Gf-sIc"/>
                             <constraint firstItem="KFI-qM-7Cf" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="MCK-5O-MOz"/>
                             <constraint firstItem="Cxn-eq-hjk" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" constant="129" id="NE6-78-tfX"/>
                             <constraint firstItem="dvG-Ov-ruZ" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" type="user" id="P4G-1k-MPq"/>
                             <constraint firstItem="KFI-qM-7Cf" firstAttribute="bottom" secondItem="2rl-gq-NNd" secondAttribute="bottom" type="default" id="Ruc-nb-Sxa"/>
+                            <constraint firstItem="WuH-8R-3yi" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="default" id="Xf1-KZ-KMC"/>
                             <constraint firstItem="wrQ-ga-D7q" firstAttribute="bottom" secondItem="cOc-ji-kqp" secondAttribute="bottom" type="default" id="YhX-gA-eTc"/>
                             <constraint firstItem="KFI-qM-7Cf" firstAttribute="top" secondItem="2rl-gq-NNd" secondAttribute="top" type="default" id="Zxf-bD-LOZ"/>
                             <constraint firstAttribute="bottom" secondItem="y5K-cc-BqB" secondAttribute="bottom" constant="5" id="aX1-6M-Jgp"/>
@@ -128,12 +146,14 @@
                             <constraint firstItem="Cxn-eq-hjk" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="owu-JE-Otd"/>
                             <constraint firstItem="dvG-Ov-ruZ" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="rQs-Ca-UNz"/>
                             <constraint firstAttribute="trailing" secondItem="2rl-gq-NNd" secondAttribute="trailing" constant="192" id="tdk-Tu-caC"/>
+                            <constraint firstItem="WuH-8R-3yi" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" constant="156" id="uKd-ur-GfU"/>
                             <constraint firstItem="ZOc-Ho-uct" firstAttribute="centerX" secondItem="2rl-gq-NNd" secondAttribute="centerX" type="default" id="vU9-Dd-qmT"/>
                             <constraint firstItem="y5K-cc-BqB" firstAttribute="centerX" secondItem="wrQ-ga-D7q" secondAttribute="centerX" type="default" id="yVm-1x-Vtf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" id="YfE-LB-DlY"/>
                     <connections>
+                        <outlet property="pageControl" destination="2bj-Gx-jgU" id="dEa-Qd-Hhs"/>
                         <outlet property="weatherButton" destination="Cxn-eq-hjk" id="XzY-jr-7EO"/>
                     </connections>
                 </viewController>
@@ -332,6 +352,65 @@
             <point key="canvasLocation" x="-271" y="727"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+        <class className="WWCollectionViewCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWCollectionViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="WWCollectionViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWCollectionViewController.h"/>
+        </class>
+        <class className="WWGraphViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWGraphViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pageChanged"/>
+                <relationship kind="action" name="weatherDisplayButton:"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="weatherButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="WWPieViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWPieViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="themeTapped:"/>
+                <relationship kind="action" name="weatherDisplayButton:"/>
+                <relationship kind="outlet" name="themeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="weatherButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="WWTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWTabBarController.h"/>
+        </class>
+        <class className="WWViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

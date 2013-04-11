@@ -8,5 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WWGraphViewController : UIViewController <CPTPlotDataSource>
+@interface WWGraphViewController : UIViewController <CPTPlotDataSource, UIScrollViewDelegate>
+{
+    __weak IBOutlet UIScrollView *scrollView;
+    __weak IBOutlet UIPageControl *pageControl;
+}
+
+- (IBAction)pageChanged;
+
 @end

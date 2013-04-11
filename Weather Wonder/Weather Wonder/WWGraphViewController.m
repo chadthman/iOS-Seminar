@@ -11,9 +11,6 @@
 #import "WWViewController.h"
 
 @interface WWGraphViewController ()
-{
-    //__weak IBOutlet UIButton *weatherButton;
-}
 
 @property (nonatomic) IBOutlet UIButton *weatherButton;
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
@@ -27,8 +24,10 @@
 #define tmin2m   4
 #define apcpsfc  5
 
-NSString *  const tickerSymbolCRAINSFC   = @"CRAINSFC";
-NSString *  const tickerSymbolCSNOWSFC   = @"CSNOWSFC";
+static const NSInteger kNumberOfPages = 3;
+
+NSString *  const tickerSymbolTMAX2M   = @"TMAX2M";
+NSString *  const tickerSymbolTMIN2M   = @"TMIN2M";
 NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 
 @implementation WWGraphViewController
@@ -38,6 +37,33 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 #pragma mark - UIViewController lifecycle methods
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    for( NSInteger i = 0; i < kNumberOfPages; i++ ) {
+        CGRect frame;
+        frame.size = scrollView.bounds.size;
+        frame.origin.x = i*scrollView.frame.size.width;
+        frame.origin.y = 0.;
+        UIView *v = [[UIView alloc] initWithFrame:frame];
+        
+        switch( i ) {
+            case 0:
+                v.backgroundColor = [UIColor redColor];
+                break;
+            case 1:
+                v.backgroundColor = [UIColor whiteColor];
+                break;
+            case 2:
+                v.backgroundColor = [UIColor blueColor];
+                break;
+        }
+        
+        [scrollView addSubview:v];
+    }
+    
+    scrollView.contentSize = CGSizeMake( kNumberOfPages*scrollView.frame.size.width, 0. );
+    
+    pageControl.currentPage = 0;
+    pageControl.numberOfPages = kNumberOfPages;
+
     [self initPlot];
 }
 
@@ -61,6 +87,20 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     // Dispose of any resources that can be recreated.
 }
 
+-(void) scrollViewDidScroll:(UIScrollView *)sv
+{
+    CGFloat pageWidth = scrollView.frame.size.width;
+    NSInteger page = (NSInteger)floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    pageControl.currentPage = page;
+}
+
+-(UIView*) viewForZoomingInScrollView:(UIScrollView *)sv
+{
+    // This function is required to make zooming work.
+    // However, returning the first subview is wrong and zooming only partially works.
+    // The real fix is more involved.
+    return sv.subviews[0];
+}
 
 #pragma mark IBActions
 
@@ -79,6 +119,11 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (IBAction)pageChanged
+{
+    scrollView.contentOffset = CGPointMake( scrollView.frame.size.width*pageControl.currentPage, 0. );
+}
+
 #pragma mark - CPTPlotDataSource methods 
 //Stick in all the infos here
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
@@ -95,16 +140,16 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
             break;
             
         case CPTScatterPlotFieldY:
-            if ([plot.identifier isEqual:tickerSymbolCSNOWSFC] == YES) {
-                NSDictionary *csnowsfcDict = [[self monthlyPrices:tickerSymbolCSNOWSFC] objectAtIndex:index];
-                NSNumber *temp = csnowsfcDict[@"average"];
-                NSNumber *csnowsfcNumber = [NSNumber numberWithDouble:temp.doubleValue * 100.00]; //convert to precentage
-                return  csnowsfcNumber;
-            } else if ([plot.identifier isEqual:tickerSymbolCRAINSFC] == YES) {
-                NSDictionary *crainsfcDict = [[self monthlyPrices:tickerSymbolCRAINSFC] objectAtIndex:index];
-                NSNumber *temp = crainsfcDict[@"average"];
-                NSNumber *crainsfcNumber = [NSNumber numberWithDouble:temp.doubleValue * 100.00];
-                return  crainsfcNumber;
+            if ([plot.identifier isEqual:tickerSymbolTMAX2M] == YES) {
+                NSDictionary *tmax2mDict = [[self monthlyPrices:tickerSymbolTMAX2M] objectAtIndex:index];
+                NSNumber *temp = tmax2mDict[@"average"];
+                NSNumber *tmax2mNumber = [NSNumber numberWithDouble:temp.doubleValue]; //convert to precentage
+                return  tmax2mNumber;
+            } else if ([plot.identifier isEqual:tickerSymbolTMIN2M] == YES) {
+                NSDictionary *tmin2mDict = [[self monthlyPrices:tickerSymbolTMIN2M] objectAtIndex:index];
+                NSNumber *temp = tmin2mDict[@"average"];
+                NSNumber *tmin2mNumber = [NSNumber numberWithDouble:temp.doubleValue];
+                return  tmin2mNumber;
 
             } else if ([plot.identifier isEqual:tickerSymbolAPCPSFC] == YES) {
                 NSDictionary *apcpsftDict = [[self monthlyPrices:tickerSymbolAPCPSFC] objectAtIndex:index];
@@ -119,13 +164,13 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 
 - (NSArray *)monthlyPrices:(NSString *)tickerSymbol
 {
-    if ([tickerSymbolCSNOWSFC isEqualToString:[tickerSymbol uppercaseString]] == YES)
+    if ([tickerSymbolTMAX2M isEqualToString:[tickerSymbol uppercaseString]] == YES)
     {
-        return crainsfcHourly;
+        return tmax2mHourly;
     }
-    else if ([tickerSymbolCRAINSFC isEqualToString:[tickerSymbol uppercaseString]] == YES)
+    else if ([tickerSymbolTMIN2M isEqualToString:[tickerSymbol uppercaseString]] == YES)
     {
-        return crainsfcHourly;
+        return tmin2mHourly;
     }
     else if ([tickerSymbolAPCPSFC isEqualToString:[tickerSymbol uppercaseString]] == YES)
     {
@@ -190,7 +235,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     // 2 - Create the three plots
     CPTScatterPlot *apcpsfcPlot = [[CPTScatterPlot alloc] init];
     apcpsfcPlot.dataSource = self;
-    apcpsfcPlot.identifier = tickerSymbolAPCPSFC;
+    apcpsfcPlot.identifier = tickerSymbolTMAX2M;
     CPTColor *apcpsfcColor = [CPTColor whiteColor];
     [graph addPlot:apcpsfcPlot toPlotSpace:plotSpace];
 //    CPTScatterPlot *googPlot = [[CPTScatterPlot alloc] init];
@@ -297,7 +342,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     x.majorTickLocations = xLocations;
     // 4 - Configure y-axis
     CPTAxis *y = axisSet.yAxis;
-    y.title = @"Precentage \%";
+    y.title = @"Amount in mm"; //also will need to be dynamically changed
     y.titleTextStyle = axisTitleStyle;
     y.titleOffset = -30.0f;
     y.axisLineStyle = axisLineStyle;
