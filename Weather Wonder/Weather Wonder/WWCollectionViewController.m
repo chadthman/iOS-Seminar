@@ -57,7 +57,7 @@
 
 -(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    NSLog(@"%lu", (unsigned long)[csnowsfcHourly count]);
+    //NSLog(@"%lu", (unsigned long)[csnowsfcHourly count]);
     if (weatherDisplay)
     {
         return [csnowsfcHourly count];
@@ -98,7 +98,7 @@
     NSNumber *averageCloudy = variableCloudy[@"average"];
     NSString *dateString    = variableRain[@"date"];
     
-    NSLog(@"dateString: %@", dateString);
+    //NSLog(@"dateString: %@", dateString);
     
     NSString *newDate;
     NSDate   *date = [controller dateFromString:dateString];
@@ -106,7 +106,7 @@
 
     if (weatherDisplay)
     {
-        NSLog(@"correctedDate: %@", correctedDate);
+        //NSLog(@"correctedDate: %@", correctedDate);
         newDate = [NSString stringWithFormat:@"%@ %@",[controller getTimeOfDay:dateString], [[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
     } else {
         newDate = [NSString stringWithFormat:@"%@ %@", [controller getCalendarDay:correctedDate],[[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
@@ -136,12 +136,6 @@
         }
     }
     return cell;
-}
-
--(void)refresh
-{
-    //[self.collectionView setNeedsDisplay];
-    //[self.collectionView reloadData];
 }
 
 @end

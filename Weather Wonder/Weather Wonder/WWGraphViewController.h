@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WWGraphViewController : UIViewController
+@interface WWGraphViewController : UIViewController <CPTPlotDataSource>
 @end

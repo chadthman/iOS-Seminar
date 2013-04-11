@@ -104,6 +104,18 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     return NULL;
 }
 
+-(NSDictionary*)getData:(NSString*)type
+{
+    for (NSDictionary *variable in collections)
+    {
+        if ([variable[@"variable"] isEqualToString:type])
+        {
+            return variable;
+        }
+    }
+    return nil;
+}
+
 -(void)csnowsfcStats //average snowfall over 6 hours
 {
     int total = 0;
@@ -112,7 +124,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [collections objectAtIndex:csnowsfc];
+    NSDictionary *variable = [self getData:@"csnowsfc"];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
@@ -138,7 +150,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     
     NSMutableDictionary *dict;
     NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [collections objectAtIndex:crainsfc];
+    NSDictionary *variable = [self getData:@"crainsfc"];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
@@ -164,7 +176,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     
     NSMutableDictionary *dict;
     NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [collections objectAtIndex:tmax2m];
+    NSDictionary *variable = [self getData:@"tmax2m"];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
@@ -191,7 +203,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     
     NSMutableDictionary *dict;
     NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [collections objectAtIndex:tmin2m];
+    NSDictionary *variable = [self getData:@"tmin2m"];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
@@ -217,7 +229,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     
     NSMutableDictionary *dict;
     NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [collections objectAtIndex:apcpsfc];
+    NSDictionary *variable = [self getData:@"apcpsfc"];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {
@@ -243,7 +255,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     
     NSMutableDictionary *dict;
     NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [collections objectAtIndex:sunsdsfc];
+    NSDictionary *variable = [self getData:@"sunsdsfc"];
     NSDictionary *values = [variable objectForKey:@"values"];
     for (NSDictionary *date in values)
     {

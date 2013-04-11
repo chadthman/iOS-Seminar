@@ -9,9 +9,15 @@
 #import "WWPieViewController.h"
 #import "CPDConstants.h"
 #import "CPDStockPriceStore.h"
+#import "WWCollectionViewController.h"
+
 
 @interface WWPieViewController ()
+{
+    //__weak IBOutlet UIButton *weatherButton;
+}
 
+@property (nonatomic) IBOutlet UIButton *weatherButton;
 @property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *themeButton;
 @property (nonatomic, strong) CPTGraphHostingView *hostView;
@@ -36,22 +42,21 @@
 #pragma mark - UIViewController lifecycle methods
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
     // The plot is initialized here, since the view bounds have not transformed for landscape until now
     [self initPlot];
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    weatherDisplay = [[NSUserDefaults standardUserDefaults] boolForKey:@"weatherDisplay"];
+    if (weatherDisplay)
+    {
+        [_weatherButton setTitle:@"Switch to Day View" forState:UIControlStateNormal];
+    } else {
+        [_weatherButton setTitle:@"Switch to Hour View" forState:UIControlStateNormal];
+    }
 	// Do any additional setup after loading the view.
 }
 
@@ -67,22 +72,41 @@
     [actionSheet showFromTabBar:self.tabBarController.tabBar];
 }
 
+-(IBAction)weatherDisplayButton:(id)sender
+{
+    //WWCollectionViewController *newController = [[WWCollectionViewController alloc] init];
+    if (weatherDisplay)
+    {
+        [_weatherButton setTitle:@"Switch to Day View" forState:UIControlStateNormal];
+        weatherDisplay = false;
+    } else {
+        [_weatherButton setTitle:@"Switch to Hour View" forState:UIControlStateNormal];
+        weatherDisplay = true;
+    }
+    [[NSUserDefaults standardUserDefaults] setBool:weatherDisplay forKey:@"weatherDisplay"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
 #pragma mark - Chart behavior
 -(void)initPlot {
     [self configureHost];
     [self configureGraph];
     [self configureChart];
     [self configureLegend];
+    [self.hostView.hostedGraph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
 }
 
 -(void)configureHost {
     // 1 - Set up view frame
     CGRect parentRect = self.view.bounds;
-    CGSize toolbarSize = self.toolbar.bounds.size;
+    //CGSize toolbarSize = self.toolbar.bounds.size;
+    //CGSize collectionViewContainerSize =
+    CGSize weatherButtonSize = self.weatherButton.bounds.size;
     parentRect = CGRectMake(parentRect.origin.x,
-                            (parentRect.origin.y + toolbarSize.height),
+                            (parentRect.origin.y + weatherButtonSize.height + 130),
                             parentRect.size.width,
-                            (parentRect.size.height - toolbarSize.height));
+                            (parentRect.size.height - weatherButtonSize.height));
     // 2 - Create host view
     self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
     self.hostView.allowPinchScaling = NO;
