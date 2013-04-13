@@ -43,7 +43,6 @@
 		639A4CD816F3C7A800BE30DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB016F3C7A800BE30DB /* Foundation.framework */; };
 		639A4CE016F3C7A800BE30DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CDE16F3C7A800BE30DB /* InfoPlist.strings */; };
 		639A4CE316F3C7A800BE30DB /* Weather_WonderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4CE216F3C7A800BE30DB /* Weather_WonderTests.m */; };
-		639A4CEE16F3CCA500BE30DB /* WWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4CED16F3CCA500BE30DB /* WWTabBarController.m */; };
 		639A4D3F16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4D3E16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a */; };
 		639A4D4116F3EF8C00BE30DB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4D4016F3EF8C00BE30DB /* QuartzCore.framework */; };
 		639A4D4616F3EFDB00BE30DB /* CPDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4316F3EFDB00BE30DB /* CPDConstants.m */; };
@@ -105,8 +104,6 @@
 		639A4CDF16F3C7A800BE30DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		639A4CE116F3C7A800BE30DB /* Weather_WonderTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Weather_WonderTests.h; sourceTree = "<group>"; };
 		639A4CE216F3C7A800BE30DB /* Weather_WonderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Weather_WonderTests.m; sourceTree = "<group>"; };
-		639A4CEC16F3CCA500BE30DB /* WWTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWTabBarController.h; sourceTree = "<group>"; };
-		639A4CED16F3CCA500BE30DB /* WWTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWTabBarController.m; sourceTree = "<group>"; };
 		639A4CF416F3ED5300BE30DB /* CorePlot-CocoaTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CorePlot-CocoaTouch.h"; sourceTree = "<group>"; };
 		639A4CF516F3ED5300BE30DB /* CPTAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnnotation.h; sourceTree = "<group>"; };
 		639A4CF616F3ED5300BE30DB /* CPTAnnotationHostLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnnotationHostLayer.h; sourceTree = "<group>"; };
@@ -261,8 +258,6 @@
 				639A4CC916F3C7A800BE30DB /* MainStoryboard_iPad.storyboard */,
 				639A4CCC16F3C7A800BE30DB /* WWViewController.h */,
 				639A4CCD16F3C7A800BE30DB /* WWViewController.m */,
-				639A4CEC16F3CCA500BE30DB /* WWTabBarController.h */,
-				639A4CED16F3CCA500BE30DB /* WWTabBarController.m */,
 				6334852B1702394700E38C04 /* WWCollectionViewController.h */,
 				6334852C1702394800E38C04 /* WWCollectionViewController.m */,
 				6334852517022AE600E38C04 /* WWCollectionViewCell.h */,
@@ -549,7 +544,6 @@
 				639A4CBB16F3C7A800BE30DB /* main.m in Sources */,
 				639A4CBF16F3C7A800BE30DB /* WWAppDelegate.m in Sources */,
 				639A4CCE16F3C7A800BE30DB /* WWViewController.m in Sources */,
-				639A4CEE16F3CCA500BE30DB /* WWTabBarController.m in Sources */,
 				639A4D4A16F3F36600BE30DB /* WWGraphViewController.m in Sources */,
 				639A4D4D16F3FF9B00BE30DB /* WWPieViewController.m in Sources */,
 				6334852717022AE600E38C04 /* WWCollectionViewCell.m in Sources */,

@@ -14,45 +14,26 @@
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cS1-FN-Rwp"/>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1304560122" green="0.1304560122" blue="0.1304560122" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cS1-FN-Rwp" firstAttribute="top" secondItem="3" secondAttribute="top" constant="255" id="D6H-pM-EeA"/>
                             <constraint firstItem="cS1-FN-Rwp" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="lZc-bZ-mWR"/>
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="2nJ-26-ASc" kind="modal" identifier="Next" id="8VK-R7-hjz"/>
+                        <segue destination="fyC-Ni-tLa" kind="modal" identifier="Next" id="XUd-Nq-jty"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="111" y="114"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="UaW-vu-tJN">
-            <objects>
-                <tabBarController storyboardIdentifier="TabBarController" definesPresentationContext="YES" id="2nJ-26-ASc" customClass="WWTabBarController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="X3c-QK-Fqn"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="xbs-md-4O7">
-                        <rect key="frame" x="129" y="330" width="163" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="fyC-Ni-tLa" kind="relationship" relationship="viewControllers" id="bf1-9N-KJS"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tpd-V2-3f9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="566" y="114"/>
+            <point key="canvasLocation" x="623" y="114"/>
         </scene>
         <!--Graph View Controller - Item-->
         <scene sceneID="sLo-eO-Puw">
             <objects>
-                <viewController id="fyC-Ni-tLa" customClass="WWGraphViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GraphViewController" id="fyC-Ni-tLa" customClass="WWGraphViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kpy-VY-Chx">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="iTa-1m-eOW">
@@ -80,74 +61,43 @@
                                     <action selector="weatherDisplayButton:" destination="fyC-Ni-tLa" eventType="touchDown" id="yGw-lM-eOW"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogw-bs-sjI">
+                                <connections>
+                                    <outlet property="delegate" destination="Kpy-VY-Chx" id="z5t-HB-xMD"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZWO-sv-Dt0">
+                                <connections>
+                                    <action selector="pageChanged" destination="fyC-Ni-tLa" eventType="valueChanged" id="grm-vu-gbc"/>
+                                </connections>
+                            </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1304560122" green="0.1304560122" blue="0.1304560122" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="VIl-gf-D93" firstAttribute="top" secondItem="Kpy-VY-Chx" secondAttribute="top" constant="65" id="9fp-8X-mum"/>
+                            <constraint firstAttribute="bottom" secondItem="ZWO-sv-Dt0" secondAttribute="bottom" constant="62" id="8ha-aI-2HN"/>
+                            <constraint firstItem="ogw-bs-sjI" firstAttribute="leading" secondItem="Kpy-VY-Chx" secondAttribute="leading" type="default" id="Csb-fl-Igy"/>
+                            <constraint firstItem="ogw-bs-sjI" firstAttribute="trailing" secondItem="Kpy-VY-Chx" secondAttribute="trailing" type="default" id="E5M-Qf-cfl"/>
                             <constraint firstItem="iTa-1m-eOW" firstAttribute="leading" secondItem="Kpy-VY-Chx" secondAttribute="leading" type="default" id="OyB-7a-EX8"/>
                             <constraint firstItem="VIl-gf-D93" firstAttribute="leading" secondItem="Kpy-VY-Chx" secondAttribute="leading" type="default" id="ag4-as-hKN"/>
+                            <constraint firstItem="VIl-gf-D93" firstAttribute="top" secondItem="ogw-bs-sjI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="dE5-6T-R2J"/>
+                            <constraint firstItem="ZWO-sv-Dt0" firstAttribute="centerX" secondItem="VIl-gf-D93" secondAttribute="centerX" type="default" id="eze-6e-Y7T"/>
                             <constraint firstItem="iTa-1m-eOW" firstAttribute="trailing" secondItem="Kpy-VY-Chx" secondAttribute="trailing" type="default" id="go2-XE-M2P"/>
                             <constraint firstItem="VIl-gf-D93" firstAttribute="trailing" secondItem="Kpy-VY-Chx" secondAttribute="trailing" type="default" id="qaZ-mF-SJG"/>
+                            <constraint firstAttribute="bottom" secondItem="VIl-gf-D93" secondAttribute="bottom" constant="38" id="vBo-3a-EQI"/>
+                            <constraint firstItem="ogw-bs-sjI" firstAttribute="top" secondItem="Kpy-VY-Chx" secondAttribute="top" constant="64" id="wNu-hK-ncQ"/>
                             <constraint firstItem="iTa-1m-eOW" firstAttribute="top" secondItem="Kpy-VY-Chx" secondAttribute="top" type="default" id="xPS-CG-UU5"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ES7-yJ-fCA"/>
                     <connections>
+                        <outlet property="pageControl" destination="ZWO-sv-Dt0" id="D28-Jx-She"/>
+                        <outlet property="scrollView" destination="ogw-bs-sjI" id="Xap-Ot-Cst"/>
                         <outlet property="weatherButton" destination="VIl-gf-D93" id="H4I-EG-cRa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNf-mZ-ezM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1089" y="114"/>
-        </scene>
-        <!--View Controller - Item 2-->
-        <scene sceneID="cEe-ep-Ohw">
-            <objects>
-                <viewController id="JnS-I2-Ubg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5lV-cu-ST7">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="p9O-2F-14w"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Z7u-hX-eWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1945" y="2145"/>
-        </scene>
-        <!--View Controller - Item 1-->
-        <scene sceneID="Wji-mJ-iJr">
-            <objects>
-                <viewController id="uy3-Qr-mdo" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hLW-EL-Tq3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="OUL-yu-2Rq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TZ4-g9-gUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1945" y="1493"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="Si7-xM-yYR">
-            <objects>
-                <tabBarController definesPresentationContext="YES" id="DDQ-c6-uLf" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="IvT-MI-koa">
-                        <rect key="frame" x="129" y="330" width="163" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="uy3-Qr-mdo" kind="relationship" relationship="viewControllers" id="puy-zM-Xhp"/>
-                        <segue destination="JnS-I2-Ubg" kind="relationship" relationship="viewControllers" id="Fhi-iR-g7r"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Op6-YD-vVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1413" y="1821"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="abn-fi-nfa">
@@ -156,7 +106,7 @@
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="rO1-Oh-RGJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.10588236149999999" green="0.10588236149999999" blue="0.10588236149999999" alpha="1" colorSpace="deviceRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xCS-cW-6f4">
                             <size key="itemSize" width="55" height="65"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -212,6 +162,48 @@
             <point key="canvasLocation" x="1089" y="-16"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="WWCollectionViewCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWCollectionViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="WWCollectionViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWCollectionViewController.h"/>
+        </class>
+        <class className="WWGraphViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWGraphViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pageChanged"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="weatherButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="WWViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

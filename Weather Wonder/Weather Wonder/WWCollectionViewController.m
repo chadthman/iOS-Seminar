@@ -107,9 +107,11 @@
     if (weatherDisplay)
     {
         //NSLog(@"correctedDate: %@", correctedDate);
-        newDate = [NSString stringWithFormat:@"%@ %@",[controller getTimeOfDay:dateString], [[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
+        newDate = [NSString stringWithFormat:@"%@ %@",[controller getTimeOfDay:dateString],
+                   [[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
     } else {
-        newDate = [NSString stringWithFormat:@"%@ %@", [controller getCalendarDay:correctedDate],[[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
+        newDate = [NSString stringWithFormat:@"%@ %@", [controller getCalendarDay:correctedDate],
+                   [[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
     }
     
     

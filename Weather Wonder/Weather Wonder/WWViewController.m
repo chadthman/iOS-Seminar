@@ -7,7 +7,7 @@
 //
 
 #import "WWViewController.h"
-#import "WWTabBarController.h"
+#import "WWGraphViewController.h"
 
 @interface WWViewController ()
 {
@@ -503,7 +503,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         }
 
         //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-        WWTabBarController *myVC = (WWTabBarController *)[storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+        WWGraphViewController *myVC = (WWGraphViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GraphViewController"];
         [self performSegueWithIdentifier:@"Next" sender:self];
         [self presentViewController:myVC animated:YES completion:nil];
     });

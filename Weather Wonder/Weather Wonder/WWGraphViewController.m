@@ -13,7 +13,10 @@
 @interface WWGraphViewController ()
 
 @property (nonatomic) IBOutlet UIButton *weatherButton;
-@property (nonatomic, strong) CPTGraphHostingView *hostView;
+@property (nonatomic, strong) CPTGraphHostingView *apcpsfcView;
+@property (nonatomic, strong) CPTGraphHostingView *tmax2mView;
+@property (nonatomic, strong) CPTGraphHostingView *tmin2mView;
+//@property (nonatomic) UIScrollView *scrollView;
 
 @end
 
@@ -32,7 +35,9 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 
 @implementation WWGraphViewController
 
-@synthesize hostView = hostView_;
+@synthesize apcpsfcView = apcpsfcView_;
+@synthesize tmax2mView  = tmax2mView_;
+@synthesize tmin2mView  = tmin2mView_;
 
 #pragma mark - UIViewController lifecycle methods
 -(void)viewDidAppear:(BOOL)animated {
@@ -49,7 +54,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
                 v.backgroundColor = [UIColor redColor];
                 break;
             case 1:
-                v.backgroundColor = [UIColor whiteColor];
+                v.backgroundColor = [UIColor greenColor];
                 break;
             case 2:
                 v.backgroundColor = [UIColor blueColor];
@@ -189,30 +194,39 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 }
 
 -(void)configureHost {
-    // 1 - Set up view frame
-    CGRect parentRect = self.view.bounds;
-    CGSize weatherButtonSize = self.weatherButton.bounds.size;
+    // 1 - Set up view frame for first view
+    CGRect parentRect = scrollView.bounds;
     parentRect = CGRectMake(parentRect.origin.x,
-                            (parentRect.origin.y + weatherButtonSize.height + 130),
+                            (parentRect.origin.y),
                             parentRect.size.width,
-                            (parentRect.size.height - weatherButtonSize.height - 130)); //need to get correct dynamic spaceing
-    self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-    self.hostView.allowPinchScaling = YES;
-    [self.view addSubview:self.hostView];
+                            (parentRect.size.height));
+    
+    //Add the three graphviews
+    self.apcpsfcView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+    self.apcpsfcView.allowPinchScaling = YES;
+    [scrollView addSubview:self.apcpsfcView];
+    
+    parentRect = CGRectMake((parentRect.origin.x + parentRect.size.width),
+                            parentRect.origin.y,
+                            (parentRect.size.width),
+                            parentRect.size.height);
+    self.tmax2mView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+    self.tmax2mView.allowPinchScaling = YES;
+    [scrollView addSubview:tmax2mView_];
 }
 
 -(void)configureGraph {
     // 1 - Create the graph
-    CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:self.hostView.bounds];
+    CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:self.apcpsfcView.bounds];
     [graph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
-    self.hostView.hostedGraph = graph;
+    self.apcpsfcView.hostedGraph = graph;
     // 2 - Set graph title
-    NSString *title = @"Snow at Surface";       //going to need to be dynamically changed later
+    NSString *title = @"Accumulated Rain at Surface";       //going to need to be dynamically changed later
     graph.title = title;
     // 3 - Create and set text style
     CPTMutableTextStyle *titleStyle = [CPTMutableTextStyle textStyle];
     titleStyle.color = [CPTColor whiteColor];
-    titleStyle.fontName = @"Helvetica-Bold";
+    titleStyle.fontName = @"HelveticaNeue-Light";
     titleStyle.fontSize = 16.0f;
     graph.titleTextStyle = titleStyle;
     graph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
@@ -223,19 +237,39 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     // 5 - Enable user interactions for plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     plotSpace.allowsUserInteraction = NO;
+    
+    CPTGraph *tempGraph = [[CPTXYGraph alloc] initWithFrame:self.tmax2mView.bounds];
+    [tempGraph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
+    self.tmax2mView.hostedGraph = tempGraph;
+    // 2 - Set graph title
+    NSString *tempTitle = @"Temperature at Surface";       //going to need to be dynamically changed later
+    tempGraph.title = tempTitle;
+    // 3 - Create and set text style
+    CPTMutableTextStyle *tempTitleStyle = [CPTMutableTextStyle textStyle];
+    tempTitleStyle.color = [CPTColor whiteColor];
+    tempTitleStyle.fontName = @"HelveticaNeue-Light";
+    tempTitleStyle.fontSize = 16.0f;
+    tempGraph.titleTextStyle = tempTitleStyle;
+    tempGraph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
+    tempGraph.titleDisplacement = CGPointMake(0.0f, 10.0f);
+    // 4 - Set padding for plot area
+    [tempGraph.plotAreaFrame setPaddingLeft:00.1f];
+    [tempGraph.plotAreaFrame setPaddingBottom:00.1f];
+    // 5 - Enable user interactions for plot space
+    CPTXYPlotSpace *tempPlotSpace = (CPTXYPlotSpace *) tempGraph.defaultPlotSpace;
+    tempPlotSpace.allowsUserInteraction = NO;
 }
 
 -(void)configurePlots {
-    
     //split into three parts
     
     // 1 - Get graph and plot space
-    CPTGraph *graph = self.hostView.hostedGraph;
+    CPTGraph *graph = self.apcpsfcView.hostedGraph;
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     // 2 - Create the three plots
     CPTScatterPlot *apcpsfcPlot = [[CPTScatterPlot alloc] init];
     apcpsfcPlot.dataSource = self;
-    apcpsfcPlot.identifier = tickerSymbolTMAX2M;
+    apcpsfcPlot.identifier = tickerSymbolAPCPSFC;
     CPTColor *apcpsfcColor = [CPTColor whiteColor];
     [graph addPlot:apcpsfcPlot toPlotSpace:plotSpace];
 //    CPTScatterPlot *googPlot = [[CPTScatterPlot alloc] init];
@@ -296,14 +330,14 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     // 1 - Create styles
     CPTMutableTextStyle *axisTitleStyle = [CPTMutableTextStyle textStyle];
     axisTitleStyle.color = [CPTColor whiteColor];
-    axisTitleStyle.fontName = @"Helvetica-Bold";
+    axisTitleStyle.fontName = @"HelveticaNeue-Light";
     axisTitleStyle.fontSize = 12.0f;
     CPTMutableLineStyle *axisLineStyle = [CPTMutableLineStyle lineStyle];
     axisLineStyle.lineWidth = 2.0f;
     axisLineStyle.lineColor = [CPTColor whiteColor];
     CPTMutableTextStyle *axisTextStyle = [[CPTMutableTextStyle alloc] init];
     axisTextStyle.color = [CPTColor whiteColor];
-    axisTextStyle.fontName = @"Helvetica-Bold";
+    axisTextStyle.fontName = @"HelveticaNeue-Light";
     axisTextStyle.fontSize = 11.0f;
     CPTMutableLineStyle *tickLineStyle = [CPTMutableLineStyle lineStyle];
     tickLineStyle.lineColor = [CPTColor whiteColor];
@@ -312,7 +346,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     tickLineStyle.lineColor = [CPTColor blackColor];
     tickLineStyle.lineWidth = 1.0f;
     // 2 - Get axis set
-    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.hostView.hostedGraph.axisSet;
+    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.apcpsfcView.hostedGraph.axisSet;
     // 3 - Configure x-axis
     CPTAxis *x = axisSet.xAxis;
     x.title = @"Day of Month";
