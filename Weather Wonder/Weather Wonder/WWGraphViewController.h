@@ -17,3 +17,8 @@
 - (IBAction)pageChanged;
 
 @end
+
+UIImage *nightViewImage;
+UIImage *morningViewImage;
+UIImage *afternoonViewImage;
+UIImage *eveningViewImgage;

@@ -9,6 +9,7 @@
 #import "WWCollectionViewController.h"
 #import "WWCollectionViewCell.h"
 #import "WWViewController.h"
+#import "WWGraphViewController.h"
 
 @interface WWCollectionViewController ()
 {
@@ -50,10 +51,83 @@
     [self.collectionView reloadData];
 }
 
-
 - (void)collectionView:(UICollectionView *)colView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     //change the view of my statistics here to the day that is selected
+    NSDictionary *variableDay;
+    variableDay   = [crainsfcDaily objectAtIndex:indexPath.section];
+    NSDate *date  =  variableDay[@"date"];
+
+    for (NSDictionary *newIndex in crainsfcHourly)
+    {
+        NSString *tempDate = [newIndex[@"date"] substringWithRange:NSMakeRange(0,10)];
+        NSString *tempDate2 = [[NSString stringWithFormat:@"%@", date] substringWithRange:NSMakeRange(0,10)];
+        if ([tempDate isEqualToString:tempDate2]) {
+            NSString *timeOfDay = [controller getTimeOfDay:[NSString stringWithFormat:@"%@",newIndex[@"date"]]];
+            if ([timeOfDay isEqualToString: @"Night"])
+            {
+                nightViewImage = [self imageForHour:newIndex[@"date"]];
+            } else if ([timeOfDay isEqualToString:@"Morning"])
+            {
+                morningViewImage = [self imageForHour:newIndex[@"date"]];
+            } else if ([timeOfDay isEqualToString:@"Afternoon"])
+            {
+                afternoonViewImage = [self imageForHour:newIndex[@"date"]];
+            } else {
+                eveningViewImgage = [self imageForHour:newIndex[@"date"]];
+            }
+        }
+    }
+    [[NSUserDefaults standardUserDefaults] setBool:weatherDisplay forKey:@"reloadImages"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+-(UIImage*)imageForHour:(NSDate*)date
+{
+    NSNumber *averageRain;
+    NSNumber *averageSnow;
+    NSNumber *averageCloudy;
+    
+    for (NSDictionary *variableRain in crainsfcHourly)
+    {
+        if (variableRain[@"date"] == date) {
+            averageRain = variableRain[@"average"];
+        }
+    }
+    for (NSDictionary *variableSnow in csnowsfcHourly)
+    {
+        if (variableSnow[@"date"] == date) {
+            averageSnow = variableSnow[@"average"];
+        }
+    }
+    for (NSDictionary *variableCloudy in sunsdsfcHourly)
+    {
+        if (variableCloudy[@"date"] == date) {
+            averageCloudy = variableCloudy[@"average"];
+        }
+    }
+    
+    if(averageRain.doubleValue >= 0.5)
+    {
+        if(averageRain.doubleValue >= averageSnow.doubleValue)
+        {
+            return rainImage;
+        } else {
+            return snowImage;
+        }
+    } else if (averageSnow.doubleValue >= 0.5)
+    {
+        return snowImage;
+    } else {
+        if (averageCloudy.doubleValue >= 10800)
+        {
+            return cloudyImage;
+        } else {
+            return sunnyImage;
+        }
+    }
+}
+
+
 
 -(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -64,7 +138,6 @@
     } else {
         return [csnowsfcDaily count];
     }
-    
 }
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

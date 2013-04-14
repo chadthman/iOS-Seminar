@@ -11,12 +11,21 @@
 #import "WWViewController.h"
 
 @interface WWGraphViewController ()
+{
+    UIImage *sunnyImage;
+    UIImage *cloudyImage;
+    UIImage *rainImage;
+    UIImage *snowImage;
+}
 
 @property (nonatomic) IBOutlet UIButton *weatherButton;
+@property (nonatomic) IBOutlet UIImageView *nightView;
+@property (nonatomic) IBOutlet UIImageView *morningView;
+@property (nonatomic) IBOutlet UIImageView *afternoonView;
+@property (nonatomic) IBOutlet UIImageView *eveningView;
 @property (nonatomic, strong) CPTGraphHostingView *apcpsfcView;
 @property (nonatomic, strong) CPTGraphHostingView *tmax2mView;
 @property (nonatomic, strong) CPTGraphHostingView *tmin2mView;
-//@property (nonatomic) UIScrollView *scrollView;
 
 @end
 
@@ -38,6 +47,10 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 @synthesize apcpsfcView = apcpsfcView_;
 @synthesize tmax2mView  = tmax2mView_;
 @synthesize tmin2mView  = tmin2mView_;
+@synthesize nightView;
+@synthesize morningView;
+@synthesize afternoonView;
+@synthesize eveningView;
 
 #pragma mark - UIViewController lifecycle methods
 -(void)viewDidAppear:(BOOL)animated {
@@ -83,6 +96,16 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     } else {
         [_weatherButton setTitle:@"Switch to Hour View" forState:UIControlStateNormal];
     }
+    sunnyImage  = [UIImage imageNamed:@"WeatherIconSun"];
+    cloudyImage = [UIImage imageNamed:@"WeatherIconCloudy"];
+    rainImage   = [UIImage imageNamed:@"WeatherIconRain"];
+    snowImage   = [UIImage imageNamed:@"WeatherIconSnow"];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults addObserver:self
+               forKeyPath:@"reloadImages"
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
     
 }
 
@@ -105,6 +128,15 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     // However, returning the first subview is wrong and zooming only partially works.
     // The real fix is more involved.
     return sv.subviews[0];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    //NSLog(@"KVO: %@ changed property %@ to value %@", object, keyPath, change);
+    [nightView setImage:nightViewImage];
+    [morningView setImage:morningViewImage];
+    [afternoonView setImage:afternoonViewImage];
+    [eveningView setImage:eveningViewImgage];
 }
 
 #pragma mark IBActions
