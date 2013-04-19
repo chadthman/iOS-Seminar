@@ -14,12 +14,14 @@
 -(int) getCurrentDay;
 -(int) getCurrentMonth;
 -(int) getCurrentYear;
+-(double)kelvinTofahrenheit:(double)kelvin;
 -(NSDate*) correctTimeZone:(NSDate*) imputdate;
 -(NSDate*) dateFromString:(NSString*)date;
 -(NSString*)getCalendarDay:(NSDate*)date;
 -(NSString*)getTimeOfDay:(NSString*)date;
 -(NSString*) getTodaysDate;
 -(NSString*) generateDate:(int) year month:(int) month day:(int) day;
+-(NSArray*)getHourSetInfoOnType:(NSString*)type onDay:(NSString*)day atTime:(int)time;
 
 
 @end

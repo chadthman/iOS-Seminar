@@ -16,6 +16,7 @@
     UIImage *cloudyImage;
     UIImage *rainImage;
     UIImage *snowImage;
+    WWViewController *controller;
 }
 
 @property (nonatomic) IBOutlet UIButton *weatherButton;
@@ -29,14 +30,14 @@
 
 @end
 
-#define crainsfc 0 //temporary
-#define csnowsfc 1
-#define sunsdsfc 2
-#define tmax2m   3
-#define tmin2m   4
-#define apcpsfc  5
+//#define crainsfc 0 //temporary
+//#define csnowsfc 1
+//#define sunsdsfc 2
+//#define tmax2m   3
+//#define tmin2m   4
+//#define apcpsfc  5
 
-static const NSInteger kNumberOfPages = 3;
+static const NSInteger kNumberOfPages = 2;
 
 NSString *  const tickerSymbolTMAX2M   = @"TMAX2M";
 NSString *  const tickerSymbolTMIN2M   = @"TMIN2M";
@@ -55,27 +56,26 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 #pragma mark - UIViewController lifecycle methods
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    for( NSInteger i = 0; i < kNumberOfPages; i++ ) {
-        CGRect frame;
-        frame.size = scrollView.bounds.size;
-        frame.origin.x = i*scrollView.frame.size.width;
-        frame.origin.y = 0.;
-        UIView *v = [[UIView alloc] initWithFrame:frame];
-        
-        switch( i ) {
-            case 0:
-                v.backgroundColor = [UIColor redColor];
-                break;
-            case 1:
-                v.backgroundColor = [UIColor greenColor];
-                break;
-            case 2:
-                v.backgroundColor = [UIColor blueColor];
-                break;
-        }
-        
-        [scrollView addSubview:v];
-    }
+//    for( NSInteger i = 0; i < kNumberOfPages; i++ ) {
+//        CGRect frame;
+//        frame.size = scrollView.bounds.size;
+//        frame.origin.x = i*scrollView.frame.size.width;
+//        frame.origin.y = 0.;
+//        UIView *v = [[UIView alloc] initWithFrame:frame];
+//        
+//        switch( i ) {
+//            case 0:
+//                v.backgroundColor = [UIColor redColor];
+//                break;
+//            case 1:
+//                v.backgroundColor = [UIColor greenColor];
+//                break;
+//            case 2:
+//                v.backgroundColor = [UIColor blueColor];
+//                break;
+//        }
+//        [scrollView addSubview:v];
+//    }
     
     scrollView.contentSize = CGSizeMake( kNumberOfPages*scrollView.frame.size.width, 0. );
     
@@ -96,6 +96,8 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     } else {
         [_weatherButton setTitle:@"Switch to Hour View" forState:UIControlStateNormal];
     }
+    
+    controller  = [[WWViewController alloc] init];
     sunnyImage  = [UIImage imageNamed:@"WeatherIconSun"];
     cloudyImage = [UIImage imageNamed:@"WeatherIconCloudy"];
     rainImage   = [UIImage imageNamed:@"WeatherIconRain"];
@@ -133,10 +135,27 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     //NSLog(@"KVO: %@ changed property %@ to value %@", object, keyPath, change);
+    [nightView setImage:nil];
+    [morningView setImage:nil];
+    [afternoonView setImage:nil];
+    [eveningView setImage:nil];
+    
     [nightView setImage:nightViewImage];
     [morningView setImage:morningViewImage];
     [afternoonView setImage:afternoonViewImage];
     [eveningView setImage:eveningViewImgage];
+    
+    [self initPlot];
+    [scrollView setNeedsDisplay];
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    scrollView.contentSize = CGSizeMake( kNumberOfPages*scrollView.frame.size.width, 0.);
+    [self.view updateConstraints];
+    [scrollView updateConstraintsIfNeeded];
+    [self initPlot];
+    [scrollView setNeedsDisplay];
 }
 
 #pragma mark IBActions
@@ -178,25 +197,54 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
             
         case CPTScatterPlotFieldY:
             if ([plot.identifier isEqual:tickerSymbolTMAX2M] == YES) {
-                NSDictionary *tmax2mDict = [[self monthlyPrices:tickerSymbolTMAX2M] objectAtIndex:index];
-                NSNumber *temp = tmax2mDict[@"average"];
-                NSNumber *tmax2mNumber = [NSNumber numberWithDouble:temp.doubleValue]; //convert to precentage
-                return  tmax2mNumber;
+                NSArray *info = [self allDayBreakdownOfType:@"tmax2m" onDate:[self indexToDate:selectedIndex]];
+                return [info objectAtIndex:index];
+//                NSDictionary *tmax2mDict = [[self monthlyPrices:tickerSymbolTMAX2M] objectAtIndex:index];
+//                NSNumber *temp = tmax2mDict[@"average"];
+//                NSNumber *tmax2mNumber = [NSNumber numberWithDouble:temp.doubleValue]; //convert to precentage
+//                return  tmax2mNumber;
             } else if ([plot.identifier isEqual:tickerSymbolTMIN2M] == YES) {
-                NSDictionary *tmin2mDict = [[self monthlyPrices:tickerSymbolTMIN2M] objectAtIndex:index];
-                NSNumber *temp = tmin2mDict[@"average"];
-                NSNumber *tmin2mNumber = [NSNumber numberWithDouble:temp.doubleValue];
-                return  tmin2mNumber;
-
+                NSArray *info = [self allDayBreakdownOfType:@"tmin2m" onDate:[self indexToDate:selectedIndex]];
+                return [info objectAtIndex:index];
+//                NSDictionary *tmin2mDict = [[self monthlyPrices:tickerSymbolTMIN2M] objectAtIndex:index];
+//                NSNumber *temp = tmin2mDict[@"average"];
+//                NSNumber *tmin2mNumber = [NSNumber numberWithDouble:temp.doubleValue];
+//                return  tmin2mNumber;
             } else if ([plot.identifier isEqual:tickerSymbolAPCPSFC] == YES) {
-                NSDictionary *apcpsftDict = [[self monthlyPrices:tickerSymbolAPCPSFC] objectAtIndex:index];
-                NSNumber *temp = apcpsftDict[@"average"];
-                NSNumber *apcpsfcNumber = [NSNumber numberWithDouble:temp.doubleValue];
-                return  apcpsfcNumber;
+                //NSDictionary *apcpsfcDict = [[self monthlyPrices:tickerSymbolAPCPSFC] objectAtIndex:index];
+                NSArray *info = [self allDayBreakdownOfType:@"apcpsfc" onDate:[self indexToDate:selectedIndex]];
+                return [info objectAtIndex:index];
+//                NSNumber *temp = apcpsfcDict[@"average"];
+//                NSNumber *apcpsfcNumber = [NSNumber numberWithDouble:temp.doubleValue];
+//                return  apcpsfcNumber;
             }
             break;
     }
     return [NSDecimalNumber zero];
+}
+
+-(NSDate*)indexToDate:(NSIndexPath*)indexPath
+{
+    NSDictionary *variableDay;
+    variableDay   = [crainsfcDaily objectAtIndex:indexPath.section]; //arbituarly picked crainsfcDaily
+    return variableDay[@"date"];
+}
+                                 
+-(NSArray*)allDayBreakdownOfType:(NSString*)type onDate:(NSDate*)date
+{
+    NSString *day;
+    int time;
+    for (NSDictionary *newIndex in crainsfcHourly)
+    {
+        NSString *tempDate = [newIndex[@"date"] substringWithRange:NSMakeRange(0,10)];
+        NSString *tempDate2 = [[NSString stringWithFormat:@"%@", date] substringWithRange:NSMakeRange(0,10)];
+        if ([tempDate isEqualToString:tempDate2]) {
+            day = [newIndex[@"date"] substringWithRange:NSMakeRange(0, 10)];
+            time = [[newIndex[@"date"] substringWithRange:NSMakeRange(12, 2)] integerValue];
+            return [controller getHourSetInfoOnType:type onDay:day atTime:time];
+        }
+    }
+    return nil;
 }
 
 - (NSArray *)monthlyPrices:(NSString *)tickerSymbol
@@ -268,7 +316,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     [graph.plotAreaFrame setPaddingBottom:00.1f];
     // 5 - Enable user interactions for plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
-    plotSpace.allowsUserInteraction = NO;
+    plotSpace.allowsUserInteraction = YES;
     
     CPTGraph *tempGraph = [[CPTXYGraph alloc] initWithFrame:self.tmax2mView.bounds];
     [tempGraph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
@@ -289,39 +337,56 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     [tempGraph.plotAreaFrame setPaddingBottom:00.1f];
     // 5 - Enable user interactions for plot space
     CPTXYPlotSpace *tempPlotSpace = (CPTXYPlotSpace *) tempGraph.defaultPlotSpace;
-    tempPlotSpace.allowsUserInteraction = NO;
+    tempPlotSpace.allowsUserInteraction = YES;
 }
 
 -(void)configurePlots {
     //split into three parts
     
     // 1 - Get graph and plot space
-    CPTGraph *graph = self.apcpsfcView.hostedGraph;
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
+    CPTGraph *apcpsfcGraph = self.apcpsfcView.hostedGraph;
+    CPTGraph *temperatureGraph = self.tmax2mView.hostedGraph;
+    CPTXYPlotSpace *apcpsfcPlotSpace = (CPTXYPlotSpace *) apcpsfcGraph.defaultPlotSpace;
+    CPTXYPlotSpace *temperaturePlotSpace = (CPTXYPlotSpace *) temperatureGraph.defaultPlotSpace;
+    //CPTXYPlotSpace *tmin2mPlotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     // 2 - Create the three plots
     CPTScatterPlot *apcpsfcPlot = [[CPTScatterPlot alloc] init];
     apcpsfcPlot.dataSource = self;
     apcpsfcPlot.identifier = tickerSymbolAPCPSFC;
     CPTColor *apcpsfcColor = [CPTColor whiteColor];
-    [graph addPlot:apcpsfcPlot toPlotSpace:plotSpace];
-//    CPTScatterPlot *googPlot = [[CPTScatterPlot alloc] init];
-//    googPlot.dataSource = self;
-//    googPlot.identifier = CPDTickerSymbolGOOG;
-//    CPTColor *googColor = [CPTColor greenColor];
-//    [graph addPlot:googPlot toPlotSpace:plotSpace];
-//    CPTScatterPlot *msftPlot = [[CPTScatterPlot alloc] init];
-//    msftPlot.dataSource = self;
-//    msftPlot.identifier = CPDTickerSymbolMSFT;
-//    CPTColor *msftColor = [CPTColor blueColor];
-//    [graph addPlot:msftPlot toPlotSpace:plotSpace];
+    [apcpsfcGraph addPlot:apcpsfcPlot toPlotSpace:apcpsfcPlotSpace];
+    
+    CPTScatterPlot *tmax2mPlot = [[CPTScatterPlot alloc] init];
+    tmax2mPlot.dataSource = self;
+    tmax2mPlot.identifier = tickerSymbolTMAX2M;
+    CPTColor *tmax2mColor = [CPTColor redColor];
+    [temperatureGraph addPlot:tmax2mPlot toPlotSpace:temperaturePlotSpace];
+    
+    CPTScatterPlot *tmin2mPlot = [[CPTScatterPlot alloc] init];
+    tmin2mPlot.dataSource = self;
+    tmin2mPlot.identifier = tickerSymbolTMIN2M;
+    CPTColor *tmin2mColor = [CPTColor blueColor];
+    [temperatureGraph addPlot:tmin2mPlot toPlotSpace:temperaturePlotSpace];
+    
     // 3 - Set up plot space
-    [plotSpace scaleToFitPlots:[NSArray arrayWithObjects:apcpsfcPlot, nil]]; //googPlot, msftPlot, nil]];
-    CPTMutablePlotRange *xRange = [plotSpace.xRange mutableCopy];
+    [apcpsfcPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:apcpsfcPlot, nil]];
+    CPTMutablePlotRange *xRange = [apcpsfcPlotSpace.xRange mutableCopy];
     [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
-    plotSpace.xRange = xRange;
-    CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
+    apcpsfcPlotSpace.xRange = xRange;
+    CPTMutablePlotRange *yRange = [apcpsfcPlotSpace.yRange mutableCopy];
     [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
-    plotSpace.yRange = yRange;
+    apcpsfcPlotSpace.yRange = yRange;
+    [apcpsfcPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:apcpsfcPlot, nil]]; //googPlot, msftPlot, nil]];
+    
+    [temperaturePlotSpace scaleToFitPlots:[NSArray arrayWithObjects:tmax2mPlot, tmin2mPlot, nil]];
+    xRange = [temperaturePlotSpace.xRange mutableCopy];
+    [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    temperaturePlotSpace.xRange = xRange;
+    yRange = [temperaturePlotSpace.yRange mutableCopy];
+    [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.2f)];
+    temperaturePlotSpace.yRange = yRange;
+    [temperaturePlotSpace scaleToFitPlots:[NSArray arrayWithObjects:tmax2mPlot, tmin2mPlot, nil]]; //googPlot, msftPlot, nil]];
+    
     // 4 - Create styles and symbols
     CPTMutableLineStyle *apcpsfcLineStyle = [apcpsfcPlot.dataLineStyle mutableCopy];
     apcpsfcLineStyle.lineWidth = 2.5;
@@ -334,28 +399,30 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     apcpsfcSymbol.lineStyle = apcpsfcSymbolLineStyle;
     apcpsfcSymbol.size = CGSizeMake(6.0f, 6.0f);
     apcpsfcPlot.plotSymbol = apcpsfcSymbol;
-//    CPTMutableLineStyle *googLineStyle = [googPlot.dataLineStyle mutableCopy];
-//    googLineStyle.lineWidth = 1.0;
-//    googLineStyle.lineColor = googColor;
-//    googPlot.dataLineStyle = googLineStyle;
-//    CPTMutableLineStyle *googSymbolLineStyle = [CPTMutableLineStyle lineStyle];
-//    googSymbolLineStyle.lineColor = googColor;
-//    CPTPlotSymbol *googSymbol = [CPTPlotSymbol starPlotSymbol];
-//    googSymbol.fill = [CPTFill fillWithColor:googColor];
-//    googSymbol.lineStyle = googSymbolLineStyle;
-//    googSymbol.size = CGSizeMake(6.0f, 6.0f);
-//    googPlot.plotSymbol = googSymbol;
-//    CPTMutableLineStyle *msftLineStyle = [msftPlot.dataLineStyle mutableCopy];
-//    msftLineStyle.lineWidth = 2.0;
-//    msftLineStyle.lineColor = msftColor;
-//    msftPlot.dataLineStyle = msftLineStyle;
-//    CPTMutableLineStyle *msftSymbolLineStyle = [CPTMutableLineStyle lineStyle];
-//    msftSymbolLineStyle.lineColor = msftColor;
-//    CPTPlotSymbol *msftSymbol = [CPTPlotSymbol diamondPlotSymbol];
-//    msftSymbol.fill = [CPTFill fillWithColor:msftColor];
-//    msftSymbol.lineStyle = msftSymbolLineStyle;
-//    msftSymbol.size = CGSizeMake(6.0f, 6.0f);
-//    msftPlot.plotSymbol = msftSymbol;
+    
+    CPTMutableLineStyle *tmax2mLineStyle = [tmax2mPlot.dataLineStyle mutableCopy];
+    tmax2mLineStyle.lineWidth = 1.0;
+    tmax2mLineStyle.lineColor = tmax2mColor;
+    tmax2mPlot.dataLineStyle = tmax2mLineStyle;
+    CPTMutableLineStyle *tmax2mSymbolLineStyle = [CPTMutableLineStyle lineStyle];
+    tmax2mSymbolLineStyle.lineColor = tmax2mColor;
+    CPTPlotSymbol *tmax2mSymbol = [CPTPlotSymbol ellipsePlotSymbol];
+    tmax2mSymbol.fill = [CPTFill fillWithColor:tmax2mColor];
+    tmax2mSymbol.lineStyle = tmax2mSymbolLineStyle;
+    tmax2mSymbol.size = CGSizeMake(6.0f, 6.0f);
+    tmax2mPlot.plotSymbol = tmax2mSymbol;
+    
+    CPTMutableLineStyle *tmin2mLineStyle = [tmin2mPlot.dataLineStyle mutableCopy];
+    tmin2mLineStyle.lineWidth = 2.0;
+    tmin2mLineStyle.lineColor = tmin2mColor;
+    tmin2mPlot.dataLineStyle = tmin2mLineStyle;
+    CPTMutableLineStyle *tmin2mSymbolLineStyle = [CPTMutableLineStyle lineStyle];
+    tmin2mSymbolLineStyle.lineColor = tmin2mColor;
+    CPTPlotSymbol *tmin2mSymbol = [CPTPlotSymbol ellipsePlotSymbol];
+    tmin2mSymbol.fill = [CPTFill fillWithColor:tmin2mColor];
+    tmin2mSymbol.lineStyle = tmin2mSymbolLineStyle;
+    tmin2mSymbol.size = CGSizeMake(6.0f, 6.0f);
+    tmin2mPlot.plotSymbol = tmin2mSymbol;
 }
 
 -(void)configureAxes {
@@ -377,10 +444,15 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     CPTMutableLineStyle *gridLineStyle = [CPTMutableLineStyle lineStyle];
     tickLineStyle.lineColor = [CPTColor blackColor];
     tickLineStyle.lineWidth = 1.0f;
+    
     // 2 - Get axis set
-    CPTXYAxisSet *axisSet = (CPTXYAxisSet *) self.apcpsfcView.hostedGraph.axisSet;
+    CPTXYAxisSet *apcpsfcAxisSet = (CPTXYAxisSet *) self.apcpsfcView.hostedGraph.axisSet;
+    CPTXYAxisSet *temperatureAxisSet = (CPTXYAxisSet *) self.tmax2mView.hostedGraph.axisSet;
+    
     // 3 - Configure x-axis
-    CPTAxis *x = axisSet.xAxis;
+    
+    // apcpsfc x-axis info
+    CPTAxis *x = apcpsfcAxisSet.xAxis;
     x.title = @"Day of Month";
     x.titleTextStyle = axisTitleStyle;
     x.titleOffset = 15.0f;
@@ -406,8 +478,39 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     }
     x.axisLabels = xLabels;
     x.majorTickLocations = xLocations;
+    
+    // temperature x-axis info
+    CPTAxis *xx = temperatureAxisSet.xAxis;
+    xx.title = @"Time of Day";
+    xx.titleTextStyle = axisTitleStyle;
+    xx.titleOffset = 15.0f;
+    xx.axisLineStyle = axisLineStyle;
+    xx.labelingPolicy = CPTAxisLabelingPolicyNone;
+    xx.labelTextStyle = axisTextStyle;
+    xx.majorTickLineStyle = axisLineStyle;
+    xx.majorTickLength = 4.0f;
+    xx.tickDirection = CPTSignNegative;
+    CGFloat tempDateCount = [[[CPDStockPriceStore sharedInstance] datesInMonth] count];
+    NSMutableSet *xxLabels = [NSMutableSet setWithCapacity:tempDateCount];
+    NSMutableSet *xxLocations = [NSMutableSet setWithCapacity:tempDateCount];
+    i = 0;
+    for (NSString *date in [[CPDStockPriceStore sharedInstance] datesInMonth]) {
+        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:date  textStyle:xx.labelTextStyle];
+        CGFloat location = i++;
+        label.tickLocation = CPTDecimalFromCGFloat(location);
+        label.offset = xx.majorTickLength;
+        if (label) {
+            [xxLabels addObject:label];
+            [xxLocations addObject:[NSNumber numberWithFloat:location]];
+        }
+    }
+    xx.axisLabels = xxLabels;
+    xx.majorTickLocations = xxLocations;
+    
     // 4 - Configure y-axis
-    CPTAxis *y = axisSet.yAxis;
+    
+    // apcpsfc y-axis info
+    CPTAxis *y = apcpsfcAxisSet.yAxis;
     y.title = @"Amount in mm"; //also will need to be dynamically changed
     y.titleTextStyle = axisTitleStyle;
     y.titleOffset = -30.0f;
@@ -444,6 +547,46 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     y.axisLabels = yLabels;    
     y.majorTickLocations = yMajorLocations;
     y.minorTickLocations = yMinorLocations;
+    
+    // temperature y-axis info
+    CPTAxis *yy = temperatureAxisSet.yAxis;
+    yy.title = @"Degrees in Fahrenheit"; //also will need to be dynamically changed
+    yy.titleTextStyle = axisTitleStyle;
+    yy.titleOffset = -30.0f;
+    yy.axisLineStyle = axisLineStyle;
+    yy.majorGridLineStyle = gridLineStyle;
+    yy.labelingPolicy = CPTAxisLabelingPolicyNone;
+    yy.labelTextStyle = axisTextStyle;
+    yy.labelOffset = 16.0f;
+    yy.majorTickLineStyle = axisLineStyle;
+    yy.majorTickLength = 4.0f;
+    yy.minorTickLength = 2.0f;
+    yy.tickDirection = CPTSignPositive;
+    NSInteger tempMajorIncrement = 10;
+    NSInteger tempMinorIncrement = 5;
+    CGFloat yyMax = 700.0f;  // should determine dynamically based on max price
+    NSMutableSet *yyLabels = [NSMutableSet set];
+    NSMutableSet *yyMajorLocations = [NSMutableSet set];
+    NSMutableSet *yyMinorLocations = [NSMutableSet set];
+    for (NSInteger j = tempMinorIncrement; j <= yyMax; j += tempMinorIncrement) {
+        NSUInteger mod = j % tempMajorIncrement;
+        if (mod == 0) {
+            CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i", j] textStyle:yy.labelTextStyle];
+            NSDecimal location = CPTDecimalFromInteger(j);
+            label.tickLocation = location;
+            label.offset = -yy.majorTickLength - yy.labelOffset;
+            if (label) {
+                [yyLabels addObject:label];
+            }
+            [yyMajorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:location]];
+        } else {
+            [yyMinorLocations addObject:[NSDecimalNumber decimalNumberWithDecimal:CPTDecimalFromInteger(j)]];
+        }
+    }
+    yy.axisLabels = yyLabels;
+    yy.majorTickLocations = yyMajorLocations;
+    yy.minorTickLocations = yyMinorLocations;
+
 }
 
 

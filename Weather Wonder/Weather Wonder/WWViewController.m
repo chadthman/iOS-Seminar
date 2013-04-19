@@ -51,45 +51,50 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 
 #pragma mark - Parse Data Functions
 
--(double)getDayInfo:(int)type onDay:(NSString*)day //doubt this is needed anymore but it might be useful
+//-(double)getDayInfo:(int)type onDay:(NSString*)day //doubt this is needed anymore but it might be useful
+//{
+//    NSMutableArray *numbers = [[NSMutableArray alloc] init];;
+//    int total = 0;
+//    double dayAverage = 0;
+//    
+//    NSString *currentDate;
+//    currentDate = [NSString stringWithFormat: @"%@",day];
+//    NSDictionary *variable = [collections objectAtIndex:type];
+//    NSDictionary *values = [variable objectForKey:@"values"];
+//    NSString *checkingDate;
+//    for (NSDictionary *date in values)
+//    {
+//        checkingDate = [date[@"date"] substringWithRange:NSMakeRange(0,10)];
+//        if ([checkingDate isEqualToString:currentDate])
+//        {
+//            for (NSArray *prediction in date[@"predictions"])
+//            {
+//                //NSLog(@"%@ ", prediction);
+//                [numbers addObject:prediction];
+//            }
+//        }
+//    }
+//    for (NSArray *printTest in numbers)
+//    {
+//        total = total + [[NSString stringWithFormat:@"%@", printTest] integerValue];
+//    }
+//    dayAverage = (double)total/64.0; //64.0 is the number of elements in the array
+//    //NSLog(@"%d", dayAverage);
+//    return dayAverage;
+//}
+
+-(double)kelvinTofahrenheit:(double)kelvin
 {
-    NSMutableArray *numbers = [[NSMutableArray alloc] init];;
-    int total = 0;
-    double dayAverage = 0;
-    
-    NSString *currentDate;
-    currentDate = [NSString stringWithFormat: @"%@",day];
-    NSDictionary *variable = [collections objectAtIndex:type];
-    NSDictionary *values = [variable objectForKey:@"values"];
-    NSString *checkingDate;
-    for (NSDictionary *date in values)
-    {
-        checkingDate = [date[@"date"] substringWithRange:NSMakeRange(0,10)];
-        if ([checkingDate isEqualToString:currentDate])
-        {
-            for (NSArray *prediction in date[@"predictions"])
-            {
-                //NSLog(@"%@ ", prediction);
-                [numbers addObject:prediction];
-            }
-        }
-    }
-    for (NSArray *printTest in numbers)
-    {
-        total = total + [[NSString stringWithFormat:@"%@", printTest] integerValue];
-    }
-    dayAverage = (double)total/64.0; //64.0 is the number of elements in the array
-    //NSLog(@"%d", dayAverage);
-    return dayAverage;
+    return ((9/5)*(kelvin - 273))+32;
 }
 
--(NSString*)getHourSetInfo:(int)type onDay:(NSString*)day atTime:(int)time //doubt this is needed anymore but it might be useful
+-(NSArray*)getHourSetInfoOnType:(NSString*)type onDay:(NSString*)day atTime:(int)time
 {
     NSString *currentDate;
     currentDate = [NSString stringWithFormat: @"%@T%02d", day, time];
     //NSLog(@"The Asked Date is : %@\n", currentDate);
     
-    NSDictionary *variable = [collections objectAtIndex:type];
+    NSDictionary *variable = [self getData:type];
     NSDictionary *values = [variable objectForKey:@"values"];
     NSString *checkingDate;
     for (NSDictionary *date in values)
@@ -184,7 +189,9 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         total = 0;
         for (NSArray *prediction in date[@"predictions"])
         {
-            total = total + [[NSString stringWithFormat:@"%@", prediction] doubleValue];
+            double kelvin = [[NSString stringWithFormat:@"%@", prediction] doubleValue];
+            double fahrenheit = [self kelvinTofahrenheit:kelvin];
+            total = total + fahrenheit;
         }
         hourAverage = total/21.0; //21.0 is the number of elements in the array
         [dict setObject:date[@"date"] forKey:@"date"];
@@ -211,7 +218,9 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         total = 0;
         for (NSArray *prediction in date[@"predictions"])
         {
-            total = total + [[NSString stringWithFormat:@"%@", prediction] doubleValue];
+            double kelvin = [[NSString stringWithFormat:@"%@", prediction] doubleValue];
+            double fahrenheit = [self kelvinTofahrenheit:kelvin];
+            total = total + fahrenheit;
         }
         hourAverage = total/21.0; //21.0 is the number of elements in the array
         [dict setObject:date[@"date"] forKey:@"date"];
@@ -332,7 +341,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 #pragma mark - Time
 
 -(NSDate*) correctTimeZone:(NSDate*) imputdate
-{
+{    
     NSDate* sourceDate = imputdate;
     
     NSTimeZone* sourceTimeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];

@@ -63,6 +63,12 @@
                                     <constraint firstAttribute="height" constant="110" type="user" id="QUl-CP-2qt"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="KFI-qM-7Cf">
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="192" type="user" id="8YV-cp-2Qk"/>
+                                    <constraint firstAttribute="height" constant="110" type="user" id="MV6-6A-7qU"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Night" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5K-cc-BqB">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="aXp-T9-LM9"/>
@@ -77,26 +83,11 @@
                                     <outlet property="delegate" destination="hld-Qb-CIe" id="Gyz-3i-A81"/>
                                 </connections>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExN-KY-DHs">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Kbh-SO-X30"/>
-                                    <constraint firstAttribute="width" constant="110" id="eLQ-2E-D1Y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="2bj-Gx-jgU">
                                 <connections>
                                     <action selector="pageChanged" destination="hld-Qb-CIe" eventType="valueChanged" id="9kJ-nc-BGM"/>
                                 </connections>
                             </pageControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="KFI-qM-7Cf">
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="192" type="user" id="8YV-cp-2Qk"/>
-                                    <constraint firstAttribute="height" constant="110" type="user" id="MV6-6A-7qU"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTF-7g-LVw">
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,7 +115,6 @@
                             <constraint firstItem="tTF-7g-LVw" firstAttribute="leading" secondItem="cOc-ji-kqp" secondAttribute="leading" type="default" id="Nf1-mf-STG"/>
                             <constraint firstItem="tTF-7g-LVw" firstAttribute="top" secondItem="y5K-cc-BqB" secondAttribute="top" type="default" id="NyL-c3-eWo"/>
                             <constraint firstItem="dvG-Ov-ruZ" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" type="user" id="P4G-1k-MPq"/>
-                            <constraint firstItem="ExN-KY-DHs" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" constant="139" id="Paj-1m-wmr"/>
                             <constraint firstItem="WuH-8R-3yi" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" constant="129" id="QEN-CN-heD"/>
                             <constraint firstItem="y5K-cc-BqB" firstAttribute="bottom" secondItem="D10-Gu-4bU" secondAttribute="bottom" type="default" id="Sku-hb-5el"/>
                             <constraint firstItem="5N6-NL-nKp" firstAttribute="trailing" secondItem="2rl-gq-NNd" secondAttribute="trailing" type="default" id="WOO-na-qSx"/>
@@ -141,7 +131,6 @@
                             <constraint firstItem="y5K-cc-BqB" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="default" id="lsC-be-R9p"/>
                             <constraint firstItem="WuH-8R-3yi" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="m7A-kO-HC9"/>
                             <constraint firstItem="WuH-8R-3yi" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="default" id="mH5-UR-FeI"/>
-                            <constraint firstItem="ExN-KY-DHs" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" constant="10" id="qKT-mz-DRr"/>
                             <constraint firstItem="KFI-qM-7Cf" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="rGM-DO-aIA"/>
                             <constraint firstItem="dvG-Ov-ruZ" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="rQs-Ca-UNz"/>
                             <constraint firstItem="y5K-cc-BqB" firstAttribute="trailing" secondItem="wrQ-ga-D7q" secondAttribute="trailing" type="default" id="rSb-zb-khh"/>
@@ -223,52 +212,6 @@
             <point key="canvasLocation" x="-257" y="-625"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="WWCollectionViewCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWCollectionViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="textView" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="WWCollectionViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWCollectionViewController.h"/>
-        </class>
-        <class className="WWGraphViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWGraphViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="pageChanged"/>
-                <relationship kind="outlet" name="afternoonView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="eveningView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="morningView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="nightView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="weatherButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="WWViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WWViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

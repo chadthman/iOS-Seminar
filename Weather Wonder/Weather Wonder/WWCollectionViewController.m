@@ -32,11 +32,16 @@
                   options:NSKeyValueObservingOptionNew
                   context:NULL];
     
+    NSInteger row = [[NSUserDefaults standardUserDefaults] integerForKey:@"selectedIndexRow"];
+    NSInteger section = [[NSUserDefaults standardUserDefaults] integerForKey:@"selectedIndexSection"];
+    selectedIndex = [NSIndexPath indexPathForRow:row inSection:section];
     controller  = [[WWViewController alloc] init];
     sunnyImage  = [UIImage imageNamed:@"WeatherIconSun"];
     cloudyImage = [UIImage imageNamed:@"WeatherIconCloudy"];
     rainImage   = [UIImage imageNamed:@"WeatherIconRain"];
     snowImage   = [UIImage imageNamed:@"WeatherIconSnow"];
+    
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,6 +50,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)initData
+{
+    NSIndexPath *indexPath;
+    if (selectedIndex == nil)
+    {
+        indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    } else {
+        indexPath = selectedIndex;
+    }
+    dispatch_async( dispatch_get_main_queue(), ^{
+    [self didSelectItemHelperAtIndexPath:indexPath];
+    });
+}
+
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     //NSLog(@"KVO: %@ changed property %@ to value %@", object, keyPath, change);
@@ -52,11 +72,17 @@
 }
 
 - (void)collectionView:(UICollectionView *)colView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self didSelectItemHelperAtIndexPath:indexPath];
+}
+
+-(void)didSelectItemHelperAtIndexPath:(NSIndexPath*)indexPath
+{
     //change the view of my statistics here to the day that is selected
     NSDictionary *variableDay;
-    variableDay   = [crainsfcDaily objectAtIndex:indexPath.section];
+    variableDay   = [crainsfcDaily objectAtIndex:indexPath.section]; //arbituarly picked crainsfcDaily
     NSDate *date  =  variableDay[@"date"];
-
+    selectedIndex = indexPath;
+    
     for (NSDictionary *newIndex in crainsfcHourly)
     {
         NSString *tempDate = [newIndex[@"date"] substringWithRange:NSMakeRange(0,10)];
@@ -77,8 +103,11 @@
             }
         }
     }
+    [[NSUserDefaults standardUserDefaults] setInteger:selectedIndex.row forKey:@"selectedIndexRow"];
+    [[NSUserDefaults standardUserDefaults] setInteger:selectedIndex.section forKey:@"selectedIndexSection"];
     [[NSUserDefaults standardUserDefaults] setBool:weatherDisplay forKey:@"reloadImages"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 -(UIImage*)imageForHour:(NSDate*)date

@@ -45,25 +45,9 @@
                                     <segue destination="ctj-Ki-Guv" kind="embed" id="r9V-T0-zd3"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIl-gf-D93">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="Z5X-4o-Xeb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="Type">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="weatherDisplayButton:" destination="fyC-Ni-tLa" eventType="touchDown" id="yGw-lM-eOW"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogw-bs-sjI">
                                 <connections>
-                                    <outlet property="delegate" destination="Kpy-VY-Chx" id="z5t-HB-xMD"/>
+                                    <outlet property="delegate" destination="fyC-Ni-tLa" id="M7e-Ll-BaD"/>
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZWO-sv-Dt0">
@@ -71,28 +55,98 @@
                                     <action selector="pageChanged" destination="fyC-Ni-tLa" eventType="valueChanged" id="grm-vu-gbc"/>
                                 </connections>
                             </pageControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="KAV-3p-xrV">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="qp0-QM-9af"/>
+                                    <constraint firstAttribute="height" constant="55" id="t2S-zd-KJg"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="2En-62-tSf">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Kcu-DX-3z4"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="nv4-ge-KhK">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="8a7-o3-gz4"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="JJv-lZ-jhH">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="1ax-3v-9Nb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Night" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vd3-2h-fes">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="soT-44-ixh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQc-sR-d6j">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Afternoon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pl9-wy-WQu">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNG-gO-SIw">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.1304560122" green="0.1304560122" blue="0.1304560122" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.09803922474" green="0.09803922474" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="LQc-sR-d6j" firstAttribute="trailing" secondItem="2En-62-tSf" secondAttribute="trailing" type="default" id="3TB-Vd-R0d"/>
+                            <constraint firstItem="nv4-ge-KhK" firstAttribute="top" secondItem="2En-62-tSf" secondAttribute="top" type="default" id="4dL-Jq-x0F"/>
                             <constraint firstAttribute="bottom" secondItem="ZWO-sv-Dt0" secondAttribute="bottom" constant="62" id="8ha-aI-2HN"/>
+                            <constraint firstItem="XNG-gO-SIw" firstAttribute="trailing" secondItem="Kpy-VY-Chx" secondAttribute="trailing" type="default" id="8sP-FK-62O"/>
+                            <constraint firstItem="KAV-3p-xrV" firstAttribute="leading" secondItem="Kpy-VY-Chx" secondAttribute="leading" type="default" id="9BX-Ki-CO5"/>
+                            <constraint firstAttribute="bottom" secondItem="KAV-3p-xrV" secondAttribute="bottom" constant="15" id="9Sr-HD-bqr"/>
+                            <constraint firstItem="XNG-gO-SIw" firstAttribute="bottom" secondItem="Kpy-VY-Chx" secondAttribute="bottom" type="default" id="9a0-xF-MQN"/>
                             <constraint firstItem="ogw-bs-sjI" firstAttribute="leading" secondItem="Kpy-VY-Chx" secondAttribute="leading" type="default" id="Csb-fl-Igy"/>
                             <constraint firstItem="ogw-bs-sjI" firstAttribute="trailing" secondItem="Kpy-VY-Chx" secondAttribute="trailing" type="default" id="E5M-Qf-cfl"/>
+                            <constraint firstItem="Pl9-wy-WQu" firstAttribute="bottom" secondItem="Kpy-VY-Chx" secondAttribute="bottom" type="default" id="FE1-eY-0K8"/>
+                            <constraint firstItem="Pl9-wy-WQu" firstAttribute="top" secondItem="LQc-sR-d6j" secondAttribute="top" type="default" id="I4y-mU-pCW"/>
+                            <constraint firstItem="Vd3-2h-fes" firstAttribute="bottom" secondItem="Kpy-VY-Chx" secondAttribute="bottom" type="default" id="Kj9-R7-oL1"/>
+                            <constraint firstItem="JJv-lZ-jhH" firstAttribute="trailing" secondItem="Kpy-VY-Chx" secondAttribute="trailing" type="default" id="Npe-vH-Iek"/>
+                            <constraint firstItem="LQc-sR-d6j" firstAttribute="top" secondItem="Vd3-2h-fes" secondAttribute="top" type="default" id="Ovu-5o-Efh"/>
                             <constraint firstItem="iTa-1m-eOW" firstAttribute="leading" secondItem="Kpy-VY-Chx" secondAttribute="leading" type="default" id="OyB-7a-EX8"/>
-                            <constraint firstItem="VIl-gf-D93" firstAttribute="leading" secondItem="Kpy-VY-Chx" secondAttribute="leading" type="default" id="ag4-as-hKN"/>
-                            <constraint firstItem="VIl-gf-D93" firstAttribute="top" secondItem="ogw-bs-sjI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="dE5-6T-R2J"/>
-                            <constraint firstItem="ZWO-sv-Dt0" firstAttribute="centerX" secondItem="VIl-gf-D93" secondAttribute="centerX" type="default" id="eze-6e-Y7T"/>
+                            <constraint firstItem="Pl9-wy-WQu" firstAttribute="trailing" secondItem="nv4-ge-KhK" secondAttribute="trailing" type="default" id="Sug-oQ-NpM"/>
+                            <constraint firstItem="Vd3-2h-fes" firstAttribute="trailing" secondItem="KAV-3p-xrV" secondAttribute="trailing" type="default" id="UpG-Lw-gA7"/>
+                            <constraint firstItem="Vd3-2h-fes" firstAttribute="leading" secondItem="Kpy-VY-Chx" secondAttribute="leading" type="default" id="Uwp-Ky-U9n"/>
+                            <constraint firstAttribute="bottom" secondItem="ogw-bs-sjI" secondAttribute="bottom" constant="69" id="VtG-h6-0qN"/>
+                            <constraint firstItem="LQc-sR-d6j" firstAttribute="leading" secondItem="2En-62-tSf" secondAttribute="leading" type="default" id="YxF-qT-s9X"/>
+                            <constraint firstItem="ogw-bs-sjI" firstAttribute="top" secondItem="Kpy-VY-Chx" secondAttribute="top" constant="65" id="Z4U-7w-caB"/>
+                            <constraint firstItem="LQc-sR-d6j" firstAttribute="bottom" secondItem="Kpy-VY-Chx" secondAttribute="bottom" type="default" id="c3P-jI-fng"/>
+                            <constraint firstItem="2En-62-tSf" firstAttribute="bottom" secondItem="KAV-3p-xrV" secondAttribute="bottom" type="default" id="dYQ-Xc-QaH"/>
+                            <constraint firstItem="nv4-ge-KhK" firstAttribute="bottom" secondItem="2En-62-tSf" secondAttribute="bottom" type="default" id="fa4-T8-UHY"/>
+                            <constraint firstItem="ogw-bs-sjI" firstAttribute="centerX" secondItem="ZWO-sv-Dt0" secondAttribute="centerX" type="default" id="fzz-UD-3qk"/>
                             <constraint firstItem="iTa-1m-eOW" firstAttribute="trailing" secondItem="Kpy-VY-Chx" secondAttribute="trailing" type="default" id="go2-XE-M2P"/>
-                            <constraint firstItem="VIl-gf-D93" firstAttribute="trailing" secondItem="Kpy-VY-Chx" secondAttribute="trailing" type="default" id="qaZ-mF-SJG"/>
-                            <constraint firstAttribute="bottom" secondItem="VIl-gf-D93" secondAttribute="bottom" constant="38" id="vBo-3a-EQI"/>
-                            <constraint firstItem="ogw-bs-sjI" firstAttribute="top" secondItem="Kpy-VY-Chx" secondAttribute="top" constant="64" id="wNu-hK-ncQ"/>
+                            <constraint firstItem="2En-62-tSf" firstAttribute="top" secondItem="KAV-3p-xrV" secondAttribute="top" type="default" id="nII-eR-jhA"/>
+                            <constraint firstItem="XNG-gO-SIw" firstAttribute="top" secondItem="Pl9-wy-WQu" secondAttribute="top" type="default" id="onL-DF-9SN"/>
+                            <constraint firstItem="2En-62-tSf" firstAttribute="leading" secondItem="Kpy-VY-Chx" secondAttribute="leading" constant="80" id="pPn-jK-qWY"/>
+                            <constraint firstAttribute="trailing" secondItem="nv4-ge-KhK" secondAttribute="trailing" constant="80" id="rJC-rH-RdP"/>
+                            <constraint firstItem="JJv-lZ-jhH" firstAttribute="bottom" secondItem="nv4-ge-KhK" secondAttribute="bottom" type="default" id="u3Y-nk-EVB"/>
+                            <constraint firstItem="XNG-gO-SIw" firstAttribute="leading" secondItem="JJv-lZ-jhH" secondAttribute="leading" type="default" id="vRs-gA-mrT"/>
+                            <constraint firstItem="JJv-lZ-jhH" firstAttribute="top" secondItem="nv4-ge-KhK" secondAttribute="top" type="default" id="xPP-IF-tqs"/>
                             <constraint firstItem="iTa-1m-eOW" firstAttribute="top" secondItem="Kpy-VY-Chx" secondAttribute="top" type="default" id="xPS-CG-UU5"/>
+                            <constraint firstItem="Pl9-wy-WQu" firstAttribute="leading" secondItem="nv4-ge-KhK" secondAttribute="leading" type="default" id="zfW-Bh-DRz"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ES7-yJ-fCA"/>
                     <connections>
+                        <outlet property="afternoonView" destination="nv4-ge-KhK" id="O4p-V4-yeD"/>
+                        <outlet property="eveningView" destination="JJv-lZ-jhH" id="q4M-RV-Na0"/>
+                        <outlet property="morningView" destination="2En-62-tSf" id="DUb-wU-S0Q"/>
+                        <outlet property="nightView" destination="KAV-3p-xrV" id="dsK-Q6-BxW"/>
                         <outlet property="pageControl" destination="ZWO-sv-Dt0" id="D28-Jx-She"/>
                         <outlet property="scrollView" destination="ogw-bs-sjI" id="Xap-Ot-Cst"/>
-                        <outlet property="weatherButton" destination="VIl-gf-D93" id="H4I-EG-cRa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNf-mZ-ezM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -178,6 +232,9 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
         <class className="WWCollectionViewCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WWCollectionViewCell.h"/>
             <relationships>
@@ -192,6 +249,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WWGraphViewController.h"/>
             <relationships>
                 <relationship kind="action" name="pageChanged"/>
+                <relationship kind="action" name="weatherDisplayButton:"/>
+                <relationship kind="outlet" name="afternoonView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="eveningView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="morningView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nightView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="weatherButton" candidateClass="UIButton"/>
