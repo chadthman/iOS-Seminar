@@ -80,7 +80,7 @@
     //change the view of my statistics here to the day that is selected
     NSDictionary *variableDay;
     variableDay   = [crainsfcDaily objectAtIndex:indexPath.section]; //arbituarly picked crainsfcDaily
-    NSDate *date  =  variableDay[@"date"];
+    NSDate *date  = variableDay[@"date"];
     selectedIndex = indexPath;
     nightViewImage = nil;
     morningViewImage = nil;
@@ -151,7 +151,7 @@
     {
         return snowImage;
     } else {
-        if (averageCloudy.doubleValue >= 10800)
+        if (averageCloudy.doubleValue <= 10800)
         {
             return cloudyImage;
         } else {
@@ -159,8 +159,6 @@
         }
     }
 }
-
-
 
 -(NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -183,7 +181,6 @@
 {
     WWCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
 
-    
     NSDictionary *variableRain;
     NSDictionary *variableSnow;
     NSDictionary *variableCloudy;
@@ -220,7 +217,6 @@
                    [[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
     }
     
-    
     cell.backgroundColor = [UIColor clearColor];
     cell.textView.text = newDate;
     
@@ -236,7 +232,7 @@
     {
         cell.imageView.image = snowImage;
     } else {
-        if (averageCloudy.doubleValue >= 10800)
+        if (averageCloudy.doubleValue <= 10800)
         {
             cell.imageView.image = cloudyImage;
         } else {

@@ -83,7 +83,10 @@
                                     <outlet property="delegate" destination="hld-Qb-CIe" id="Gyz-3i-A81"/>
                                 </connections>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="2bj-Gx-jgU">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="2bj-Gx-jgU">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="wtD-mu-n7R"/>
+                                </constraints>
                                 <connections>
                                     <action selector="pageChanged" destination="hld-Qb-CIe" eventType="valueChanged" id="9kJ-nc-BGM"/>
                                 </connections>
@@ -234,9 +237,6 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
         <class className="WWCollectionViewCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WWCollectionViewCell.h"/>
             <relationships>
@@ -251,7 +251,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WWGraphViewController.h"/>
             <relationships>
                 <relationship kind="action" name="pageChanged"/>
-                <relationship kind="action" name="weatherDisplayButton:"/>
                 <relationship kind="outlet" name="afternoonView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="eveningView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="morningView" candidateClass="UIImageView"/>

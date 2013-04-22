@@ -40,6 +40,7 @@
 static const NSInteger kNumberOfPages = 2;
 
 int numberOfTimesOfDay;
+NSInteger page;
 
 NSString *  const tickerSymbolTMAX2M   = @"TMAX2M";
 NSString *  const tickerSymbolTMIN2M   = @"TMIN2M";
@@ -122,7 +123,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 -(void) scrollViewDidScroll:(UIScrollView *)sv
 {
     CGFloat pageWidth = scrollView.frame.size.width;
-    NSInteger page = (NSInteger)floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    page = (NSInteger)floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     pageControl.currentPage = page;
 }
 
@@ -150,8 +151,9 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     scrollView.contentSize = CGSizeMake( kNumberOfPages*scrollView.frame.size.width, 0.);
+    scrollView.contentOffset = CGPointMake( scrollView.frame.size.width*pageControl.currentPage, 0. );
     [self.view updateConstraints];
-    [scrollView updateConstraintsIfNeeded];
+    [scrollView updateConstraints];
     [self initPlot];
     [scrollView setNeedsDisplay];
 }
@@ -279,25 +281,48 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 }
 
 -(void)configureHost {
-    // 1 - Set up view frame for first view
-    CGRect parentRect = scrollView.bounds;
-    parentRect = CGRectMake(parentRect.origin.x,
-                            (parentRect.origin.y),
-                            parentRect.size.width,
-                            (parentRect.size.height));
-    
-    //Add the three graphviews
-    self.apcpsfcView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-    self.apcpsfcView.allowPinchScaling = YES;
-    [scrollView addSubview:self.apcpsfcView];
-    
-    parentRect = CGRectMake((parentRect.origin.x + parentRect.size.width),
-                            parentRect.origin.y,
-                            (parentRect.size.width),
-                            parentRect.size.height);
-    self.tmax2mView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-    self.tmax2mView.allowPinchScaling = YES;
-    [scrollView addSubview:tmax2mView_];
+    if (page == 0)
+    {
+        // 1 - Set up view frame for first view
+        CGRect parentRect = scrollView.bounds;
+        parentRect = CGRectMake(parentRect.origin.x,
+                                (parentRect.origin.y),
+                                parentRect.size.width,
+                                (parentRect.size.height));
+        
+        //Add the three graphviews
+        self.apcpsfcView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+        self.apcpsfcView.allowPinchScaling = YES;
+        [scrollView addSubview:self.apcpsfcView];
+        
+        parentRect = CGRectMake((parentRect.origin.x + parentRect.size.width),
+                                parentRect.origin.y,
+                                (parentRect.size.width),
+                                parentRect.size.height);
+        self.tmax2mView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+        self.tmax2mView.allowPinchScaling = YES;
+        [scrollView addSubview:tmax2mView_];
+    } else {
+        // 1 - Set up view frame for first view
+        CGRect parentRect = scrollView.bounds;
+        parentRect = CGRectMake(parentRect.origin.x,
+                                (parentRect.origin.y),
+                                parentRect.size.width,
+                                (parentRect.size.height));
+        
+        //Add the three graphviews
+        self.tmax2mView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+        self.tmax2mView.allowPinchScaling = YES;
+        [scrollView addSubview:tmax2mView_];
+        
+        parentRect = CGRectMake((parentRect.origin.x - parentRect.size.width),
+                                parentRect.origin.y,
+                                (parentRect.size.width),
+                                parentRect.size.height);
+        self.apcpsfcView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+        self.apcpsfcView.allowPinchScaling = YES;
+        [scrollView addSubview:self.apcpsfcView];
+    }
 }
 
 -(void)configureGraph {
