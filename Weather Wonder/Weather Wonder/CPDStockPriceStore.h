@@ -20,4 +20,10 @@
 - (NSArray *)datesInMonth;
 - (NSArray *)monthlyPrices:(NSString *)tickerSymbol;
 
+- (NSArray *)combineTimeArrays:(int)time;
+- (NSArray *)sixHourNight;
+- (NSArray *)sixHourMorning;
+- (NSArray *)sixHourAfternoon;
+- (NSArray *)sixHourEvening;
+
 @end

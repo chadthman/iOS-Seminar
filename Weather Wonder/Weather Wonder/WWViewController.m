@@ -88,6 +88,23 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     return ((9/5)*(kelvin - 273))+32;
 }
 
+-(NSArray*)convertArrayToFahrenheit:(NSArray*)kelvinArray
+{
+    NSMutableArray *fahrenheitAray = [[NSMutableArray alloc] init];
+    for (NSNumber *kelvin in kelvinArray)
+    {
+        [fahrenheitAray addObject:[NSNumber numberWithDouble:[self kelvinTofahrenheit:kelvin.doubleValue]]];
+    }
+    return [[NSArray alloc] initWithArray:fahrenheitAray];
+}
+
+-(NSDate*)indexToDate:(NSIndexPath*)indexPath
+{
+    NSDictionary *variableDay;
+    variableDay   = [crainsfcDaily objectAtIndex:indexPath.section]; //arbituarly picked crainsfcDaily
+    return variableDay[@"date"];
+}
+
 -(NSArray*)getHourSetInfoOnType:(NSString*)type onDay:(NSString*)day atTime:(int)time
 {
     NSString *currentDate;
@@ -119,6 +136,44 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         }
     }
     return nil;
+}
+
+-(int)getStartingTime:(NSIndexPath*)indexPath //used only for getting the start of that day for formating the graph
+{
+    NSDictionary *variable = [self getData:@"csnowsfc"];
+    NSDictionary *values = [variable objectForKey:@"values"];
+    for (NSDictionary *value in values)
+    {
+        NSString *dateFromIndex = [NSString stringWithFormat:@"%@",[self indexToDate:indexPath]];
+        if ([value[@"date"] isEqualToString:dateFromIndex]) {
+            NSString *time = [self getTimeOfDay:value[@"date"]];
+            if ([time isEqualToString:@"Night"])
+            {
+                return 4;
+            } else if ([time isEqualToString:@"Morning"])
+            {
+                return 3;
+            } else if ([time isEqualToString:@"Afternoon"])
+            {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+-(NSArray*)apcpsfcCompoundArrayInfoWithArray:(NSArray*)array
+{
+    NSMutableArray *resultArray = [[NSMutableArray alloc]init];
+    double total = 0.0;
+    for (NSNumber *value in array)
+    {
+        total += [value doubleValue];
+        [resultArray addObject:[NSNumber numberWithDouble:total]];
+    }
+    return [[NSArray alloc]initWithArray:resultArray];
 }
 
 -(void)csnowsfcStats //average snowfall over 6 hours
@@ -339,6 +394,18 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 }
 
 #pragma mark - Time
+
+-(NSString*)dayStringFromIndexPath:(NSIndexPath*)indexPath
+{
+    NSDictionary *variableRain = [crainsfcDaily objectAtIndex:indexPath.section];
+    NSString *dateString = variableRain[@"date"];
+    NSString *newDate;
+    NSDate   *date = [self dateFromString:dateString];
+    NSDate   *correctedDate = [self correctTimeZone:date];
+    newDate = [NSString stringWithFormat:@"%@ %@", [self getCalendarDay:correctedDate],
+               [[NSString stringWithFormat:@"%@",correctedDate] substringWithRange:NSMakeRange(8, 2)]];
+    return newDate;
+}
 
 -(NSDate*) correctTimeZone:(NSDate*) imputdate
 {    

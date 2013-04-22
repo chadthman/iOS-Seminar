@@ -97,6 +97,164 @@
     return [NSArray array];
 }
 
+- (NSArray *)combineTimeArrays:(int)time
+{
+    NSMutableArray *combindedArrays = [[NSMutableArray alloc]init];
+    switch (time) {
+        case 1:
+            [combindedArrays addObjectsFromArray:[self sixHourEvening]];
+            break;
+        case 2:
+            [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
+            [combindedArrays addObjectsFromArray:[self sixHourEvening]];
+            break;
+        case 3:
+            [combindedArrays addObjectsFromArray:[self sixHourMorning]];
+            [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
+            [combindedArrays addObjectsFromArray:[self sixHourEvening]];
+            break;
+        case 4:
+            [combindedArrays addObjectsFromArray:[self sixHourNight]];
+            [combindedArrays addObjectsFromArray:[self sixHourMorning]];
+            [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
+            [combindedArrays addObjectsFromArray:[self sixHourEvening]];
+        default:
+            break;
+    }
+    return [[NSArray alloc]initWithArray:combindedArrays];
+}
+
+- (NSArray *)sixHourEvening
+{
+    static NSArray *hours = nil;
+    if (!hours)
+    {
+        hours = [NSArray arrayWithObjects:
+                 @"6 PM",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"Evening",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"11 AM",
+                 nil];
+    }
+    return hours;
+}
+
+- (NSArray *)sixHourAfternoon
+{
+    static NSArray *hours = nil;
+    if (!hours)
+    {
+        hours = [NSArray arrayWithObjects:
+                 @"12 PM",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"Afternoon",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 nil];
+    }
+    return hours;
+}
+
+
+- (NSArray *)sixHourMorning
+{
+    static NSArray *hours = nil;
+    if (!hours)
+    {
+        hours = [NSArray arrayWithObjects:
+                 @"6 AM",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"Monrning",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 nil];
+    }
+    return hours;
+}
+
+
+- (NSArray *)sixHourNight
+{
+    static NSArray *hours = nil;
+    if (!hours)
+    {
+        hours = [NSArray arrayWithObjects:
+                 @"12 AM",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"Night",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 nil];
+    }
+    return hours;
+}
+
+
 - (NSArray *)datesInMonth
 {
     static NSArray *dates = nil;

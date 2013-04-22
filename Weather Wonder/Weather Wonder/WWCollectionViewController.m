@@ -82,6 +82,10 @@
     variableDay   = [crainsfcDaily objectAtIndex:indexPath.section]; //arbituarly picked crainsfcDaily
     NSDate *date  =  variableDay[@"date"];
     selectedIndex = indexPath;
+    nightViewImage = nil;
+    morningViewImage = nil;
+    afternoonViewImage = nil;
+    eveningViewImgage = nil;
     
     for (NSDictionary *newIndex in crainsfcHourly)
     {

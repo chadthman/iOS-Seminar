@@ -15,6 +15,10 @@
 -(int) getCurrentMonth;
 -(int) getCurrentYear;
 -(double)kelvinTofahrenheit:(double)kelvin;
+-(NSArray*)convertArrayToFahrenheit:(NSArray*)kelvinArray;
+-(NSArray*)apcpsfcCompoundArrayInfoWithArray:(NSArray*)array;
+-(int)getStartingTime:(NSIndexPath*)indexPath;
+-(NSString*)dayStringFromIndexPath:(NSIndexPath*)indexPath;
 -(NSDate*) correctTimeZone:(NSDate*) imputdate;
 -(NSDate*) dateFromString:(NSString*)date;
 -(NSString*)getCalendarDay:(NSDate*)date;
