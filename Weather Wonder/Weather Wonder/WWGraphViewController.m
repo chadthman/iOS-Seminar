@@ -292,6 +292,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     // 4 - Set padding for plot area
     [graph.plotAreaFrame setPaddingLeft:00.1f];
     [graph.plotAreaFrame setPaddingBottom:00.1f];
+    [graph.plotAreaFrame setPaddingTop:125.0f];
     // 5 - Enable user interactions for plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     plotSpace.allowsUserInteraction = NO;
@@ -313,6 +314,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     // 4 - Set padding for plot area
     [tempGraph.plotAreaFrame setPaddingLeft:00.1f];
     [tempGraph.plotAreaFrame setPaddingBottom:00.1f];
+    [tempGraph.plotAreaFrame setPaddingTop:125.0f];
     // 5 - Enable user interactions for plot space
     CPTXYPlotSpace *tempPlotSpace = (CPTXYPlotSpace *) tempGraph.defaultPlotSpace;
     tempPlotSpace.allowsUserInteraction = NO;
@@ -348,10 +350,11 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     // 3 - Set up plot space
     [apcpsfcPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:apcpsfcPlot, nil]];
     CPTMutablePlotRange *xRange = [apcpsfcPlotSpace.xRange mutableCopy];
-    [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
-    apcpsfcPlotSpace.xRange = xRange;
+    //[xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    [xRange setLocation:[NSDecimalNumber decimalNumberWithDecimal:xRange.minLimit * NSDecimalNumber numberWithFloat:1.1f]];
+    //xRange.minLimit =     apcpsfcPlotSpace.xRange = xRange;
     CPTMutablePlotRange *yRange = [CPTMutablePlotRange plotRangeWithLocation:CPTDecimalFromCGFloat(0.0f) length:CPTDecimalFromCGFloat(apcpsfcPlotSpace.yRange.maxLimitDouble)];
-    [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    //[yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
     apcpsfcPlotSpace.yRange = yRange;
         
     [temperaturePlotSpace scaleToFitPlots:[NSArray arrayWithObjects:tmax2mPlot, tmin2mPlot, nil]];
