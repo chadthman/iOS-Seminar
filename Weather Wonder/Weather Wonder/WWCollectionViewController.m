@@ -232,7 +232,7 @@
     {
         cell.imageView.image = snowImage;
     } else {
-        if (averageCloudy.doubleValue <= 10800)
+        if (averageCloudy.doubleValue <= 12150) //9/16 precent sun
         {
             cell.imageView.image = cloudyImage;
         } else {
