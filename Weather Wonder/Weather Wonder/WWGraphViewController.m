@@ -59,29 +59,8 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 #pragma mark - UIViewController lifecycle methods
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    for( NSInteger i = 0; i < kNumberOfPages; i++ ) {
-//        CGRect frame;
-//        frame.size = scrollView.bounds.size;
-//        frame.origin.x = i*scrollView.frame.size.width;
-//        frame.origin.y = 0.;
-//        UIView *v = [[UIView alloc] initWithFrame:frame];
-//        
-//        switch( i ) {
-//            case 0:
-//                v.backgroundColor = [UIColor redColor];
-//                break;
-//            case 1:
-//                v.backgroundColor = [UIColor greenColor];
-//                break;
-//            case 2:
-//                v.backgroundColor = [UIColor blueColor];
-//                break;
-//        }
-//        [scrollView addSubview:v];
-//    }
     
-    scrollView.contentSize = CGSizeMake( kNumberOfPages*scrollView.frame.size.width, 0. );
-    
+    scrollView.contentSize = CGSizeMake( kNumberOfPages*scrollView.frame.size.width, 0. );    
     pageControl.currentPage = 0;
     pageControl.numberOfPages = kNumberOfPages;
 
@@ -183,12 +162,13 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 #pragma mark - CPTPlotDataSource methods 
 //Stick in all the infos here
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-    //return 21;
-    return [[[CPDStockPriceStore sharedInstance] combineTimeArrays:[controller getStartingTime:selectedIndex]] count];
+    numberOfTimesOfDay = [controller getStartingTime:selectedIndex];;
+    return [[[CPDStockPriceStore sharedInstance] combineTimeArrays:numberOfTimesOfDay] count];
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index {
     NSInteger valueCount = [[[CPDStockPriceStore sharedInstance] combineTimeArrays:[controller getStartingTime:selectedIndex]] count];
+    NSArray *info;
     switch (fieldEnum) {
         case CPTScatterPlotFieldX:
             if (index < valueCount) {
@@ -198,26 +178,14 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
             
         case CPTScatterPlotFieldY:
             if ([plot.identifier isEqual:tickerSymbolTMAX2M] == YES) {
-                NSArray *info = [controller convertArrayToFahrenheit:[self allDayBreakdownOfType:@"tmax2m" onDate:[self indexToDate:selectedIndex]]];
+                info = [controller convertArrayToFahrenheit:[self allDayBreakdownOfType:@"tmax2m" onDate:[self indexToDate:selectedIndex]]];
                 return [info objectAtIndex:index];
-//                NSDictionary *tmax2mDict = [[self monthlyPrices:tickerSymbolTMAX2M] objectAtIndex:index];
-//                NSNumber *temp = tmax2mDict[@"average"];
-//                NSNumber *tmax2mNumber = [NSNumber numberWithDouble:temp.doubleValue]; //convert to precentage
-//                return  tmax2mNumber;
             } else if ([plot.identifier isEqual:tickerSymbolTMIN2M] == YES) {
-                NSArray *info = [controller convertArrayToFahrenheit:[self allDayBreakdownOfType:@"tmin2m" onDate:[self indexToDate:selectedIndex]]];
+                info = [controller convertArrayToFahrenheit:[self allDayBreakdownOfType:@"tmin2m" onDate:[self indexToDate:selectedIndex]]];
                 return [info objectAtIndex:index];
-//                NSDictionary *tmin2mDict = [[self monthlyPrices:tickerSymbolTMIN2M] objectAtIndex:index];
-//                NSNumber *temp = tmin2mDict[@"average"];
-//                NSNumber *tmin2mNumber = [NSNumber numberWithDouble:temp.doubleValue];
-//                return  tmin2mNumber;
             } else if ([plot.identifier isEqual:tickerSymbolAPCPSFC] == YES) {
-                //NSDictionary *apcpsfcDict = [[self monthlyPrices:tickerSymbolAPCPSFC] objectAtIndex:index];
-                NSArray *info = [controller apcpsfcCompoundArrayInfoWithArray:[self allDayBreakdownOfType:@"apcpsfc" onDate:[self indexToDate:selectedIndex]]];
+                info = [controller apcpsfcCompoundArrayInfoWithArray:[self allDayBreakdownOfType:@"apcpsfc" onDate:[self indexToDate:selectedIndex]]];
                 return [info objectAtIndex:index];
-//                NSNumber *temp = apcpsfcDict[@"average"];
-//                NSNumber *apcpsfcNumber = [NSNumber numberWithDouble:temp.doubleValue];
-//                return  apcpsfcNumber;
             }
             break;
     }
@@ -233,7 +201,6 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
                                  
 -(NSArray*)allDayBreakdownOfType:(NSString*)type onDate:(NSDate*)date
 {
-    numberOfTimesOfDay = 0;
     NSMutableArray *combinedArray = [[NSMutableArray alloc]init];
     NSString *day;
     int time;
@@ -245,29 +212,10 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
             day = [newIndex[@"date"] substringWithRange:NSMakeRange(0, 10)];
             time = [[newIndex[@"date"] substringWithRange:NSMakeRange(11, 2)] integerValue];
             [combinedArray addObjectsFromArray:[controller getHourSetInfoOnType:type onDay:day atTime:time]];
-            numberOfTimesOfDay++;
         }
     }
     return [NSArray arrayWithArray:combinedArray];
 }
-
-//- (NSArray *)monthlyPrices:(NSString *)tickerSymbol
-//{
-//    if ([tickerSymbolTMAX2M isEqualToString:[tickerSymbol uppercaseString]] == YES)
-//    {
-//        return tmax2mHourly;
-//    }
-//    else if ([tickerSymbolTMIN2M isEqualToString:[tickerSymbol uppercaseString]] == YES)
-//    {
-//        return tmax2mHourly;
-//    }
-//    else if ([tickerSymbolAPCPSFC isEqualToString:[tickerSymbol uppercaseString]] == YES)
-//    {
-//        return apcpsfcHourly;
-//    }
-//    return [NSArray array];
-//}
-
 
 #pragma mark - Chart behavior
 -(void)initPlot {
@@ -414,16 +362,6 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
     temperaturePlotSpace.yRange = yRange;
     
-    //[temperaturePlotSpace scaleToFitPlots:[NSArray arrayWithObjects:tmax2mPlot, tmin2mPlot, nil]]; //googPlot, msftPlot, nil]];
-//    [temperaturePlotSpace setXRange:[CPTPlotRange plotRangeWithLocation:[[NSNumber numberWithFloat:-5.0] decimalValue]
-//                                                                 length:[[NSNumber numberWithFloat:90.0] decimalValue]]];
-//    [temperaturePlotSpace setYRange:[CPTPlotRange plotRangeWithLocation:[[NSNumber numberWithFloat:((temperaturePlotSpace.yRange.endDouble*-1)/18)-3] decimalValue] //some arbituary math to get the bottom to be in view with temperature change
-//                                                                 length:temperaturePlotSpace.yRange.end]];//[[NSNumber numberWithFloat:50.0] decimalValue]]];
-    
-
-//    [temperaturePlotSpace setGlobalXRange:[CPTPlotRange plotRangeWithLocation:[[NSNumber numberWithFloat:0.0] decimalValue] length:[[NSNumber numberWithFloat:20.0] decimalValue]]];
-//    [temperaturePlotSpace setGlobalYRange:[CPTPlotRange plotRangeWithLocation:[[NSNumber numberWithFloat:100.0] decimalValue] length:[[NSNumber numberWithFloat:200.0] decimalValue]]];
-    
     // Creates a drop gradient on the graphs
     CPTColor *areaColorBlue = [CPTColor colorWithComponentRed:0.0f/255.0f green:129.0f/255.0f blue:205.0f/255.0f alpha:1.0f];
     CPTGradient *areaGradient = [CPTGradient gradientWithBeginningColor:areaColorBlue
@@ -450,8 +388,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     apcpsfcPlot.dataLineStyle = apcpsfcLineStyle;
     CPTMutableLineStyle *apcpsfcSymbolLineStyle = [CPTMutableLineStyle lineStyle];
     apcpsfcSymbolLineStyle.lineColor = apcpsfcColor;
-    
-//    CPTPlotSymbol *apcpsfcSymbol = [CPTPlotSymbol ellipsePlotSymbol];
+//    CPTPlotSymbol *apcpsfcSymbol = [CPTPlotSymbol ellipsePlotSymbol]; //Use for adding symbols to mark the spots
 //    apcpsfcSymbol.fill = [CPTFill fillWithColor:apcpsfcColor];
 //    apcpsfcSymbol.lineStyle = apcpsfcSymbolLineStyle;
 //    apcpsfcSymbol.size = CGSizeMake(6.0f, 6.0f);
@@ -621,7 +558,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     yy.tickDirection = CPTSignPositive;
     NSInteger tempMajorIncrement = 10;
     NSInteger tempMinorIncrement = 5;
-    CGFloat yyMax = 700.0f;  // should determine dynamically based on max price
+    CGFloat yyMax = 700.0f;  // should determine dynamically based on max size
     NSMutableSet *yyLabels = [NSMutableSet set];
     NSMutableSet *yyMajorLocations = [NSMutableSet set];
     NSMutableSet *yyMinorLocations = [NSMutableSet set];

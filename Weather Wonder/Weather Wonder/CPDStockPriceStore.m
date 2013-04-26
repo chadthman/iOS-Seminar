@@ -118,6 +118,19 @@
             [combindedArrays addObjectsFromArray:[self sixHourMorning]];
             [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
             [combindedArrays addObjectsFromArray:[self sixHourEvening]];
+            break;
+        case 5:
+            [combindedArrays addObjectsFromArray:[self sixHourNight]];
+            [combindedArrays addObjectsFromArray:[self sixHourMorning]];
+            [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
+            break;
+        case 6:
+            [combindedArrays addObjectsFromArray:[self sixHourNight]];
+            [combindedArrays addObjectsFromArray:[self sixHourMorning]];
+            break;
+        case 7:
+            [combindedArrays addObjectsFromArray:[self sixHourNight]];
+            break;
         default:
             break;
     }

@@ -142,14 +142,27 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 {
     NSDictionary *variable = [self getData:@"csnowsfc"];
     NSDictionary *values = [variable objectForKey:@"values"];
-    for (NSDictionary *value in values)
+    for (NSDictionary *day in values)
     {
         NSString *dateFromIndex = [NSString stringWithFormat:@"%@",[self indexToDate:indexPath]];
-        if ([value[@"date"] isEqualToString:dateFromIndex]) {
-            NSString *time = [self getTimeOfDay:value[@"date"]];
+        if ([day[@"date"] isEqualToString:dateFromIndex]) {
+            NSString *time = [self getTimeOfDay:day[@"date"]];
             if ([time isEqualToString:@"Night"])
             {
-                return 4;
+                switch ([self getEndingTime:values withIndexPath:indexPath]) {
+                    case 3:
+                        return 5;
+                        break;
+                    case 2:
+                        return 6;
+                        break;
+                    case 1:
+                        return 7;
+                        break;
+                    default:
+                        return 4;
+                        break;
+                }
             } else if ([time isEqualToString:@"Morning"])
             {
                 return 3;
@@ -164,6 +177,21 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     return 0;
 }
 
+-(int)getEndingTime:(NSDictionary*)date withIndexPath:(NSIndexPath*)indexPath
+{
+    int counter = 0;
+    NSString *dateFromIndex = [NSString stringWithFormat:@"%@",[self indexToDate:indexPath]];
+    dateFromIndex = [dateFromIndex substringWithRange:NSMakeRange(0, 10)];
+    
+    for (NSDictionary *day in date) {
+        NSString *datefromDay = [day[@"date"] substringWithRange:NSMakeRange(0, 10)];
+        if ([datefromDay isEqualToString:dateFromIndex]) {
+            counter++;
+        }
+    }
+    return counter;
+}
+
 -(NSArray*)apcpsfcCompoundArrayInfoWithArray:(NSArray*)array
 {
     NSMutableArray *resultArray = [[NSMutableArray alloc]init];
@@ -176,120 +204,93 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     return [[NSArray alloc]initWithArray:resultArray];
 }
 
--(void)csnowsfcStats //average snowfall over 6 hours
+-(NSArray*)getStats:(NSString*)stat
 {
-    int total = 0;
+    double total = 0.0;
     int i = 0;
     double hourAverage = 0;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [self getData:@"csnowsfc"];
+    NSDictionary *variable = [self getData:stat];
     NSDictionary *values = [variable objectForKey:@"values"];
-    for (NSDictionary *date in values)
+    for (NSDictionary *day in values)
     {
         dict = [[NSMutableDictionary alloc] init];
         total = 0;
-        for (NSArray *prediction in date[@"predictions"])
+        for (NSNumber *prediction in day[@"predictions"])
         {
-            total = total + [[NSString stringWithFormat:@"%@", prediction] integerValue];
+            total = total + [prediction doubleValue];
         }
         hourAverage = (double)total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:@"date"];
+        [dict setObject:day[@"date"] forKey:@"date"];
         [dict setObject:[NSNumber numberWithDouble:hourAverage] forKey:@"average"];
         [newValues setObject:dict atIndexedSubscript:i++];
     }
-    csnowsfcHourly = [[NSArray alloc] initWithArray:newValues];
+    return [[NSArray alloc] initWithArray:newValues];
 }
 
--(void)crainsfcStats //average rain fall over 6 hours
-{
-    int i = 0;
-    int total = 0;
-    double hourAverage = 0;
-    
-    NSMutableDictionary *dict;
-    NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [self getData:@"crainsfc"];
-    NSDictionary *values = [variable objectForKey:@"values"];
-    for (NSDictionary *date in values)
-    {
-        dict = [[NSMutableDictionary alloc] init];
-        total = 0;
-        for (NSArray *prediction in date[@"predictions"])
-        {
-            total = total + [[NSString stringWithFormat:@"%@", prediction] integerValue];
-        }
-        hourAverage = (double)total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:@"date"];
-        [dict setObject:[NSNumber numberWithDouble:hourAverage] forKey:@"average"];
-        [newValues setObject:dict atIndexedSubscript:i++];
-    }
-    crainsfcHourly = [[NSArray alloc] initWithArray:newValues];
-}
+//-(void)tmax2mStats //max average temp
+//{
+//    int i = 0;
+//    double total = 0.0;
+//    double hourAverage = 0.0;
+//    
+//    NSMutableDictionary *dict;
+//    NSMutableArray *newValues = [[NSMutableArray alloc]init];
+//    NSDictionary *variable = [self getData:@"tmax2m"];
+//    NSDictionary *values = [variable objectForKey:@"values"];
+//    for (NSDictionary *date in values)
+//    {
+//        dict = [[NSMutableDictionary alloc] init];
+//        total = 0;
+//        for (NSArray *prediction in date[@"predictions"])
+//        {
+//            double kelvin = [[NSString stringWithFormat:@"%@", prediction] doubleValue];
+//            double fahrenheit = [self kelvinTofahrenheit:kelvin];
+//            total = total + fahrenheit;
+//        }
+//        hourAverage = total/21.0; //21.0 is the number of elements in the array
+//        [dict setObject:date[@"date"] forKey:@"date"];
+//        [dict setObject:[NSNumber numberWithDouble:hourAverage] forKey:@"average"];
+//        [newValues setObject:dict atIndexedSubscript:i++];
+//        //add min and max possiblitys over the 6 hours?
+//    }
+//    tmax2mHourly = [[NSArray alloc] initWithArray:newValues];
+//}
 
--(void)tmax2mStats //max average temp
-{
-    int i = 0;
-    double total = 0.0;
-    double hourAverage = 0.0;
-    
-    NSMutableDictionary *dict;
-    NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [self getData:@"tmax2m"];
-    NSDictionary *values = [variable objectForKey:@"values"];
-    for (NSDictionary *date in values)
-    {
-        dict = [[NSMutableDictionary alloc] init];
-        total = 0;
-        for (NSArray *prediction in date[@"predictions"])
-        {
-            double kelvin = [[NSString stringWithFormat:@"%@", prediction] doubleValue];
-            double fahrenheit = [self kelvinTofahrenheit:kelvin];
-            total = total + fahrenheit;
-        }
-        hourAverage = total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:@"date"];
-        [dict setObject:[NSNumber numberWithDouble:hourAverage] forKey:@"average"];
-        [newValues setObject:dict atIndexedSubscript:i++];
-        //add min and max possiblitys over the 6 hours?
-    }
-    tmax2mHourly = [[NSArray alloc] initWithArray:newValues];
-}
+//-(void)tmin2mStats //min average temp
+//{
+//    int i = 0;
+//    double total = 0.0;
+//    double hourAverage = 0.0;
+//    
+//    NSMutableDictionary *dict;
+//    NSMutableArray *newValues = [[NSMutableArray alloc]init];
+//    NSDictionary *variable = [self getData:@"tmin2m"];
+//    NSDictionary *values = [variable objectForKey:@"values"];
+//    for (NSDictionary *date in values)
+//    {
+//        dict = [[NSMutableDictionary alloc] init];
+//        total = 0;
+//        for (NSArray *prediction in date[@"predictions"])
+//        {
+//            double kelvin = [[NSString stringWithFormat:@"%@", prediction] doubleValue];
+//            double fahrenheit = [self kelvinTofahrenheit:kelvin];
+//            total = total + fahrenheit;
+//        }
+//        hourAverage = total/21.0; //21.0 is the number of elements in the array
+//        [dict setObject:date[@"date"] forKey:@"date"];
+//        [dict setObject:[NSNumber numberWithDouble:hourAverage] forKey:@"average"];
+//        [newValues setObject:dict atIndexedSubscript:i++];
+//    }
+//    tmin2mHourly = [[NSArray alloc] initWithArray:newValues];
+//}
 
--(void)tmin2mStats //min average temp
-{
-    int i = 0;
-    double total = 0.0;
-    double hourAverage = 0.0;
-    
-    NSMutableDictionary *dict;
-    NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [self getData:@"tmin2m"];
-    NSDictionary *values = [variable objectForKey:@"values"];
-    for (NSDictionary *date in values)
-    {
-        dict = [[NSMutableDictionary alloc] init];
-        total = 0;
-        for (NSArray *prediction in date[@"predictions"])
-        {
-            double kelvin = [[NSString stringWithFormat:@"%@", prediction] doubleValue];
-            double fahrenheit = [self kelvinTofahrenheit:kelvin];
-            total = total + fahrenheit;
-        }
-        hourAverage = total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:@"date"];
-        [dict setObject:[NSNumber numberWithDouble:hourAverage] forKey:@"average"];
-        [newValues setObject:dict atIndexedSubscript:i++];
-    }
-    tmin2mHourly = [[NSArray alloc] initWithArray:newValues];
-}
-
--(void)apcosfcStats //accumulated rain over 6 hours
+-(void)apcosfcStats //accumulated rain over 6 hours //not even using this right now
 {
     int i = 0;
     double total = 0;
-    //double dayAverage = 0;
     
     NSMutableDictionary *dict;
     NSMutableArray *newValues = [[NSMutableArray alloc]init];
@@ -299,42 +300,15 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     {
         dict = [[NSMutableDictionary alloc] init];
         total = 0;
-        for (NSArray *prediction in date[@"predictions"])
+        for (NSNumber *prediction in date[@"predictions"])
         {
-            total = total + [[NSString stringWithFormat:@"%@", prediction] doubleValue];
+            total = total + [prediction doubleValue];
         }
-        //dayAverage = total/21.0; //21.0 is the number of elements in the array
         [dict setObject:date[@"date"] forKey:@"date"];
         [dict setObject:[NSNumber numberWithDouble:total] forKey:@"average"];
         [newValues setObject:dict atIndexedSubscript:i++];
     }
     apcpsfcHourly = [[NSArray alloc] initWithArray:newValues];
-}
-
--(void)sunsdsfcStats
-{
-    int i = 0;
-    int total = 0;
-    double hourAverage = 0;
-    
-    NSMutableDictionary *dict;
-    NSMutableArray *newValues = [[NSMutableArray alloc]init];
-    NSDictionary *variable = [self getData:@"sunsdsfc"];
-    NSDictionary *values = [variable objectForKey:@"values"];
-    for (NSDictionary *date in values)
-    {
-        dict = [[NSMutableDictionary alloc] init];
-        total = 0;
-        for (NSArray *prediction in date[@"predictions"])
-        {
-            total = total + [[NSString stringWithFormat:@"%@", prediction] intValue];
-        }
-        hourAverage = (double)total/21.0; //21.0 is the number of elements in the array
-        [dict setObject:date[@"date"] forKey:@"date"];
-        [dict setObject:[NSNumber numberWithDouble:hourAverage] forKey:@"average"];
-        [newValues setObject:dict atIndexedSubscript:i++];
-    }
-    sunsdsfcHourly = [[NSArray alloc] initWithArray:newValues]; //array(dictionary)
 }
 
 -(NSArray*)generateDailyWithInput:(NSArray*)imputArray
@@ -378,12 +352,12 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 
 -(void)generateStats
 {
-    [self csnowsfcStats];
-    [self crainsfcStats];
-    [self tmax2mStats];
+    csnowsfcHourly = [self getStats:@"csnowsfc"];
+    crainsfcHourly = [self getStats:@"crainsfc"];
+    tmax2mHourly = [self getStats:@"tmax2m"];
+    tmin2mHourly = [self getStats:@"tmin2m"];
+    sunsdsfcHourly = [self getStats:@"sunsdsfc"];
     [self apcosfcStats];
-    [self tmin2mStats];
-    [self sunsdsfcStats];
     
     csnowsfcDaily = [[NSArray alloc] initWithArray:[self generateDailyWithInput:csnowsfcHourly]];
     crainsfcDaily = [[NSArray alloc] initWithArray:[self generateDailyWithInput:crainsfcHourly]];
@@ -578,7 +552,6 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
             storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
         }
 
-        //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         WWGraphViewController *myVC = (WWGraphViewController *)[storyboard instantiateViewControllerWithIdentifier:@"GraphViewController"];
         [self performSegueWithIdentifier:@"Next" sender:self];
         [self presentViewController:myVC animated:YES completion:nil];
@@ -594,7 +567,6 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 {
     [spinner stopAnimating];
     [self nextView];
-    
 }
 
 

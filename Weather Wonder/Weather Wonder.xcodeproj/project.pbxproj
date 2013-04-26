@@ -670,6 +670,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Weather Wonder/Weather Wonder-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
