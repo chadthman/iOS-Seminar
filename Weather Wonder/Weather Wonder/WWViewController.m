@@ -517,7 +517,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 -(void) refreshWeather
 {
     NSData *json = [NSData dataWithContentsOfURL:[NSURL URLWithString:kServerAddress]];
-    if( [json length] == 0 ) {
+    //if( [json length] == 0 ) {
 #if DEBUG
         NSLog( @"using fake data..." );
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"fake-data" ofType:@"json"];
@@ -526,7 +526,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
         NSLog( @"server returned nothing" );
         return;
 #endif
-    }
+    //}
     
     NSError* error = nil;
     collections = [NSJSONSerialization JSONObjectWithData:json options:kNilOptions error:&error];

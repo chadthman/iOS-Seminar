@@ -48,9 +48,9 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="192" type="user" id="yfE-CO-bJU"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="wrQ-ga-D7q">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="wrQ-ga-D7q">
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="110" type="user" id="j24-7P-VCv"/>
+                                    <constraint firstAttribute="height" constant="110" type="user" id="j24-7P-VCv"/>
                                     <constraint firstAttribute="width" constant="192" type="user" id="oHU-cZ-hdS"/>
                                 </constraints>
                             </imageView>
@@ -67,8 +67,41 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Night" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5K-cc-BqB">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="aXp-T9-LM9"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" type="user" id="TmG-ha-eoq"/>
+                                    <constraint firstAttribute="height" constant="26" type="user" id="aXp-T9-LM9"/>
+                                    <constraint firstAttribute="width" constant="192" type="user" id="lx0-Qc-pXz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTF-7g-LVw">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" type="user" id="FXU-5j-PlR"/>
+                                    <constraint firstAttribute="width" constant="192" type="user" id="igX-dD-KvR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Afternoon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5N6-NL-nKp">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="192" type="user" id="2rY-ab-7WW"/>
+                                    <constraint firstAttribute="height" constant="26" type="user" id="JRi-cF-OqC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-hi-eKt">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" type="user" id="gBN-0z-Dnw"/>
+                                    <constraint firstAttribute="width" constant="192" type="user" id="rro-FO-FdJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,21 +115,6 @@
                                     <action selector="pageChanged" destination="hld-Qb-CIe" eventType="valueChanged" id="9kJ-nc-BGM"/>
                                 </connections>
                             </pageControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Morning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTF-7g-LVw">
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Afternoon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5N6-NL-nKp">
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Evening" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-hi-eKt">
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvG-Ov-ruZ">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -109,52 +127,55 @@
                         </subviews>
                         <color key="backgroundColor" red="0.11413043478260865" green="0.11413043478260865" blue="0.11413043478260865" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="qF9-hi-eKt" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="0O0-s3-flv"/>
+                            <constraint firstItem="qF9-hi-eKt" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="user" id="0O0-s3-flv"/>
                             <constraint firstItem="dvG-Ov-ruZ" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="default" id="0YG-Bs-bGB"/>
                             <constraint firstAttribute="bottom" secondItem="WuH-8R-3yi" secondAttribute="bottom" constant="129" id="4TY-Df-XTG"/>
                             <constraint firstItem="tTF-7g-LVw" firstAttribute="trailing" secondItem="cOc-ji-kqp" secondAttribute="trailing" type="default" id="5ct-ys-9iX"/>
-                            <constraint firstItem="y5K-cc-BqB" firstAttribute="baseline" secondItem="tTF-7g-LVw" secondAttribute="baseline" type="default" id="AMT-bm-xqW"/>
+                            <constraint firstItem="wrQ-ga-D7q" firstAttribute="top" secondItem="cOc-ji-kqp" secondAttribute="top" type="default" id="AJm-JA-D3f"/>
+                            <constraint firstItem="y5K-cc-BqB" firstAttribute="baseline" secondItem="tTF-7g-LVw" secondAttribute="baseline" type="user" id="AMT-bm-xqW"/>
                             <constraint firstAttribute="trailing" secondItem="5N6-NL-nKp" secondAttribute="trailing" constant="192" type="user" id="Bjp-ok-6hE"/>
                             <constraint firstItem="WuH-8R-3yi" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="Eck-Fa-9LG"/>
-                            <constraint firstItem="cOc-ji-kqp" firstAttribute="bottom" secondItem="wrQ-ga-D7q" secondAttribute="bottom" type="default" id="Ion-bK-cZd"/>
-                            <constraint firstItem="y5K-cc-BqB" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" constant="148" id="LRe-RP-EG4"/>
+                            <constraint firstItem="wrQ-ga-D7q" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" constant="25" id="Kcr-Kv-ubw"/>
+                            <constraint firstItem="2rl-gq-NNd" firstAttribute="top" secondItem="KFI-qM-7Cf" secondAttribute="top" type="default" id="MbA-st-ckz"/>
                             <constraint firstItem="tTF-7g-LVw" firstAttribute="leading" secondItem="cOc-ji-kqp" secondAttribute="leading" type="user" id="Nf1-mf-STG"/>
-                            <constraint firstItem="tTF-7g-LVw" firstAttribute="top" secondItem="y5K-cc-BqB" secondAttribute="top" type="default" id="NyL-c3-eWo"/>
+                            <constraint firstItem="tTF-7g-LVw" firstAttribute="top" secondItem="y5K-cc-BqB" secondAttribute="top" type="user" id="NyL-c3-eWo"/>
+                            <constraint firstItem="2rl-gq-NNd" firstAttribute="top" secondItem="cOc-ji-kqp" secondAttribute="top" type="default" id="O1e-fq-Smz"/>
                             <constraint firstItem="qF9-hi-eKt" firstAttribute="left" secondItem="KFI-qM-7Cf" secondAttribute="left" type="user" id="OLJ-9k-6Q6"/>
-                            <constraint firstItem="qF9-hi-eKt" firstAttribute="top" secondItem="5N6-NL-nKp" secondAttribute="top" type="default" id="Pex-4y-I6x"/>
+                            <constraint firstItem="qF9-hi-eKt" firstAttribute="top" secondItem="5N6-NL-nKp" secondAttribute="top" type="user" id="Pex-4y-I6x"/>
                             <constraint firstItem="tTF-7g-LVw" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" constant="192" type="user" id="Ruv-e2-DrW"/>
                             <constraint firstItem="WuH-8R-3yi" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" type="default" id="SEG-a9-8EB"/>
-                            <constraint firstItem="2rl-gq-NNd" firstAttribute="top" secondItem="KFI-qM-7Cf" secondAttribute="top" type="default" id="Svc-qy-f1N"/>
-                            <constraint firstItem="cOc-ji-kqp" firstAttribute="top" secondItem="2rl-gq-NNd" secondAttribute="top" type="default" id="Uhc-MH-nFH"/>
+                            <constraint firstAttribute="bottom" secondItem="2bj-Gx-jgU" secondAttribute="bottom" constant="122" id="VDL-CP-MPR"/>
                             <constraint firstItem="5N6-NL-nKp" firstAttribute="trailing" secondItem="2rl-gq-NNd" secondAttribute="trailing" type="default" id="WOO-na-qSx"/>
-                            <constraint firstItem="5N6-NL-nKp" firstAttribute="top" secondItem="tTF-7g-LVw" secondAttribute="top" type="default" id="Wgp-p6-0QJ"/>
+                            <constraint firstItem="5N6-NL-nKp" firstAttribute="top" secondItem="tTF-7g-LVw" secondAttribute="top" type="user" id="Wgp-p6-0QJ"/>
                             <constraint firstItem="5N6-NL-nKp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="D10-Gu-4bU" secondAttribute="leading" constant="384" type="user" id="WpQ-D3-yji"/>
                             <constraint firstItem="WuH-8R-3yi" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="default" id="c7J-te-8WY"/>
                             <constraint firstItem="dvG-Ov-ruZ" firstAttribute="centerX" secondItem="2bj-Gx-jgU" secondAttribute="centerX" type="default" id="cKz-f8-iKl"/>
                             <constraint firstItem="wrQ-ga-D7q" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="user" id="ebd-cH-Tfo"/>
                             <constraint firstItem="cOc-ji-kqp" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" constant="192" type="user" id="f6w-dt-2j8"/>
                             <constraint firstItem="5N6-NL-nKp" firstAttribute="leading" secondItem="2rl-gq-NNd" secondAttribute="leading" type="default" id="hDA-eu-NW8"/>
-                            <constraint firstItem="tTF-7g-LVw" firstAttribute="baseline" secondItem="5N6-NL-nKp" secondAttribute="baseline" type="default" id="l3S-kI-0Dm"/>
-                            <constraint firstItem="y5K-cc-BqB" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="default" id="lsC-be-R9p"/>
-                            <constraint firstItem="cOc-ji-kqp" firstAttribute="top" secondItem="wrQ-ga-D7q" secondAttribute="top" type="default" id="pb1-8X-Yd0"/>
+                            <constraint firstItem="tTF-7g-LVw" firstAttribute="baseline" secondItem="5N6-NL-nKp" secondAttribute="baseline" type="user" id="l3S-kI-0Dm"/>
+                            <constraint firstItem="y5K-cc-BqB" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" type="user" id="lsC-be-R9p"/>
+                            <constraint firstItem="y5K-cc-BqB" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" constant="136" id="pSJ-BG-Tpj"/>
                             <constraint firstAttribute="trailing" secondItem="y5K-cc-BqB" secondAttribute="trailing" constant="576" type="user" id="r5p-IW-rTf"/>
                             <constraint firstItem="KFI-qM-7Cf" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="rGM-DO-aIA"/>
                             <constraint firstItem="y5K-cc-BqB" firstAttribute="trailing" secondItem="wrQ-ga-D7q" secondAttribute="trailing" type="user" id="rSb-zb-khh"/>
                             <constraint firstItem="5N6-NL-nKp" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" constant="384" type="user" id="twP-gk-fiu"/>
-                            <constraint firstItem="wrQ-ga-D7q" firstAttribute="top" secondItem="D10-Gu-4bU" secondAttribute="top" constant="37" id="u2v-bB-hxx"/>
                             <constraint firstItem="dvG-Ov-ruZ" firstAttribute="bottom" secondItem="D10-Gu-4bU" secondAttribute="bottom" type="default" id="w9C-0i-xbi"/>
                             <constraint firstItem="qF9-hi-eKt" firstAttribute="leading" secondItem="D10-Gu-4bU" secondAttribute="leading" constant="576" type="user" id="wZa-gn-Vm2"/>
-                            <constraint firstItem="WuH-8R-3yi" firstAttribute="bottom" secondItem="2bj-Gx-jgU" secondAttribute="bottom" type="default" id="xas-0d-OGr"/>
-                            <constraint firstItem="5N6-NL-nKp" firstAttribute="baseline" secondItem="qF9-hi-eKt" secondAttribute="baseline" type="default" id="xnB-pP-AEH"/>
+                            <constraint firstItem="5N6-NL-nKp" firstAttribute="baseline" secondItem="qF9-hi-eKt" secondAttribute="baseline" type="user" id="xnB-pP-AEH"/>
                             <constraint firstAttribute="trailing" secondItem="tTF-7g-LVw" secondAttribute="trailing" constant="384" type="user" id="yJE-Ca-gxg"/>
                             <constraint firstItem="dvG-Ov-ruZ" firstAttribute="trailing" secondItem="D10-Gu-4bU" secondAttribute="trailing" type="default" id="z4O-BS-SpX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Graph" id="YfE-LB-DlY"/>
                     <connections>
+                        <outlet property="afternoonLabel" destination="5N6-NL-nKp" id="MVX-Kn-OFS"/>
                         <outlet property="afternoonView" destination="2rl-gq-NNd" id="Fch-Aa-uWX"/>
+                        <outlet property="eveningLabel" destination="qF9-hi-eKt" id="GPH-yK-Utj"/>
                         <outlet property="eveningView" destination="KFI-qM-7Cf" id="Cpn-6h-58x"/>
+                        <outlet property="morningLabel" destination="tTF-7g-LVw" id="GJR-kl-Tqn"/>
                         <outlet property="morningView" destination="cOc-ji-kqp" id="eE8-TI-t5e"/>
+                        <outlet property="nightLabel" destination="y5K-cc-BqB" id="Gyi-qP-xmn"/>
                         <outlet property="nightView" destination="wrQ-ga-D7q" id="Lql-vW-KOe"/>
                         <outlet property="pageControl" destination="2bj-Gx-jgU" id="GPy-zf-fwo"/>
                         <outlet property="scrollView" destination="WuH-8R-3yi" id="udI-oh-Etd"/>
@@ -251,9 +272,14 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WWGraphViewController.h"/>
             <relationships>
                 <relationship kind="action" name="pageChanged"/>
+                <relationship kind="action" name="weatherDisplayButton:"/>
+                <relationship kind="outlet" name="afternoonLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="afternoonView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="eveningLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eveningView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="morningLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="morningView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nightLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="nightView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
