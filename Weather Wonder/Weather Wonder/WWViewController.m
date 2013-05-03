@@ -6,6 +6,11 @@
 //  Copyright (c) 2013 Chad Marmon. All rights reserved.
 //
 
+// Very good job on the graphics and controls. I didn't see the forecast graphics
+// at the bottom of the screen, though?
+// Project grade: 100%
+// Course grade: 100%
+
 #import "WWViewController.h"
 #import "WWGraphViewController.h"
 
