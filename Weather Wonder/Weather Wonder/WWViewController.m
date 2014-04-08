@@ -39,6 +39,7 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weatherRefreshed:) name:@"weatherRefreshed" object:nil];
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     
     [self performSelectorInBackground:@selector(refreshWeather) withObject:nil];
 }

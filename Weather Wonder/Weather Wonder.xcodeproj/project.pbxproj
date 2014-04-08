@@ -38,7 +38,6 @@
 		639A4CC816F3C7A800BE30DB /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CC616F3C7A800BE30DB /* MainStoryboard_iPhone.storyboard */; };
 		639A4CCB16F3C7A800BE30DB /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CC916F3C7A800BE30DB /* MainStoryboard_iPad.storyboard */; };
 		639A4CCE16F3C7A800BE30DB /* WWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4CCD16F3C7A800BE30DB /* WWViewController.m */; };
-		639A4CD616F3C7A800BE30DB /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CD516F3C7A800BE30DB /* SenTestingKit.framework */; };
 		639A4CD716F3C7A800BE30DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CAE16F3C7A800BE30DB /* UIKit.framework */; };
 		639A4CD816F3C7A800BE30DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB016F3C7A800BE30DB /* Foundation.framework */; };
 		639A4CE016F3C7A800BE30DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CDE16F3C7A800BE30DB /* InfoPlist.strings */; };
@@ -98,8 +97,7 @@
 		639A4CCA16F3C7A800BE30DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		639A4CCC16F3C7A800BE30DB /* WWViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWViewController.h; sourceTree = "<group>"; };
 		639A4CCD16F3C7A800BE30DB /* WWViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWViewController.m; sourceTree = "<group>"; };
-		639A4CD416F3C7A800BE30DB /* Weather WonderTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather WonderTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		639A4CD516F3C7A800BE30DB /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		639A4CD416F3C7A800BE30DB /* Weather WonderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather WonderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		639A4CDD16F3C7A800BE30DB /* Weather WonderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Weather WonderTests-Info.plist"; sourceTree = "<group>"; };
 		639A4CDF16F3C7A800BE30DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		639A4CE116F3C7A800BE30DB /* Weather_WonderTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Weather_WonderTests.h; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				639A4CD616F3C7A800BE30DB /* SenTestingKit.framework in Frameworks */,
 				639A4CD716F3C7A800BE30DB /* UIKit.framework in Frameworks */,
 				639A4CD816F3C7A800BE30DB /* Foundation.framework in Frameworks */,
 			);
@@ -233,7 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				639A4CAB16F3C7A800BE30DB /* Weather Wonder.app */,
-				639A4CD416F3C7A800BE30DB /* Weather WonderTests.octest */,
+				639A4CD416F3C7A800BE30DB /* Weather WonderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,7 +241,6 @@
 				639A4CAE16F3C7A800BE30DB /* UIKit.framework */,
 				639A4CB016F3C7A800BE30DB /* Foundation.framework */,
 				639A4CB216F3C7A800BE30DB /* CoreGraphics.framework */,
-				639A4CD516F3C7A800BE30DB /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -449,8 +445,8 @@
 			);
 			name = "Weather WonderTests";
 			productName = "Weather WonderTests";
-			productReference = 639A4CD416F3C7A800BE30DB /* Weather WonderTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 639A4CD416F3C7A800BE30DB /* Weather WonderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -459,6 +455,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = WW;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Chad Marmon";
 			};
@@ -672,6 +669,7 @@
 				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Weather Wonder/Weather Wonder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -689,6 +687,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
 				INFOPLIST_FILE = "Weather Wonder/Weather Wonder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -705,15 +704,15 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Weather Wonder.app/Weather Wonder";
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\\\"$(SDKROOT)/Developer/Library/Frameworks\\\"",
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
 				INFOPLIST_FILE = "Weather WonderTests/Weather WonderTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -722,15 +721,15 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Weather Wonder.app/Weather Wonder";
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\\\"$(SDKROOT)/Developer/Library/Frameworks\\\"",
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
 				INFOPLIST_FILE = "Weather WonderTests/Weather WonderTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

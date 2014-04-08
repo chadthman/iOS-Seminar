@@ -100,40 +100,83 @@
 - (NSArray *)combineTimeArrays:(int)time
 {
     NSMutableArray *combindedArrays = [[NSMutableArray alloc]init];
-    switch (time) {
-        case 1:
-            [combindedArrays addObjectsFromArray:[self sixHourEvening]];
-            break;
-        case 2:
-            [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
-            [combindedArrays addObjectsFromArray:[self sixHourEvening]];
-            break;
-        case 3:
-            [combindedArrays addObjectsFromArray:[self sixHourMorning]];
-            [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
-            [combindedArrays addObjectsFromArray:[self sixHourEvening]];
-            break;
-        case 4:
-            [combindedArrays addObjectsFromArray:[self sixHourNight]];
-            [combindedArrays addObjectsFromArray:[self sixHourMorning]];
-            [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
-            [combindedArrays addObjectsFromArray:[self sixHourEvening]];
-            break;
-        case 5:
-            [combindedArrays addObjectsFromArray:[self sixHourNight]];
-            [combindedArrays addObjectsFromArray:[self sixHourMorning]];
-            [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
-            break;
-        case 6:
-            [combindedArrays addObjectsFromArray:[self sixHourNight]];
-            [combindedArrays addObjectsFromArray:[self sixHourMorning]];
-            break;
-        case 7:
-            [combindedArrays addObjectsFromArray:[self sixHourNight]];
-            break;
-        default:
-            break;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        //iPad
+        switch (time) {
+            case 1:
+                [combindedArrays addObjectsFromArray:[self sixHourEvening]];
+                break;
+            case 2:
+                [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
+                [combindedArrays addObjectsFromArray:[self sixHourEvening]];
+                break;
+            case 3:
+                [combindedArrays addObjectsFromArray:[self sixHourMorning]];
+                [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
+                [combindedArrays addObjectsFromArray:[self sixHourEvening]];
+                break;
+            case 4:
+                [combindedArrays addObjectsFromArray:[self sixHourNight]];
+                [combindedArrays addObjectsFromArray:[self sixHourMorning]];
+                [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
+                [combindedArrays addObjectsFromArray:[self sixHourEvening]];
+                break;
+            case 5:
+                [combindedArrays addObjectsFromArray:[self sixHourNight]];
+                [combindedArrays addObjectsFromArray:[self sixHourMorning]];
+                [combindedArrays addObjectsFromArray:[self sixHourAfternoon]];
+                break;
+            case 6:
+                [combindedArrays addObjectsFromArray:[self sixHourNight]];
+                [combindedArrays addObjectsFromArray:[self sixHourMorning]];
+                break;
+            case 7:
+                [combindedArrays addObjectsFromArray:[self sixHourNight]];
+                break;
+            default:
+                break;
+        }
+        
+    } else {
+        //iPhone
+        switch (time) {
+            case 1:
+                [combindedArrays addObjectsFromArray:[self sixHourEveningiPhone]];
+                break;
+            case 2:
+                [combindedArrays addObjectsFromArray:[self sixHourAfternooniPhone]];
+                [combindedArrays addObjectsFromArray:[self sixHourEveningiPhone]];
+                break;
+            case 3:
+                [combindedArrays addObjectsFromArray:[self sixHourMorningiPhone]];
+                [combindedArrays addObjectsFromArray:[self sixHourAfternooniPhone]];
+                [combindedArrays addObjectsFromArray:[self sixHourEveningiPhone]];
+                break;
+            case 4:
+                [combindedArrays addObjectsFromArray:[self sixHourNightiPhone]];
+                [combindedArrays addObjectsFromArray:[self sixHourMorningiPhone]];
+                [combindedArrays addObjectsFromArray:[self sixHourAfternooniPhone]];
+                [combindedArrays addObjectsFromArray:[self sixHourEveningiPhone]];
+                break;
+            case 5:
+                [combindedArrays addObjectsFromArray:[self sixHourNightiPhone]];
+                [combindedArrays addObjectsFromArray:[self sixHourMorningiPhone]];
+                [combindedArrays addObjectsFromArray:[self sixHourAfternooniPhone]];
+                break;
+            case 6:
+                [combindedArrays addObjectsFromArray:[self sixHourNightiPhone]];
+                [combindedArrays addObjectsFromArray:[self sixHourMorningiPhone]];
+                break;
+            case 7:
+                [combindedArrays addObjectsFromArray:[self sixHourNightiPhone]];
+                break;
+            default:
+                break;
+        }
+
     }
+    
+    
     return [[NSArray alloc]initWithArray:combindedArrays];
 }
 
@@ -267,6 +310,136 @@
     return hours;
 }
 
+- (NSArray *)sixHourEveningiPhone
+{
+    static NSArray *hours = nil;
+    if (!hours)
+    {
+        hours = [NSArray arrayWithObjects:
+                 @"6 PM",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"11 AM",
+                 nil];
+    }
+    return hours;
+}
+
+- (NSArray *)sixHourAfternooniPhone
+{
+    static NSArray *hours = nil;
+    if (!hours)
+    {
+        hours = [NSArray arrayWithObjects:
+                 @"12 PM",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 nil];
+    }
+    return hours;
+}
+
+- (NSArray *)sixHourMorningiPhone
+{
+    static NSArray *hours = nil;
+    if (!hours)
+    {
+        hours = [NSArray arrayWithObjects:
+                 @"6 AM",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 nil];
+    }
+    return hours;
+}
+
+
+- (NSArray *)sixHourNightiPhone
+{
+    static NSArray *hours = nil;
+    if (!hours)
+    {
+        hours = [NSArray arrayWithObjects:
+                 @"12 AM",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 @"",
+                 nil];
+    }
+    return hours;
+}
+
+
 
 - (NSArray *)datesInMonth
 {
@@ -298,6 +471,7 @@
     }
     return dates;
 }
+
 
 - (NSArray *)monthlyPrices:(NSString *)tickerSymbol
 {

@@ -24,9 +24,13 @@
 @property (nonatomic) IBOutlet UIImageView *morningView;
 @property (nonatomic) IBOutlet UIImageView *afternoonView;
 @property (nonatomic) IBOutlet UIImageView *eveningView;
+@property (nonatomic) IBOutlet UILabel *nightLabel;
+@property (nonatomic) IBOutlet UILabel *morningLabel;
+@property (nonatomic) IBOutlet UILabel *afternoonLabel;
+@property (nonatomic) IBOutlet UILabel *eveningLabel;
 @property (nonatomic, strong) CPTGraphHostingView *apcpsfcView;
-@property (nonatomic, strong) CPTGraphHostingView *tmax2mView;
-@property (nonatomic, strong) CPTGraphHostingView *tmin2mView;
+@property (nonatomic, strong) CPTGraphHostingView *temperatureView;
+//@property (nonatomic, strong) CPTGraphHostingView *tmin2mView;
 
 @end
 
@@ -49,12 +53,15 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 @implementation WWGraphViewController
 
 @synthesize apcpsfcView = apcpsfcView_;
-@synthesize tmax2mView  = tmax2mView_;
-@synthesize tmin2mView  = tmin2mView_;
+@synthesize temperatureView  = temperatureView_;
 @synthesize nightView;
 @synthesize morningView;
 @synthesize afternoonView;
 @synthesize eveningView;
+@synthesize nightLabel;
+@synthesize morningLabel;
+@synthesize afternoonLabel;
+@synthesize eveningLabel;
 
 #pragma mark - UIViewController lifecycle methods
 -(void)viewDidAppear:(BOOL)animated {
@@ -65,6 +72,24 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     pageControl.numberOfPages = kNumberOfPages;
 
     [self initPlot];
+//    nightView.contentMode = UIViewContentModeScaleAspectFit;
+//    afternoonView.contentMode = UIViewContentModeScaleAspectFit;
+//    eveningView.contentMode = UIViewContentModeScaleAspectFit;
+//    morningView.contentMode = UIViewContentModeScaleAspectFit;
+    //[nightView setBounds:CGRectMake(0.0, 0.0, 220, 110)];
+//    NSLog(@"Night Width:%f Height:%f", nightView.bounds.size.width, nightView.bounds.size.height);
+//    NSLog(@"Morning Width:%f Height:%f", morningView.bounds.size.width, morningView.bounds.size.height);
+//    NSLog(@"Afternoon Width:%f Height:%f", afternoonView.bounds.size.width, afternoonView.bounds.size.height);
+//    NSLog(@"Evening Width:%f Height:%f", eveningView.bounds.size.width, eveningView.bounds.size.height);
+//    [scrollView addSubview:self.nightLabel];
+//    [scrollView addSubview:self.morningLabel];
+//    [scrollView addSubview:self.afternoonLabel];
+//    [scrollView addSubview:self.eveningLabel];
+//    
+//    [scrollView addSubview:self.nightView];
+//    [scrollView addSubview:self.morningView];
+//    [scrollView addSubview:self.afternoonView];
+//    [scrollView addSubview:self.eveningView];
 }
 
 - (void)viewDidLoad
@@ -78,7 +103,6 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     } else {
         [_weatherButton setTitle:@"Switch to Hour View" forState:UIControlStateNormal];
     }
-    
     controller  = [[WWViewController alloc] init];
     sunnyImage  = [UIImage imageNamed:@"WeatherIconSun"];
     cloudyImage = [UIImage imageNamed:@"WeatherIconCloudy"];
@@ -124,6 +148,17 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     [eveningView setImage:eveningViewImgage];
     
     [self initPlot];
+    //[nightView setBounds:nightView.bounds];
+    //nightView.contentMode = UIViewContentModeScaleAspectFit;
+//    [scrollView addSubview:self.nightLabel];
+//    [scrollView addSubview:self.morningLabel];
+//    [scrollView addSubview:self.afternoonLabel];
+//    [scrollView addSubview:self.eveningLabel];
+//    
+//    [scrollView addSubview:self.nightView];
+//    [scrollView addSubview:self.morningView];
+//    [scrollView addSubview:self.afternoonView];
+//    [scrollView addSubview:self.eveningView];
     [scrollView setNeedsDisplay];
 }
 
@@ -228,7 +263,42 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     [self configureAxes];
 }
 
+-(UIImageView*)deepCopyImageViewWithImageView:(UIImageView*)imageView
+{
+    UIImageView *copyImageView = [[UIImageView alloc]initWithFrame:imageView.bounds];
+    [copyImageView setCenter: imageView.center];
+    copyImageView.contentMode = imageView.contentMode;
+    copyImageView.image = imageView.image;
+    return copyImageView;
+}
+
+-(UILabel*)deepCopyLabelwithLabel:(UILabel*)label
+{
+    UILabel *copyLabel = [[UILabel alloc] initWithFrame:label.bounds];
+    [copyLabel setCenter:label.center];
+    copyLabel.font = label.font;
+    copyLabel.backgroundColor = label.backgroundColor;
+    copyLabel.textColor = label.textColor;
+    copyLabel.textAlignment = label.textAlignment;
+    copyLabel.attributedText = label.attributedText;
+    [copyLabel setText:label.text];
+    return copyLabel;
+}
+
 -(void)configureHost {
+    //copys the UIViews
+    UIImageView *copyNightImageView = [self deepCopyImageViewWithImageView:nightView];
+    UIImageView *copyMorningImageView = [self deepCopyImageViewWithImageView:morningView];
+    UIImageView *copyAfternoonImageView = [self deepCopyImageViewWithImageView:afternoonView];
+    UIImageView *copyEveningImageView = [self deepCopyImageViewWithImageView:eveningView];
+    
+    //Copys the UILabels
+    UILabel *copyNightLabel = [self deepCopyLabelwithLabel:nightLabel];
+    UILabel *copyMorningLabel = [self deepCopyLabelwithLabel:morningLabel];
+    UILabel *copyAfternoonLabel = [self deepCopyLabelwithLabel:afternoonLabel];
+    UILabel *copyEveningLabel = [self deepCopyLabelwithLabel:eveningLabel];
+    
+    //Set up the pages
     if (page == 0)
     {
         // 1 - Set up view frame for first view
@@ -240,16 +310,54 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
         
         //Add the three graphviews
         self.apcpsfcView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-        self.apcpsfcView.allowPinchScaling = YES;
+        self.apcpsfcView.allowPinchScaling = NO;
         [scrollView addSubview:self.apcpsfcView];
+        
+        [scrollView addSubview:self.nightLabel];
+        [scrollView addSubview:self.morningLabel];
+        [scrollView addSubview:self.afternoonLabel];
+        [scrollView addSubview:self.eveningLabel];
+
+        [scrollView addSubview:self.nightView];
+        [scrollView addSubview:self.morningView];
+        [scrollView addSubview:self.afternoonView];
+        [scrollView addSubview:self.eveningView];
         
         parentRect = CGRectMake((parentRect.origin.x + parentRect.size.width),
                                 parentRect.origin.y,
                                 (parentRect.size.width),
                                 parentRect.size.height);
-        self.tmax2mView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-        self.tmax2mView.allowPinchScaling = YES;
-        [scrollView addSubview:tmax2mView_];
+        self.temperatureView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+        self.temperatureView.allowPinchScaling = NO;
+        [scrollView addSubview:temperatureView_];
+        
+        [copyNightLabel setCenter: CGPointMake(copyNightLabel.center.x +parentRect.size.width,
+                                                   copyNightLabel.center.y)];
+        [copyMorningLabel setCenter: CGPointMake(copyMorningLabel.center.x + parentRect.size.width,
+                                                     copyMorningLabel.center.y)];
+        [copyAfternoonLabel setCenter: CGPointMake(copyAfternoonLabel.center.x + parentRect.size.width,
+                                                       copyAfternoonLabel.center.y)];
+        [copyEveningLabel setCenter: CGPointMake(copyEveningLabel.center.x + parentRect.size.width,
+                                                     copyEveningLabel.center.y)];
+        
+        [scrollView addSubview:copyNightLabel];
+        [scrollView addSubview:copyMorningLabel];
+        [scrollView addSubview:copyAfternoonLabel];
+        [scrollView addSubview:copyEveningLabel];
+
+        [copyNightImageView setCenter: CGPointMake(copyNightImageView.center.x +parentRect.size.width,
+                                                   copyNightImageView.center.y)];
+        [copyMorningImageView setCenter: CGPointMake(copyMorningImageView.center.x + parentRect.size.width,
+                                                     copyMorningImageView.center.y)];
+        [copyAfternoonImageView setCenter: CGPointMake(copyAfternoonImageView.center.x + parentRect.size.width,
+                                                       copyAfternoonImageView.center.y)];
+        [copyEveningImageView setCenter: CGPointMake(copyEveningImageView.center.x + parentRect.size.width,
+                                                     copyNightImageView.center.y)];
+        
+        [scrollView addSubview:copyNightImageView];
+        [scrollView addSubview:copyMorningImageView];
+        [scrollView addSubview:copyAfternoonImageView];
+        [scrollView addSubview:copyEveningImageView];
     } else {
         // 1 - Set up view frame for first view
         CGRect parentRect = scrollView.bounds;
@@ -259,21 +367,72 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
                                 (parentRect.size.height));
         
         //Add the three graphviews
-        self.tmax2mView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-        self.tmax2mView.allowPinchScaling = YES;
-        [scrollView addSubview:tmax2mView_];
+        self.temperatureView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
+        self.temperatureView.allowPinchScaling = NO;
+        [scrollView addSubview:self.temperatureView];
+        
+        [copyNightLabel setCenter: CGPointMake(copyNightLabel.center.x +parentRect.size.width,
+                                               copyNightLabel.center.y)];
+        [copyMorningLabel setCenter: CGPointMake(copyMorningLabel.center.x + parentRect.size.width,
+                                                 copyMorningLabel.center.y)];
+        [copyAfternoonLabel setCenter: CGPointMake(copyAfternoonLabel.center.x + parentRect.size.width,
+                                                   copyAfternoonLabel.center.y)];
+        [copyEveningLabel setCenter: CGPointMake(copyEveningLabel.center.x + parentRect.size.width,
+                                                 copyEveningLabel.center.y)];
+        
+        [scrollView addSubview:copyNightLabel];
+        [scrollView addSubview:copyMorningLabel];
+        [scrollView addSubview:copyAfternoonLabel];
+        [scrollView addSubview:copyEveningLabel];
+        
+        [copyNightImageView setCenter: CGPointMake(copyNightImageView.center.x + parentRect.size.width,
+                                                   copyNightImageView.center.y)];
+        [copyMorningImageView setCenter: CGPointMake(copyMorningImageView.center.x + parentRect.size.width,
+                                                     copyMorningImageView.center.y)];
+        [copyAfternoonImageView setCenter: CGPointMake(copyAfternoonImageView.center.x + parentRect.size.width,
+                                                       copyAfternoonImageView.center.y)];
+        [copyEveningImageView setCenter: CGPointMake(copyEveningImageView.center.x + parentRect.size.width,
+                                                     copyNightImageView.center.y)];
+        [scrollView addSubview:copyNightImageView];
+        [scrollView addSubview:copyMorningImageView];
+        [scrollView addSubview:copyAfternoonImageView];
+        [scrollView addSubview:copyEveningImageView];
         
         parentRect = CGRectMake((parentRect.origin.x - parentRect.size.width),
                                 parentRect.origin.y,
                                 (parentRect.size.width),
                                 parentRect.size.height);
         self.apcpsfcView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:parentRect];
-        self.apcpsfcView.allowPinchScaling = YES;
+        self.apcpsfcView.allowPinchScaling = NO;
         [scrollView addSubview:self.apcpsfcView];
+
+        [scrollView addSubview:self.nightLabel];
+        [scrollView addSubview:self.morningLabel];
+        [scrollView addSubview:self.afternoonLabel];
+        [scrollView addSubview:self.eveningLabel];
+        
+        [scrollView addSubview:self.nightView];
+        [scrollView addSubview:self.morningView];
+        [scrollView addSubview:self.afternoonView];
+        [scrollView addSubview:self.eveningView];
+        
     }
 }
 
 -(void)configureGraph {
+    
+    float graphPlotPaddingTop;
+    float titleTextSize;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        //iPad
+        graphPlotPaddingTop = 150.0f;
+        titleTextSize = 16.0f;
+    } else {
+        //iPhone
+        graphPlotPaddingTop = 100.0f;
+        titleTextSize = 14.0f;
+    }
+    
     // 1 - Create the graph
     CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:self.apcpsfcView.bounds];
     [graph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
@@ -285,20 +444,21 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     CPTMutableTextStyle *titleStyle = [CPTMutableTextStyle textStyle];
     titleStyle.color = [CPTColor whiteColor];
     titleStyle.fontName = @"HelveticaNeue-Light";
-    titleStyle.fontSize = 16.0f;
+    titleStyle.fontSize = titleTextSize;
     graph.titleTextStyle = titleStyle;
     graph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
     graph.titleDisplacement = CGPointMake(0.0f, 10.0f);
     // 4 - Set padding for plot area
     [graph.plotAreaFrame setPaddingLeft:00.1f];
     [graph.plotAreaFrame setPaddingBottom:00.1f];
+    [graph.plotAreaFrame setPaddingTop:graphPlotPaddingTop];
     // 5 - Enable user interactions for plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     plotSpace.allowsUserInteraction = NO;
     
-    CPTGraph *tempGraph = [[CPTXYGraph alloc] initWithFrame:self.tmax2mView.bounds];
+    CPTGraph *tempGraph = [[CPTXYGraph alloc] initWithFrame:self.temperatureView.bounds];
     [tempGraph applyTheme:[CPTTheme themeNamed:kCPTDarkGradientTheme]];
-    self.tmax2mView.hostedGraph = tempGraph;
+    self.temperatureView.hostedGraph = tempGraph;
     // 2 - Set graph title
     NSString *tempTitle = [NSString stringWithFormat:@"Temperature at Surface on %@", [controller dayStringFromIndexPath:selectedIndex]];
     tempGraph.title = tempTitle;
@@ -306,13 +466,14 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     CPTMutableTextStyle *tempTitleStyle = [CPTMutableTextStyle textStyle];
     tempTitleStyle.color = [CPTColor whiteColor];
     tempTitleStyle.fontName = @"HelveticaNeue-Light";
-    tempTitleStyle.fontSize = 16.0f;
+    tempTitleStyle.fontSize = titleTextSize;
     tempGraph.titleTextStyle = tempTitleStyle;
     tempGraph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
     tempGraph.titleDisplacement = CGPointMake(0.0f, 10.0f);
     // 4 - Set padding for plot area
     [tempGraph.plotAreaFrame setPaddingLeft:00.1f];
     [tempGraph.plotAreaFrame setPaddingBottom:00.1f];
+    [tempGraph.plotAreaFrame setPaddingTop:graphPlotPaddingTop];
     // 5 - Enable user interactions for plot space
     CPTXYPlotSpace *tempPlotSpace = (CPTXYPlotSpace *) tempGraph.defaultPlotSpace;
     tempPlotSpace.allowsUserInteraction = NO;
@@ -323,7 +484,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     
     // 1 - Get graph and plot space
     CPTGraph *apcpsfcGraph = self.apcpsfcView.hostedGraph;
-    CPTGraph *temperatureGraph = self.tmax2mView.hostedGraph;
+    CPTGraph *temperatureGraph = self.temperatureView.hostedGraph;
     CPTXYPlotSpace *apcpsfcPlotSpace = (CPTXYPlotSpace *) apcpsfcGraph.defaultPlotSpace;
     CPTXYPlotSpace *temperaturePlotSpace = (CPTXYPlotSpace *) temperatureGraph.defaultPlotSpace;
     // 2 - Create the three plots
@@ -342,30 +503,55 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     CPTScatterPlot *tmin2mPlot = [[CPTScatterPlot alloc] init];
     tmin2mPlot.dataSource = self;
     tmin2mPlot.identifier = tickerSymbolTMIN2M;
-    CPTColor *tmin2mColor = [CPTColor colorWithComponentRed:0.0f/255.0f green:129.0f/255.0f blue:205.0f/255.0f alpha:1.0f]; //rgba(0, 129, 205, 1.0000)
-    [temperatureGraph addPlot:tmin2mPlot toPlotSpace:temperaturePlotSpace];
+    CPTColor *tmin2mColor = [CPTColor colorWithComponentRed:0.0f/255.0f green:129.0f/255.0f blue:205.0f/255.0f alpha:1.0f];     [temperatureGraph addPlot:tmin2mPlot toPlotSpace:temperaturePlotSpace];
+    
+    float yRangeExpandFactor;
+    float xRangeExpandFactor;
+    int   xRangePadding;
     
     // 3 - Set up plot space
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        //iPad
+        yRangeExpandFactor = 1.1f;
+        xRangeExpandFactor = 1.1;
+        xRangePadding = 2;
+        
+    } else {
+        //iPhone
+        yRangeExpandFactor = 1.3f;
+        xRangeExpandFactor = -0.25;
+        xRangePadding = -10;
+        
+    }
     [apcpsfcPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:apcpsfcPlot, nil]];
     CPTMutablePlotRange *xRange = [apcpsfcPlotSpace.xRange mutableCopy];
-    [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    [xRange setLocation: CPTDecimalFromString([NSString stringWithFormat:@"%f",
+                                               (((xRange.lengthDouble * xRangeExpandFactor) - xRange.lengthDouble)/-xRangePadding)])];
     apcpsfcPlotSpace.xRange = xRange;
-    CPTMutablePlotRange *yRange = [CPTMutablePlotRange plotRangeWithLocation:CPTDecimalFromCGFloat(0.0f) length:CPTDecimalFromCGFloat(apcpsfcPlotSpace.yRange.maxLimitDouble)];
-    [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    CPTMutablePlotRange *yRange = [CPTMutablePlotRange plotRangeWithLocation:CPTDecimalFromCGFloat(0.0f)
+                                                                      length:CPTDecimalFromCGFloat(apcpsfcPlotSpace.yRange.maxLimitDouble)];
+//    [yRange setLocation: CPTDecimalFromString([NSString stringWithFormat:@"%f",
+//                                               (((yRange.lengthDouble * 1.1) - yRange.lengthDouble)/-2)])];
+    [yRange expandRangeByFactor:CPTDecimalFromCGFloat(yRangeExpandFactor)];
     apcpsfcPlotSpace.yRange = yRange;
         
     [temperaturePlotSpace scaleToFitPlots:[NSArray arrayWithObjects:tmax2mPlot, tmin2mPlot, nil]];
     xRange = [temperaturePlotSpace.xRange mutableCopy];
-    [xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    //[xRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    [xRange setLocation: CPTDecimalFromString([NSString stringWithFormat:@"%f",
+                                               (((xRange.lengthDouble * xRangeExpandFactor) - xRange.lengthDouble)/-xRangePadding)])];
     temperaturePlotSpace.xRange = xRange;
-    yRange = [CPTMutablePlotRange plotRangeWithLocation:CPTDecimalFromCGFloat(0.0f) length:CPTDecimalFromCGFloat(temperaturePlotSpace.yRange.maxLimitDouble)];
-    [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
+    yRange = [CPTMutablePlotRange plotRangeWithLocation:CPTDecimalFromCGFloat(0.0f)
+                                                 length:CPTDecimalFromCGFloat(temperaturePlotSpace.yRange.maxLimitDouble)];
+//    [yRange setLocation: CPTDecimalFromString([NSString stringWithFormat:@"%f",
+//                                               (((yRange.lengthDouble * 1.1) - yRange.lengthDouble)/-2)])];
+    [yRange expandRangeByFactor:CPTDecimalFromCGFloat(yRangeExpandFactor)];
     temperaturePlotSpace.yRange = yRange;
     
     // Creates a drop gradient on the graphs
     CPTColor *areaColorBlue = [CPTColor colorWithComponentRed:0.0f/255.0f green:129.0f/255.0f blue:205.0f/255.0f alpha:1.0f];
     CPTGradient *areaGradient = [CPTGradient gradientWithBeginningColor:areaColorBlue
-                                                          endingColor:[CPTColor clearColor]];
+                                                            endingColor:[CPTColor clearColor]];
     areaGradient.angle = -90.0f;
     CPTFill *areaGradientFill = [CPTFill fillWithGradient:areaGradient];
     apcpsfcPlot.areaFill = areaGradientFill;
@@ -420,13 +606,33 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
 }
 
 -(void)configureAxes {
+    
+    //float tickLineStyle
+    float axisLineStyleWidth;
+    float tickLineStyleWidth;
+    
+    // 3 - Set up plot space
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        //iPad
+        axisLineStyleWidth = 2.0f;
+        tickLineStyleWidth = 2.0f;
+        
+        
+    } else {
+        //iPhone
+        axisLineStyleWidth = 1.0f;
+        tickLineStyleWidth = 2.0f;
+        
+    }
+    
+    
     // 1 - Create styles
     CPTMutableTextStyle *axisTitleStyle = [CPTMutableTextStyle textStyle];
     axisTitleStyle.color = [CPTColor whiteColor];
     axisTitleStyle.fontName = @"HelveticaNeue-Light";
     axisTitleStyle.fontSize = 12.0f;
     CPTMutableLineStyle *axisLineStyle = [CPTMutableLineStyle lineStyle];
-    axisLineStyle.lineWidth = 2.0f;
+    axisLineStyle.lineWidth = axisLineStyleWidth;
     axisLineStyle.lineColor = [CPTColor whiteColor];
     CPTMutableTextStyle *axisTextStyle = [[CPTMutableTextStyle alloc] init];
     axisTextStyle.color = [CPTColor whiteColor];
@@ -434,14 +640,16 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     axisTextStyle.fontSize = 11.0f;
     CPTMutableLineStyle *tickLineStyle = [CPTMutableLineStyle lineStyle];
     tickLineStyle.lineColor = [CPTColor whiteColor];
-    tickLineStyle.lineWidth = 2.0f;
+    tickLineStyle.lineWidth = tickLineStyleWidth;
     CPTMutableLineStyle *gridLineStyle = [CPTMutableLineStyle lineStyle];
-    tickLineStyle.lineColor = [CPTColor blackColor];
-    tickLineStyle.lineWidth = 1.0f;
+    //tickLineStyle.lineColor = [CPTColor blackColor];
+    //tickLineStyle.lineWidth = 1.0f;
+    gridLineStyle.lineColor = [CPTColor blackColor];
+    gridLineStyle.lineWidth = 1.0f;
     
     // 2 - Get axis set
     CPTXYAxisSet *apcpsfcAxisSet = (CPTXYAxisSet *) self.apcpsfcView.hostedGraph.axisSet;
-    CPTXYAxisSet *temperatureAxisSet = (CPTXYAxisSet *) self.tmax2mView.hostedGraph.axisSet;
+    CPTXYAxisSet *temperatureAxisSet = (CPTXYAxisSet *) self.temperatureView.hostedGraph.axisSet;
     
     // 3 - Configure x-axis
     
@@ -510,7 +718,7 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     y.titleOffset = -30.0f;
     y.axisLineStyle = axisLineStyle;
     y.majorGridLineStyle = gridLineStyle;
-    y.labelingPolicy = CPTAxisLabelingPolicyNone;//CPTAxisLabelingPolicyNone;
+    y.labelingPolicy = CPTAxisLabelingPolicyNone;
     y.labelTextStyle = axisTextStyle;
     y.labelOffset = 16.0f;
     y.majorTickLineStyle = axisLineStyle;
@@ -553,8 +761,8 @@ NSString *  const tickerSymbolAPCPSFC    = @"APCPSFC";
     yy.labelTextStyle = axisTextStyle;
     yy.labelOffset = 16.0f;
     yy.majorTickLineStyle = axisLineStyle;
-    yy.majorTickLength = 4.0f;
-    yy.minorTickLength = 2.0f;
+    yy.majorTickLength = 0.1f;
+    yy.minorTickLength = 0.01f;
     yy.tickDirection = CPTSignPositive;
     NSInteger tempMajorIncrement = 10;
     NSInteger tempMinorIncrement = 5;
