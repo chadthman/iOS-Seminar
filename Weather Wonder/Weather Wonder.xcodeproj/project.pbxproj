@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		284D1DBA16F9FDAF00FCCB15 /* fake-data.json in Resources */ = {isa = PBXBuildFile; fileRef = 284D1DB916F9FDAF00FCCB15 /* fake-data.json */; };
+		632018231BA7B91900928E0E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 632018221BA7B91900928E0E /* Accelerate.framework */; };
 		6327629716F5603100E3B78F /* CPDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4316F3EFDB00BE30DB /* CPDConstants.m */; };
 		6327629816F5603F00E3B78F /* CPDStockPriceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4516F3EFDB00BE30DB /* CPDStockPriceStore.m */; };
 		6334850D17020E0900E38C04 /* WeatherIconSun.png in Resources */ = {isa = PBXBuildFile; fileRef = 6334850C17020E0900E38C04 /* WeatherIconSun.png */; };
@@ -26,6 +27,7 @@
 		6334852F1702D11300E38C04 /* WeatherIconRain.png in Resources */ = {isa = PBXBuildFile; fileRef = 6334852E1702D11300E38C04 /* WeatherIconRain.png */; };
 		633485311702DBFF00E38C04 /* WeatherIconSnow.png in Resources */ = {isa = PBXBuildFile; fileRef = 633485301702DBFF00E38C04 /* WeatherIconSnow.png */; };
 		633485331703FAAF00E38C04 /* WeatherIconCloudy.png in Resources */ = {isa = PBXBuildFile; fileRef = 633485321703FAAE00E38C04 /* WeatherIconCloudy.png */; };
+		636944BC1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 636944BB1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a */; };
 		639A4CAF16F3C7A800BE30DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CAE16F3C7A800BE30DB /* UIKit.framework */; };
 		639A4CB116F3C7A800BE30DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB016F3C7A800BE30DB /* Foundation.framework */; };
 		639A4CB316F3C7A800BE30DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB216F3C7A800BE30DB /* CoreGraphics.framework */; };
@@ -42,7 +44,6 @@
 		639A4CD816F3C7A800BE30DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB016F3C7A800BE30DB /* Foundation.framework */; };
 		639A4CE016F3C7A800BE30DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 639A4CDE16F3C7A800BE30DB /* InfoPlist.strings */; };
 		639A4CE316F3C7A800BE30DB /* Weather_WonderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4CE216F3C7A800BE30DB /* Weather_WonderTests.m */; };
-		639A4D3F16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4D3E16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a */; };
 		639A4D4116F3EF8C00BE30DB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4D4016F3EF8C00BE30DB /* QuartzCore.framework */; };
 		639A4D4616F3EFDB00BE30DB /* CPDConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4316F3EFDB00BE30DB /* CPDConstants.m */; };
 		639A4D4716F3EFDB00BE30DB /* CPDStockPriceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4516F3EFDB00BE30DB /* CPDStockPriceStore.m */; };
@@ -58,10 +59,18 @@
 			remoteGlobalIDString = 639A4CAA16F3C7A800BE30DB;
 			remoteInfo = "Weather Wonder";
 		};
+		63B3A1361BA7C4660081DB38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63B3A1301BA7C4660081DB38 /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		284D1DB916F9FDAF00FCCB15 /* fake-data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "fake-data.json"; sourceTree = "<group>"; };
+		632018221BA7B91900928E0E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		6334850C17020E0900E38C04 /* WeatherIconSun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeatherIconSun.png; sourceTree = "<group>"; };
 		6334850E17021B6400E38C04 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		6334851017021F7A00E38C04 /* iPadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPadIcon.png; path = ../iPadIcon.png; sourceTree = "<group>"; };
@@ -80,6 +89,7 @@
 		6334852E1702D11300E38C04 /* WeatherIconRain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeatherIconRain.png; sourceTree = "<group>"; };
 		633485301702DBFF00E38C04 /* WeatherIconSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeatherIconSnow.png; sourceTree = "<group>"; };
 		633485321703FAAE00E38C04 /* WeatherIconCloudy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeatherIconCloudy.png; sourceTree = "<group>"; };
+		636944BB1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../Weather Wonder/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		639A4CAB16F3C7A800BE30DB /* Weather Wonder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Wonder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		639A4CAE16F3C7A800BE30DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		639A4CB016F3C7A800BE30DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -176,7 +186,6 @@
 		639A4D3B16F3ED5300BE30DB /* NSCoderExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCoderExtensions.h; sourceTree = "<group>"; };
 		639A4D3C16F3ED5300BE30DB /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		639A4D3D16F3ED5300BE30DB /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
-		639A4D3E16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		639A4D4016F3EF8C00BE30DB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		639A4D4216F3EFDB00BE30DB /* CPDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPDConstants.h; sourceTree = "<group>"; };
 		639A4D4316F3EFDB00BE30DB /* CPDConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDConstants.m; sourceTree = "<group>"; };
@@ -186,6 +195,7 @@
 		639A4D4916F3F36600BE30DB /* WWGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWGraphViewController.m; sourceTree = "<group>"; };
 		639A4D4B16F3FF9B00BE30DB /* WWPieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWPieViewController.h; sourceTree = "<group>"; };
 		639A4D4C16F3FF9B00BE30DB /* WWPieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWPieViewController.m; sourceTree = "<group>"; };
+		63B3A1301BA7C4660081DB38 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../Cloned Github/core-plot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,12 +203,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				632018231BA7B91900928E0E /* Accelerate.framework in Frameworks */,
 				639A4D4116F3EF8C00BE30DB /* QuartzCore.framework in Frameworks */,
 				639A4CAF16F3C7A800BE30DB /* UIKit.framework in Frameworks */,
 				639A4CB116F3C7A800BE30DB /* Foundation.framework in Frameworks */,
 				639A4CB316F3C7A800BE30DB /* CoreGraphics.framework in Frameworks */,
-				639A4D3F16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a in Frameworks */,
 				633485191702258200E38C04 /* iPad.png in Frameworks */,
+				636944BC1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +228,7 @@
 		639A4CA216F3C7A800BE30DB = {
 			isa = PBXGroup;
 			children = (
+				636944BB1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a */,
 				639A4D4016F3EF8C00BE30DB /* QuartzCore.framework */,
 				639A4CF216F3EAC100BE30DB /* Core Plot */,
 				639A4CB416F3C7A800BE30DB /* Weather Wonder */,
@@ -238,6 +250,8 @@
 		639A4CAD16F3C7A800BE30DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63B3A1301BA7C4660081DB38 /* CorePlot-CocoaTouch.xcodeproj */,
+				632018221BA7B91900928E0E /* Accelerate.framework */,
 				639A4CAE16F3C7A800BE30DB /* UIKit.framework */,
 				639A4CB016F3C7A800BE30DB /* Foundation.framework */,
 				639A4CB216F3C7A800BE30DB /* CoreGraphics.framework */,
@@ -323,7 +337,6 @@
 			isa = PBXGroup;
 			children = (
 				639A4CF316F3ED5300BE30DB /* CorePlotHeaders */,
-				639A4D3E16F3ED5300BE30DB /* libCorePlot-CocoaTouch.a */,
 			);
 			name = "Core Plot";
 			sourceTree = "<group>";
@@ -409,6 +422,14 @@
 			path = CorePlotHeaders;
 			sourceTree = "<group>";
 		};
+		63B3A1311BA7C4660081DB38 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63B3A1371BA7C4660081DB38 /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,8 +477,13 @@
 			attributes = {
 				CLASSPREFIX = WW;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Chad Marmon";
+				TargetAttributes = {
+					639A4CAA16F3C7A800BE30DB = {
+						DevelopmentTeam = TCXAZYTP77;
+					};
+				};
 			};
 			buildConfigurationList = 639A4CA616F3C7A800BE30DB /* Build configuration list for PBXProject "Weather Wonder" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -469,6 +495,12 @@
 			mainGroup = 639A4CA216F3C7A800BE30DB;
 			productRefGroup = 639A4CAC16F3C7A800BE30DB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 63B3A1311BA7C4660081DB38 /* Products */;
+					ProjectRef = 63B3A1301BA7C4660081DB38 /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				639A4CAA16F3C7A800BE30DB /* Weather Wonder */,
@@ -476,6 +508,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		63B3A1371BA7C4660081DB38 /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = 63B3A1361BA7C4660081DB38 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		639A4CA916F3C7A800BE30DB /* Resources */ = {
@@ -618,6 +660,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -629,7 +672,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -654,7 +697,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -665,18 +708,22 @@
 		639A4CE716F3C7A800BE30DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Weather Wonder/Weather Wonder-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
 				New_Setting = "";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "Me.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -684,17 +731,21 @@
 		639A4CE816F3C7A800BE30DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
 				INFOPLIST_FILE = "Weather Wonder/Weather Wonder-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
 				New_Setting = "";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "Me.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -711,6 +762,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
 				INFOPLIST_FILE = "Weather WonderTests/Weather WonderTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Me.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -728,6 +780,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Weather Wonder/Weather Wonder-Prefix.pch";
 				INFOPLIST_FILE = "Weather WonderTests/Weather WonderTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Me.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
