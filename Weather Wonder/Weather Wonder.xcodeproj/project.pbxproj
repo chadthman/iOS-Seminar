@@ -27,7 +27,8 @@
 		6334852F1702D11300E38C04 /* WeatherIconRain.png in Resources */ = {isa = PBXBuildFile; fileRef = 6334852E1702D11300E38C04 /* WeatherIconRain.png */; };
 		633485311702DBFF00E38C04 /* WeatherIconSnow.png in Resources */ = {isa = PBXBuildFile; fileRef = 633485301702DBFF00E38C04 /* WeatherIconSnow.png */; };
 		633485331703FAAF00E38C04 /* WeatherIconCloudy.png in Resources */ = {isa = PBXBuildFile; fileRef = 633485321703FAAE00E38C04 /* WeatherIconCloudy.png */; };
-		636944BC1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 636944BB1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a */; };
+		636CF4C91C320BFC006F7024 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 636CF4C81C320BFC006F7024 /* libCorePlot-CocoaTouch.a */; };
+		636CF4CA1C320BFC006F7024 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 636CF4C81C320BFC006F7024 /* libCorePlot-CocoaTouch.a */; };
 		639A4CAF16F3C7A800BE30DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CAE16F3C7A800BE30DB /* UIKit.framework */; };
 		639A4CB116F3C7A800BE30DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB016F3C7A800BE30DB /* Foundation.framework */; };
 		639A4CB316F3C7A800BE30DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639A4CB216F3C7A800BE30DB /* CoreGraphics.framework */; };
@@ -49,6 +50,7 @@
 		639A4D4716F3EFDB00BE30DB /* CPDStockPriceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4516F3EFDB00BE30DB /* CPDStockPriceStore.m */; };
 		639A4D4A16F3F36600BE30DB /* WWGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4916F3F36600BE30DB /* WWGraphViewController.m */; };
 		639A4D4D16F3FF9B00BE30DB /* WWPieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A4D4C16F3FF9B00BE30DB /* WWPieViewController.m */; };
+		63A75B3A1C5581650073E869 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A75B391C5581650073E869 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,7 +91,7 @@
 		6334852E1702D11300E38C04 /* WeatherIconRain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeatherIconRain.png; sourceTree = "<group>"; };
 		633485301702DBFF00E38C04 /* WeatherIconSnow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeatherIconSnow.png; sourceTree = "<group>"; };
 		633485321703FAAE00E38C04 /* WeatherIconCloudy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeatherIconCloudy.png; sourceTree = "<group>"; };
-		636944BB1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../Weather Wonder/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
+		636CF4C81C320BFC006F7024 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../Weather-Wonder/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		639A4CAB16F3C7A800BE30DB /* Weather Wonder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Wonder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		639A4CAE16F3C7A800BE30DB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		639A4CB016F3C7A800BE30DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -195,6 +197,7 @@
 		639A4D4916F3F36600BE30DB /* WWGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWGraphViewController.m; sourceTree = "<group>"; };
 		639A4D4B16F3FF9B00BE30DB /* WWPieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWPieViewController.h; sourceTree = "<group>"; };
 		639A4D4C16F3FF9B00BE30DB /* WWPieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWPieViewController.m; sourceTree = "<group>"; };
+		63A75B391C5581650073E869 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		63B3A1301BA7C4660081DB38 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../Cloned Github/core-plot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,13 +206,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63A75B3A1C5581650073E869 /* CoreLocation.framework in Frameworks */,
 				632018231BA7B91900928E0E /* Accelerate.framework in Frameworks */,
 				639A4D4116F3EF8C00BE30DB /* QuartzCore.framework in Frameworks */,
 				639A4CAF16F3C7A800BE30DB /* UIKit.framework in Frameworks */,
+				636CF4C91C320BFC006F7024 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				639A4CB116F3C7A800BE30DB /* Foundation.framework in Frameworks */,
 				639A4CB316F3C7A800BE30DB /* CoreGraphics.framework in Frameworks */,
 				633485191702258200E38C04 /* iPad.png in Frameworks */,
-				636944BC1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +223,7 @@
 			files = (
 				639A4CD716F3C7A800BE30DB /* UIKit.framework in Frameworks */,
 				639A4CD816F3C7A800BE30DB /* Foundation.framework in Frameworks */,
+				636CF4CA1C320BFC006F7024 /* libCorePlot-CocoaTouch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +233,7 @@
 		639A4CA216F3C7A800BE30DB = {
 			isa = PBXGroup;
 			children = (
-				636944BB1BA8E85300D4A196 /* libCorePlot-CocoaTouch.a */,
+				636CF4C81C320BFC006F7024 /* libCorePlot-CocoaTouch.a */,
 				639A4D4016F3EF8C00BE30DB /* QuartzCore.framework */,
 				639A4CF216F3EAC100BE30DB /* Core Plot */,
 				639A4CB416F3C7A800BE30DB /* Weather Wonder */,
@@ -250,6 +255,7 @@
 		639A4CAD16F3C7A800BE30DB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63A75B391C5581650073E869 /* CoreLocation.framework */,
 				63B3A1301BA7C4660081DB38 /* CorePlot-CocoaTouch.xcodeproj */,
 				632018221BA7B91900928E0E /* Accelerate.framework */,
 				639A4CAE16F3C7A800BE30DB /* UIKit.framework */,
@@ -672,7 +678,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -697,7 +703,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

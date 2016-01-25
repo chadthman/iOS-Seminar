@@ -31,7 +31,7 @@
 #define Friday 6
 #define Saturday 7
 
-static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
+static NSString* const kServerAddress = @"http://marmon.tech:1337";
 
 @implementation WWViewController
 
@@ -40,6 +40,12 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weatherRefreshed:) name:@"weatherRefreshed" object:nil];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    [locationManager startUpdatingLocation];
+    [locationManager requestAlwaysAuthorization];
     
     [self performSelectorInBackground:@selector(refreshWeather) withObject:nil];
 }
@@ -517,7 +523,16 @@ static NSString* const kServerAddress = @"https://weatherparser.herokuapp.com";
 
 -(void) refreshWeather
 {
-    NSData *json = [NSData dataWithContentsOfURL:[NSURL URLWithString:kServerAddress]];
+    
+    float latitude = locationManager.location.coordinate.latitude;
+    float longitude = locationManager.location.coordinate.longitude;
+    
+    int converedLat = floorf(latitude) + 90;
+    int convertedLong = floorf(longitude) + 360;
+    
+    NSString *address = [NSString stringWithFormat:@"%@/location?latitude=%d&longitude=%d", kServerAddress, converedLat, convertedLong];
+    
+    NSData *json = [NSData dataWithContentsOfURL:[NSURL URLWithString:address]];
     if( [json length] == 0 ) {
 #if DEBUG
         NSLog( @"using fake data..." );

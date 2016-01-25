@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface WWViewController : UIViewController
 
@@ -45,3 +46,5 @@ NSArray *tmax2mDaily;
 NSArray *apcpsfcDaily;
 NSArray *tmin2mDaily;
 NSArray *sunsdsfcDaily;
+
+CLLocationManager *locationManager;
